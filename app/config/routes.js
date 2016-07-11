@@ -1,0 +1,34 @@
+mentoring.config(['$routeProvider',function($routeProvider){
+    
+    $routeProvider
+    
+    .when("/", {
+        templateUrl : "home.html"
+    });
+    
+//    .when("/customers", {
+//        templateUrl : "customers/views/list-customers.html",
+//        controller : "customerController"
+//    })
+//    
+//    .when("/createCustomer", {
+//        templateUrl : "customers/views/create-customer.html",
+//        controller : "customerController"
+//    })
+//    
+//    .when("/customers/:tabId", {
+//        templateUrl : "customers/views/customer-template.html",
+//        controller : "customerController"
+//    })
+//    
+//    .when("/accounts",{
+//        templateUrl : "accounts/views/open-account.html",
+//        controller : "accountController"
+//    })
+//    
+//    .when("/payments", {
+//        templateUrl : "payments/views/make-payment.html",
+//        controller : "paymentController"
+//    });
+    
+}]);
