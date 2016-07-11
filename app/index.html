@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mentoring">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    <title>Mentoria</title>
+    
+    <!--  build:css resources/css/mentoring-web.min.css  -->
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../bower_components/jquery-ui/themes/pepper-grinder/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../bower_components/metisMenu/dist/metisMenu.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.min.css"/>
+    <!--  endbuild  -->
+    
+</head>
+<body>
+	<header class="header">
+		<div class="title">
+			<p> Mentoria </p>
+		</div>
+        
+        <div class="menu-icon">
+            <img src="resources/img/menu.png">
+        </div>
+        
+	</header>
+    
+    <aside class="sidebar">
+        <p>Menú Principal</p>
+        <div ng-include = "'menu.html'" class="navbar-default"/>
+    </aside>
+
+	<section class="content">
+		<div ng-view>
+		</div>
+	</section>
+
+    <!--  build:js resources/js/mentoring-web-vendor.min.js  -->
+    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+    <!-- endbuild  -->
+    
+    <!--  build:js resources/js/mentoring-web.min.js  -->
+    <script type="text/javascript" src="config/app.js"></script>
+    <script type="text/javascript" src="resources/js/style.js"></script>
+    <script type="text/javascript" src="config/routes.js"></script>
+    
+    <script type="text/javascript" src="directives/form-validations.js"></script>
+    <script type="text/javascript" src="directives/datepicker-handler.js"></script>
+    <script type="text/javascript" src="directives/menu-directive.js"></script>
+    <!--  endbuild  -->
+    
+    
+</body>
+</html>

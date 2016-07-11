@@ -1,0 +1,170 @@
+/*Cabeçalho*/
+
+.header{
+    position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	min-height: 65px;
+	#z-index: 9999;
+    background: #00695C;
+	box-shadow: 0px 5px 5px #ccc;
+}
+
+.header p{
+	margin-left: 20px;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #fff;
+    margin-top: 25px;
+    float:left;
+}
+
+
+.menu-icon{
+    float: right;
+    margin-right: 10px;
+}
+
+.menu-icon img {
+	margin-top: 15px;
+	margin-left: 5px;
+    width: 40px;
+}
+
+/*Side bar*/
+.sidebar {
+	position: fixed;
+	top: 75px;
+	bottom: 0;
+	left: 0;
+	width: 250px;
+	margin-left: -251px;
+	#z-index: 9999;
+	transition: margin-left 0.5s;
+	overflow-y: auto;
+	background-color: #E0F2F1;
+	border: 1px solid #B2DFDB;
+}
+
+
+.sidebar.is-toggled {
+	margin-left: 0px;
+}
+
+@media (min-width: 960px) {
+	.sidebar {
+		margin-left: 0px;
+	}
+	
+	.sidebar.is-toggled {
+		margin-left: -251px;
+	}
+}
+
+.sidebar p {
+    background-color: #00695C;
+    padding: 8px 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+/* content*/
+.content {
+	padding: 0 15px;
+	margin-top: 75px;
+	transition: margin-left 0.5s;
+}
+
+@media (min-width: 960px) {
+	.content {
+		margin-left: 260px;
+	}
+	
+	.content.is-toggled {
+		margin-left: 0;
+	}
+}
+
+/* Bootstrap custom */
+/*
+.panel, .panel-heading{
+    border-radius: 0px !important;
+    border: 1px solid #43a047 !important;
+}
+
+.panel-heading {
+    background: #43a047 !important;
+}
+
+.pagination .active a {
+    background-color: #43a047 !important;
+    color: #ffffff !important;
+    border: 1px solid #43a047 !important;
+}
+
+.pagination  li  a {
+    color: #000 !important;
+}
+
+.btn-primary{
+    background-color: #43a047 !important;
+    background-image: none ! important;
+    border-color: #43a047 !important;
+}
+
+.alert{
+    margin-top: 10px !important;
+}
+*/
+
+/* date*/
+div.ui-datepicker{
+    font-size:13.8px;
+}
+
+/* header menu */
+.header-menu{
+    min-height: 34px;
+    background: #b71c1c;
+    box-shadow: 0px 5px 5px #ccc;
+    margin-bottom: 15px;
+}
+
+.header-menu p{
+	font-size: 12pt;
+	font-weight: bold;
+	color: #fff;
+    margin-left: 10px;
+    margin-top: 6px;
+    float: left;
+}
+
+/*updates for font-awsome*/
+.nav li {
+    cursor: pointer;
+}
+
+/* menu ajusts*/
+.sidebar ul li {
+    border: 1px solid #bbdefb;
+    margin-bottom: -1px;
+}
+
+.sidebar .nav-second-level li, .sidebar .nav-third-level li {
+    border: 0 none !important;
+}
+.sidebar .nav-second-level li a {
+    padding-left: 20px;
+}
+
+.sidebar-nav{
+    background: #fff;
+}
+
+/* table tr*/
+table tbody tr:hover {
+    cursor: pointer;
+    background: #eee;
+}

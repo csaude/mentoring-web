@@ -1,0 +1,1 @@
+var mentoring = angular.module("mentoring", ["ngRoute", "smart-table"]);
