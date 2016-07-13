@@ -1,1 +1,1 @@
-var mentoring = angular.module("mentoring", ["ngRoute", "smart-table"]);
+var mentoring = angular.module("mentoring", ["ui.router", "smart-table"]);

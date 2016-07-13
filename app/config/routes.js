@@ -1,9 +1,13 @@
-mentoring.config(['$routeProvider',function($routeProvider){
+mentoring.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
+
+    // Default Url
+    $urlRouterProvider.otherwise("/home");
+
+    $stateProvider
     
-    $routeProvider
-    
-    .when("/", {
-        templateUrl : "home.html"
+    .state("home", {
+    	url : "/home",
+    	templateUrl : "home.html"
     });
     
 //    .when("/customers", {
@@ -30,5 +34,5 @@ mentoring.config(['$routeProvider',function($routeProvider){
 //        templateUrl : "payments/views/make-payment.html",
 //        controller : "paymentController"
 //    });
-    
+
 }]);
