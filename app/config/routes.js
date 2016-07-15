@@ -9,6 +9,11 @@ mentoring.config(['$stateProvider', '$urlRouterProvider',function($stateProvider
     	url : "/home",
     	templateUrl : "home.html"
     });
+
+    .when('tutor/views/tutor.html', {
+       templateUrl: 'tutor.html',
+       controller: 'tutorController'
+  });
     
 //    .when("/customers", {
 //        templateUrl : "customers/views/list-customers.html",
