@@ -70,6 +70,11 @@
 }
 
 
+.sidebar ul li {
+    border: 1px solid #BCAAA4 !important;
+}
+
+
 /* content*/
 .content {
 	padding: 0 15px;
@@ -127,7 +132,7 @@ div.ui-datepicker{
 /* header menu */
 .header-menu{
     min-height: 34px;
-    background: #b71c1c;
+    background: #00796B;	
     box-shadow: 0px 5px 5px #ccc;
     margin-bottom: 15px;
 }
@@ -144,6 +149,14 @@ div.ui-datepicker{
 /*updates for font-awsome*/
 .nav li {
     cursor: pointer;
+}
+
+.nav a {
+	color: #4E342E;
+}
+
+.nav a:hover {
+	color: #795548;
 }
 
 /* menu ajusts*/
