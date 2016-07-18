@@ -1,1 +1,45 @@
-<h3>Seja bem vindo ao sistema de Mentoria da FGH</h2>
+<!-- <h3>Seja bem vindo ao sistema de Mentoria da FGH</h2> -->
+<div class="bootstrap-iso"  ng-controller="tutorcontroller">
+	<div class="container-fluid">
+	  <div class="row">
+	   <div class="col-md-6 col-sm-6 col-xs-12">
+	    <form method="post">
+
+	     <div class="form-group ">
+	      <label class="control-label " for="name">Nome do Tutor
+		       <span class="asteriskField">*</span>
+	      </label>
+	      <input class="form-control" id="name" name="name" type="text"/>
+	     </div>
+	    
+	     <div class="form-group ">
+	      <label class="control-label requiredField" for="latname">Apelido do Tutor
+		       <span class="asteriskField">*</span>
+	      </label>
+	      <input class="form-control" id="latname" name="lastname" type="text"/>
+	     </div>
+	     
+	     <div class="form-group ">
+	      <label class="control-label " for="category">Categoria</label>
+	      <select class="select form-control" id="select" name="select">
+		       <option value="First Choice">Gestor de Dados</option>
+		       <option value="Second Choice"> Programador</option>
+		       <option value="Third Choice"> DBA</option>
+	      </select>
+	     </div>
+	     <div class="form-group ">
+	      <label class="control-label " for="message">Descricao</label>
+	      <textarea class="form-control" cols="40" id="description" name="description" rows="10"></textarea>
+	     </div>
+
+	     <div class="form-group">
+	      <div>
+		       <button class="btn btn-primary " name="submit" type="submit">Gravar</button>
+	      </div>
+	     </div>
+
+	    </form>
+	   </div>
+	  </div>
+ </div>
+</div>
