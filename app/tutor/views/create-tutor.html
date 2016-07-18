@@ -1,0 +1,89 @@
+<div class="header-menu">
+    <p>Cadastrar Tutor<p>
+</div>
+
+<form class="form-horizontal" name="createCustomerForm" novalidate>
+    
+    <div class="navbar navbar-default">
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-success navbar-btn" value="Cadastrar" ng-click="createCustomer(createCustomerForm)"/>
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "cleanCustomer()"/>
+        </div>
+    </div>
+    
+    <!-- Messages   -->
+    <div class="alert alert-success" role="alert" ng-show="message">
+        <strong>{{message}}</strong>
+    </div>
+    <div class="alert alert-danger" role="alert" ng-show="hasErrors.length">
+        <p ng-repeat="error in hasErrors"><strong>{{error.field}}</strong></p>
+    </div>
+    
+    <hr/>
+    <div class="form-group">
+        <label for="customerType" class="col-md-2 control-label">Tipo de Cliente:</label>
+        <div class="col-md-3">
+            <select id="customerType" name="'Tipo de Cliente'" ng-model="customer.customerType" type="text" class="form-control" required>
+                <option value="SINGLE" label="Cliente Singular"/>
+                <option value="COLLECTIVE" label="Cliente Collectivo"/>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="customerName" class="col-md-2 control-label"> Nome:</label>
+        <div class="col-md-3">
+             <input id="customerName" name="'Nome'" ng-model="customer.name" type="text" class="form-control" autocomplete="off" required/>
+        </div>
+
+        <label for="birthOpenDate" class="col-md-2 control-label"> Data de Nascimento/Abertura:</label>  
+        <div class="col-md-2">
+            <input id="birthOpenDate" ng-model="customer.birthOpenDate" name="'Data de Nascimento/Abertura'" type="text" class="form-control" autocomplete="off" readonly required datepicker>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="occupation" class="col-md-2 control-label">Ocupação/Ramo de Actividade:</label>
+        <div class="col-md-3">
+            <input id="occupation" name="'Ocupação/Ramo de Actividade'" ng-model="customer.occupation" type="text" class="form-control" autocomplete="off" required/>    
+        </div>
+
+        <label for="occupation" class="col-md-2 control-label">Nuit:</label>
+        <div class="col-md-2">
+            <input id="occupation" ng-model="customer.nuit" type="text" class="form-control" autocomplete="off" maxlength="9"/>    
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="documentType" class="col-md-2 control-label"> Tipo de Documento:</label>
+        <div class="col-md-3">
+            <select id="documentType" ng-model="customer.documentType" type="text" class="form-control">
+                <option value="BI" label="Bilhete de Identidade"/>
+                <option value="PASSPORT" label="Passaporte"/>
+                <option value="DIRE" label="Dire"/>
+                <option value="CEDULA" label="Cédula Pessoal"/>
+                <option value="DRIVE_LICENCE" label="Carta de Condução"/>
+            </select>
+        </div>
+
+        <label for="documentNumber" class="col-md-2 control-label"> Número do Documento:</label>
+        <div class="col-md-2">
+            <input id="documentNumber" ng-model="customer.documentNumber" type="text" class="form-control" autocomplete="off" maxlength="13"/>    
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="address" class="col-md-2 control-label"> Endereço:</label>
+        <div class="col-md-7">
+            <textarea id="address" name="'Endereço'" ng-model="customer.address" type="text" class="form-control" rows="3" required></textarea>    
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="contact" class="col-md-2 control-label"> Contacto:</label>
+        <div class="col-md-7">
+            <input id="contact" name="'Contactos'" ng-model="customer.contacts" type="text" class="form-control" autocomplete="off" required/> 
+        </div>
+    </div>
+    <hr/>
+</form>
