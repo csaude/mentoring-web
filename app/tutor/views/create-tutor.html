@@ -6,18 +6,13 @@
     
     <div class="navbar navbar-default">
         <div class="col-md-2">
-            <input type="submit" class="btn btn-success navbar-btn" value="Cadastrar" ng-click="createTutor(createTutorForm)"/>
+            <input type="submit" class="btn btn-success navbar-btn" value="Cadastrar" ng-click="createTutor()"/>
             <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "cleanTutor()"/>
         </div>
     </div>
     
     <!-- Messages   -->
-    <div class="alert alert-success" role="alert" ng-show="message">
-        <strong>{{message}}</strong>
-    </div>
-    <div class="alert alert-danger" role="alert" ng-show="hasErrors.length">
-        <p ng-repeat="error in hasErrors"><strong>{{error.field}}</strong></p>
-    </div>
+    <messages message="{{message}}" error-message="{{errorMessage}}" has-errors="hasErrors" ></messages>
     
     <hr/>
     
