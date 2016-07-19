@@ -108,7 +108,7 @@ module.exports = function(grunt){
                     port:3000,
                     hostname: '0.0.0.0',
                     keepalive: true,
-                    base: 'dist/<%= pkg.name %>',
+                    //base: 'dist/<%= pkg.name %>',
                     
                     middleware: function (connect, options, defaultMiddleware) {
                          var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
