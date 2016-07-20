@@ -36,9 +36,6 @@ mentoring.controller("tutorController", ["$scope", "tutorService", function($sco
 	$scope.cleanTutor();
 
 	 $scope.editTutor = function () {
-        console.log("Editando tutor");
-        $window.open("create-tutor.html");
-
 	 };
 
 }]);
