@@ -1,0 +1,28 @@
+<form class="form-horizontal" name="listTutorForm" novalidate>
+<div class="navbar navbar-default">
+<div class="header-menu">
+    <p>Criterios de Pesquisa<p>
+</div>
+      <div class="col-md-3">
+            <input id="tutorName" placeholder="Nome" name="'Nome'" ng-model="tutor.name" type="text" class="form-control"/>
+      </div>
+      <div class="col-md-3">
+            <input id="tutorSurname" placeholder="Apelido" name="'Apelido'" ng-model="tutor.surname" type="text" class="form-control"/>
+      </div>
+      <div class="col-md-3	">
+            <input id="tutorCategory" placeholder="Categoria" name="'Category'" ng-model="tutor.category" type="text" class="form-control"/>
+      </div>
+</div>
+   <table class="table table" >
+			<tr  >
+				<th >Nome</th>
+				<th>Telefone</th>
+				<th>Categoria</th>
+			</tr>
+			<tr ng-click="editTutor()">
+				<td>Eusebio</td>
+				<td>Maposse</td>
+				<td>Programador</td>
+			</tr>
+	 </table>
+</form>

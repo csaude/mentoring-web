@@ -19,7 +19,7 @@ mentoring.controller("tutorController", ["$scope", "tutorService", function($sco
 
 		tutorService.createTutor(tutorBeanResource).then(function success(response){
 
-			var tutor = response.data
+			var tutor = response.data;
 			$scope.message = "O Tutor "+tutor.name+" foi cadastrado com sucesso!";
 			$scope.tutor = {};	
 
@@ -34,5 +34,11 @@ mentoring.controller("tutorController", ["$scope", "tutorService", function($sco
 	};
 
 	$scope.cleanTutor();
+
+	 $scope.editTutor = function () {
+        console.log("Editando tutor");
+        $window.open("create-tutor.html");
+
+	 };
 
 }]);
