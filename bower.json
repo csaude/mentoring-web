@@ -23,7 +23,9 @@
     "bootstrap": "3.3.6",
     "jquery": "2.2.2",
     "jquery-ui": "^1.11.4",
-    "angular-smart-table": "^2.1.8"
+    "angular-smart-table": "^2.1.8", 
+    "metisMenu": "~2.5.2",
+    "font-awesome":"~4.6.3"
   }
   
 }
