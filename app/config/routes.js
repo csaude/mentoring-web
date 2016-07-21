@@ -13,7 +13,13 @@ mentoring.config(['$stateProvider', '$urlRouterProvider',function($stateProvider
     .state("createTutor",{
     	url : "/createTutor",
     	templateUrl: "tutor/views/create-tutor.html",
-        controller: "tutorController"
+        controller: "createTutorController"
+    })
+
+    .state("listTutor",{
+        url : "/listTutor",
+        templateUrl: "tutor/views/list-tutor.html",
+        controller: "updateTutorController"
     });
 
 }]);

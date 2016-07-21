@@ -1,0 +1,73 @@
+<div class="header-menu">
+    <p>Criterios de Pesquisa<p>
+</div>
+
+<form class="form-horizontal" name="listTutorForm" novalidate>
+
+	<div class="navbar navbar-default">
+	    <div class="col-md-2">
+            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="createTutor()"/>
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "cleanTutor()"/>
+        </div>
+	</div>
+
+	<hr>
+
+	<div class="form-group">
+
+	  <div class="col-md-3">
+	        <input id="tutorName" placeholder="Nome" name="'Nome'" ng-model="tutor.name" type="text" class="form-control"/>
+	  </div>
+	  <div class="col-md-3">
+	        <input id="tutorSurname" placeholder="Apelido" name="'Apelido'" ng-model="tutor.surname" type="text" class="form-control"/>
+	  </div>
+	  <div class="col-md-3	">
+	        <input id="tutorCategory" placeholder="Categoria" name="'Category'" ng-model="tutor.category" type="text" class="form-control"/>
+	  </div>
+
+	</div>
+
+	<hr>
+
+	<table class="table table-bordered" >
+		<thead>
+
+		<tr>
+			<th>Codigo</th>
+			<th>Nome</th>
+			<th>Telefone</th>
+			<th>Categoria</th>
+		</tr>
+			
+		</thead>
+
+		<tbody>
+		<tr ng-click="editTutor()"  data-toggle="modal" data-target="#myModal" ng-repeat="tutor in tutors">
+			<td>{{tutor.code}}</td>
+			<td>{{tutor.name}}</td>
+			<td>{{tutor.surname}}</td>
+			<td>{{tutor.category}}</td>
+		</tr>
+		</tbody>
+
+	</table>
+
+</form>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Editar Tutor</h4>
+      </div>
+      <div class="modal-body form-horizontal">
+       <div ng-include="'directives/views/tutor-template.html'"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Gravar</button>
+      </div>
+    </div>
+  </div>
+</div>

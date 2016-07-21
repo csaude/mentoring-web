@@ -1,4 +1,4 @@
-mentoring.controller("tutorController", ["$scope", "tutorService", function($scope, tutorService){
+mentoring.controller("createTutorController", ["$scope", "tutorService", function($scope, tutorService){
 
 	//init context
 	var userContext = {
@@ -22,7 +22,6 @@ mentoring.controller("tutorController", ["$scope", "tutorService", function($sco
 			var tutor = response.data;
 			$scope.message = "O Tutor "+tutor.name+" foi cadastrado com sucesso!";
 			$scope.tutor = {};	
-
 		});
 	};
 
