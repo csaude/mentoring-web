@@ -1,4 +1,4 @@
-mentoring.factory("translateLoad", ["$q", "$timeout","$http", function($q, $timeout, $http){
+mentoring.factory("translateLoad", ["$q", "$http", function($q, $http){
 
 	return function (options) {
 	    var deferred = $q.defer(),
@@ -9,7 +9,6 @@ mentoring.factory("translateLoad", ["$q", "$timeout","$http", function($q, $time
 			deferred.resolve(translations);
 		});
 	 
-
 	    return deferred.promise;
     };
 
