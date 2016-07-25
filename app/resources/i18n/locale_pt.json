@@ -1,5 +1,8 @@
 {
 	"NAME" : "Nome",
 	"SURNAME" : "Apelido",
-	"CATEGORY" : "categoria"
+	"CATEGORY" : "categoria",
+	"CATEGORY" : "categoria",
+	"DESCRIPTION" : "Descricao"
+
 }

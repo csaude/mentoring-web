@@ -28,6 +28,13 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         templateUrl: "tutor/views/list-tutor.html",
         controller: "updateTutorController",
         resolve: {init: "init"}
+    })
+    .state("createSector",{
+        url : "/createSector",
+        templateUrl: "sector/views/create-sector.html",
+        controller: "createSectorController",
+        resolve: {init: "init"}
     });
+
 
 }]);

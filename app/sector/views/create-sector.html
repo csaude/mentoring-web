@@ -1,0 +1,24 @@
+<div class="header-menu">
+    <p>Cadastrar Sector<p>
+</div>
+
+<form class="form-horizontal" name="createSectorForm" novalidate>
+    
+    <div class="navbar navbar-default">
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-success navbar-btn" value="Cadastrar" ng-click="createSector()"/>
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "cleanSector()"/>
+        </div>
+    </div>
+    
+    <!-- Messages   -->
+    <messages message="{{message}}" error-message="{{errorMessage}}" has-errors="hasErrors" ></messages>
+    
+    <hr/>
+    
+        <div>
+            <div ng-include="'sector/views/sector-template.html'"></div> 
+        </div>
+
+    <hr/>
+</form>
