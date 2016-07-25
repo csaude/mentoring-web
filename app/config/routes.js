@@ -1,4 +1,9 @@
-mentoring.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', function($stateProvider, $urlRouterProvider, $translateProvider){
+
+    //init translate
+    $translateProvider.preferredLanguage('pt');
+    $translateProvider.useLoader('translateLoad');
+    $translateProvider.useSanitizeValueStrategy('escaped');
 
     // Default Url
     $urlRouterProvider.otherwise("/home");
