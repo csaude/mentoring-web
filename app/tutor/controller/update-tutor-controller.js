@@ -1,13 +1,7 @@
-mentoring.controller("updateTutorController", ["$scope", "tutorService", function($scope, tutorService){
-
-	//init context
-	var userContext = {
-		id: "1",
-		username: "steliomo"
-	};
+mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorService", function($scope, $rootScope, tutorService){
 
 	var tutorBeanResource = {
-		userContext: userContext
+		userContext: $rootScope.userContext
 	};
 	
 	$scope.getTutorsBySelectedFilter = function(){
@@ -31,6 +25,8 @@ mentoring.controller("updateTutorController", ["$scope", "tutorService", functio
 	};
 
 	$scope.onSelectTutor = function(tutor){
+
+		console.log($rootScope.userContext);
 		$scope.message = "";
 		$scope.tutor = tutor;
 		$scope.hasErrors = [];
