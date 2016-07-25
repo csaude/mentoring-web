@@ -1,4 +1,4 @@
-mentoring.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
+mentoring.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     // Default Url
     $urlRouterProvider.otherwise("/home");
@@ -7,19 +7,22 @@ mentoring.config(['$stateProvider', '$urlRouterProvider',function($stateProvider
     
     .state("home", {
     	url: "/home",
-    	templateUrl: "home.html"
+    	templateUrl: "home.html",
+        resolve: {init: "init"}
     })
 
     .state("createTutor",{
     	url : "/createTutor",
     	templateUrl: "tutor/views/create-tutor.html",
-        controller: "createTutorController"
+        controller: "createTutorController",
+        resolve: {init: "init"}
     })
 
     .state("listTutor",{
         url : "/listTutor",
         templateUrl: "tutor/views/list-tutor.html",
-        controller: "updateTutorController"
+        controller: "updateTutorController",
+        resolve: {init: "init"}
     });
 
 }]);

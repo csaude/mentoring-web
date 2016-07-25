@@ -1,13 +1,7 @@
-mentoring.controller("createTutorController", ["$scope", "tutorService", function($scope, tutorService){
-
-	//init context
-	var userContext = {
-		id: "1",
-		username: "steliomo"
-	};
+mentoring.controller("createTutorController", ["$scope", "$rootScope","tutorService", function($scope, $rootScope, tutorService){
 
 	var tutorBeanResource = {
-		userContext: userContext
+		userContext: $rootScope.userContext
 	};
 
 	$scope.createTutor = function(){

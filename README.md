@@ -1,8 +1,7 @@
 # Mentoring-web
 This is a angular based project, front-end of mentoring.
  Before you clone project install
-
-	* curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+ 	* https://nodejs.org/en/download/
 	* sudo apt-get install -y nodejs
 
 You will then have to install Bower and Grunt. This can be done as follows:
