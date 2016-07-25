@@ -14,7 +14,7 @@ mentoring.controller("createTutorController", ["$scope", "tutorService", functio
 
 		if($scope.createTutorForm.$invalid)
 			return;
-
+		
 		tutorBeanResource.tutor = $scope.tutor;
 
 		tutorService.createTutor(tutorBeanResource).then(function success(response){

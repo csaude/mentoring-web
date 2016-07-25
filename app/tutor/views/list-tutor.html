@@ -6,68 +6,87 @@
 
 	<div class="navbar navbar-default">
 	    <div class="col-md-2">
-            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="createTutor()"/>
+            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="getTutorsBySelectedFilter()"/>
             <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "cleanTutor()"/>
         </div>
 	</div>
 
+	<messages error-message="{{errorMessage}}" ></messages>
+
 	<hr>
 
 	<div class="form-group">
+		<div class="col-md-3">
+		    <input id="tutorCode" placeholder="Código" name="'Código'" ng-model="tutorFilter.code" type="text" class="form-control" required/>
+		</div>
 
-	  <div class="col-md-3">
-	        <input id="tutorName" placeholder="Nome" name="'Nome'" ng-model="tutor.name" type="text" class="form-control"/>
-	  </div>
-	  <div class="col-md-3">
-	        <input id="tutorSurname" placeholder="Apelido" name="'Apelido'" ng-model="tutor.surname" type="text" class="form-control"/>
-	  </div>
-	  <div class="col-md-3	">
-	        <input id="tutorCategory" placeholder="Categoria" name="'Category'" ng-model="tutor.category" type="text" class="form-control"/>
-	  </div>
-
+		<div class="col-md-3">
+		    <input id="tutorName" placeholder="Nome" name="'Nome'" ng-model="tutorFilter.name" type="text" class="form-control"/>
+		</div>
+		<div class="col-md-3">
+		    <input id="tutorSurname" placeholder="Apelido" name="'Apelido'" ng-model="tutorFilter.surname" type="text" class="form-control"/>
+		</div>
+		<div class="col-md-3">
+	        <select id="category" name="'Categoria'" ng-model="tutorFilter.category" type="text" class="form-control" required>
+	            <option value="DATA_MANAGER" label="Gestor de Dados"/>
+	        </select>
+    	</div>
 	</div>
 
 	<hr>
 
-	<table class="table table-bordered" >
-		<thead>
+</form>
 
+<table st-table="tutorsDisplayed" class="table table-bordered" st-safe-src="tutors" >
+	<thead>
 		<tr>
-			<th>Codigo</th>
-			<th>Nome</th>
-			<th>Telefone</th>
-			<th>Categoria</th>
-		</tr>
-			
-		</thead>
+			<th class="col-md-1">Codigo</th>
+			<th class="col-md-5">Nome</th>
+			<th class="col-md-2">Apelido</th>
+			<th class="col-md-3">Categoria</th>
+		</tr>	
+	</thead>
 
-		<tbody>
-		<tr ng-click="editTutor()"  data-toggle="modal" data-target="#myModal" ng-repeat="tutor in tutors">
+	<tbody>
+		<tr ng-click="onSelectTutor(tutor)"  data-toggle="modal" data-target="#myModal" ng-repeat="tutor in tutorsDisplayed">
 			<td>{{tutor.code}}</td>
 			<td>{{tutor.name}}</td>
 			<td>{{tutor.surname}}</td>
 			<td>{{tutor.category}}</td>
 		</tr>
-		</tbody>
+	</tbody>
 
-	</table>
+	<tfoot style="border:none;">
+        <tr>
+            <td colspan="4" class="text-center">
+                <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
+            </td>
+        </tr>
+	</tfoot>
 
-</form>
+</table>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Editar Tutor</h4>
       </div>
-      <div class="modal-body form-horizontal">
-       <div ng-include="'directives/views/tutor-template.html'"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Gravar</button>
-      </div>
+
+      <form class="form-horizontal" name="editTutorForm" novalidate>
+	      <div class="modal-body form-horizontal">
+	      	<messages message="{{message}}" error-message="{{errorMessage}}" has-errors="hasErrors"></messages>
+	       	<div ng-include="'tutor/views/tutor-template.html'"></div>
+	      </div>
+	      
+	      <div class="modal-footer">
+	        <input type="button" class="btn btn-default" data-dismiss="modal" value="Fechar"/>
+	        <input type="submit" class="btn btn-primary" ng-click="editTutor()" value="Actualizar" ng-disabled="isDisabled"/>
+	      </div>
+      </form>
+
     </div>
   </div>
 </div>
