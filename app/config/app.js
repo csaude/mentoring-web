@@ -1,1 +1,1 @@
-var mentoring = angular.module("mentoring", ["ui.router", "smart-table"]);	
+var mentoring = angular.module("mentoring", ["ui.router", "smart-table", "pascalprecht.translate"]);	
