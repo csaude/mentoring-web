@@ -1,0 +1,15 @@
+<div class="form-group">
+    <label for="question" class="col-md-2 control-label">{{ 'QUESTION' | translate }}:</label>
+    <div class="col-md-5">
+         <input id="question" name="'{{ 'QUESTION' | translate }}'" ng-model="question.question" type="text" class="form-control" autocomplete="off" required/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="questionType" class="col-md-2 control-label">{{ 'QUESTION_TYPE' | translate }}:</label>
+    <div class="col-md-3">
+        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="question.questionType" type="text" class="form-control" required>
+            <option value="TEXT" label="Texto"/>
+        </select>
+    </div>
+</div>

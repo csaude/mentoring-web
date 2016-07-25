@@ -1,12 +1,13 @@
 <div class="form-group">
     <label for="sectorName" class="col-md-2 control-label">{{ 'NAME' | translate }}:</label>
     <div class="col-md-3">
-         <input id="sectorName" name="'Nome'" ng-model="sector.name" type="text" class="form-control" autocomplete="off" required/>
-    </div>
-    
-    <label for="sectorDescription" class="col-md-2 control-label">{{ 'DESCRIPTION' | translate }}:</label>
-    <div class="col-md-3">
-         <textarea rows="4" cols="50" id="sectorDescription" name="'Descricao'" ng-model="sector.description" type="text" class="form-control" autocomplete="off" required/>
+         <input id="sectorName" name="'{{ 'NAME' | translate }}'" ng-model="sector.name" type="text" class="form-control" autocomplete="off" required/>
     </div>
 </div>
+    
+<div class="form-group">
+    <label for="sectorDescription" class="col-md-2 control-label">{{ 'DESCRIPTION' | translate }}:</label>
+    <div class="col-md-4">
+         <textarea rows="3" cols="70" id="sectorDescription" name="'{{ 'DESCRIPTION' | translate }}'" ng-model="sector.description" type="text" class="form-control" autocomplete="off" required/>
+    </div>
 </div>

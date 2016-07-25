@@ -1,8 +1,22 @@
 {
+	"CREATE" : "Cadastrar",
+	"CLEAN" : "Limpar",
+	"SEARCH" : "pesquisar",
+	"CLOSE" : "Fechar",
+	"UPDATE" : "Actualizar",
+	"CODE" : "Código",
 	"NAME" : "Nome",
 	"SURNAME" : "Apelido",
-	"CATEGORY" : "categoria",
-	"CATEGORY" : "categoria",
-	"DESCRIPTION" : "Descricao"
-
+	"CATEGORY" : "Categoria",
+	"DESCRIPTION" : "Descrição",
+	"SECTORS" : "Sectores",
+	"TUTORES_AND_TUTOREDS" : "Tutores e Tutorandos",
+	"QUESTIONS" : "Questões",
+	"CREATE_QUESTION" : "Cadastrar Questão",
+	"LIST_QUESTIONS" : "Listar Questões",
+	"QUESTION" : "Questão",
+	"QUESTION_TYPE" : "Tipo de questão",
+	"SEARCH_QUESTIONS" : "Pesquisar questões",
+	"EDIT_QUESTION" : "Editar questão",
+	"TEXT" : "Texto"
 }

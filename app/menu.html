@@ -1,7 +1,7 @@
 <div class="sidebar-nav">
     <ul class="nav" menu >
         <li>
-            <a><i class="fa fa-user"></i> Tutores e Tutorandos <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <a><i class="fa fa-users"></i> {{ 'TUTORES_AND_TUTOREDS' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
                 <li><a ui-sref="createTutor"><i class="fa fa-user-plus"></i> Cadstrar Tutores</a></li>
                 <li><a ui-sref="listTutor"><i class="fa fa-list"></i> Listar Tutores</a></li>
@@ -10,24 +10,25 @@
             </ul>
         </li>
         <li>
-            <a><i class="fa fa-user"></i>Sector <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <a><i class="fa fa-institution"></i> {{'SECTORS' | translate }}<i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
-                <li><a ui-sref="createSector"><i class="fa fa-user-plus"></i> Cadstrar Sectores</a></li>
+                <li><a ui-sref="createSector"><i class="fa fa-plus-square"></i> Cadstrar Sectores</a></li>
                 <li><a ui-sref="listSector"><i class="fa fa-list"></i> Listar Sectores</a></li>
             </ul>
         </li>
         
         <li>
-            <a><i class="fa fa-bank"></i> Questões <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <a><i class="fa fa-question-circle"></i> {{'QUESTIONS' | translate}} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
-               
+               <li><a ui-sref="createQuestion"><i class="fa fa-question-circle-o"></i> {{'CREATE_QUESTION' | translate}}</a></li>
+               <li><a ui-sref="listQuestions"><i class="fa fa-list"></i> {{'LIST_QUESTIONS' | translate}}</a></li>
             </ul>
         </li>
         
         <li>
-            <a><i class="fa fa-user"></i> Formulários <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <a><i class="fa fa-file"></i> Formulários <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
-                <li><a href="#/createCustomer"><i class="fa fa-user-plus"></i> Cadstrar Tutorando</a></li>
+                <li><a href="#/createCustomer"><i class="fa fa-file-text"></i> Cadstrar Tutorando</a></li>
                 <li><a href="#/customers"><i class="fa fa-list"></i> Listar Tutorandos</a></li>
             </ul>
         </li>

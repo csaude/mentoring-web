@@ -1,4 +1,4 @@
-mentoring.controller("createSectorController", ["$scope", "$rootScope", "$translate", "sectorService", function($scope, $rootScope, $translate, sectorService){
+mentoring.controller("createSectorController", ["$scope", "$rootScope", "sectorService", function($scope, $rootScope, sectorService){
 
 	var sectorBeanResource = {
 		userContext: $rootScope.userContext
@@ -10,7 +10,6 @@ mentoring.controller("createSectorController", ["$scope", "$rootScope", "$transl
 			return;
 		
 		sectorBeanResource.sector = $scope.sector;
-
 
 		sectorService.createSector(sectorBeanResource).then(function success(response){
 
