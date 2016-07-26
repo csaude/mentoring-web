@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
-    <title>Mentoria</title>
+    <title>{{ 'MENTORING' | translate }}</title>
     
     <!--  build:css resources/css/mentoring-web.min.css  -->
     <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
@@ -19,7 +19,7 @@
 <body>
 	<header class="header">
 		<div class="title">
-			<p> Mentoria </p>
+			<p> {{ 'MENTORING' | translate }} </p>
 		</div>
         
         <div class="menu-icon">
@@ -29,7 +29,7 @@
 	</header>
     
     <aside class="sidebar">
-        <p>Menú Principal</p>
+        <p>{{ 'INITIAL_MENU' | translate }}</p>
         <div ng-include = "'menu.html'" class="navbar-default"/>
     </aside>
 
@@ -64,8 +64,11 @@
     <script type="text/javascript" src="tutor/controller/create-tutor-controller.js"></script> 
     <script type="text/javascript" src="tutor/controller/update-tutor-controller.js"></script> 
     <script type="text/javascript" src="tutor/service/tutor-service.js"></script>    
+
     <script type="text/javascript" src="sector/controller/create-sector-controller.js"></script> 
+    <script type="text/javascript" src="sector/controller/update-sector-controller.js"></script> 
     <script type="text/javascript" src="sector/service/sector-service.js"></script> 
+
     <script type="text/javascript" src="question/controller/create-question-controller.js"></script> 
     <script type="text/javascript" src="question/controller/list-questions-controller.js"></script> 
     <script type="text/javascript" src="question/service/question-service.js"></script> 

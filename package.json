@@ -15,11 +15,9 @@
   "bugs": {
     "url": "https://github.com/steliomo/mentoring-web/issues"
   },
-
   "homepage": "https://github.com/steliomo/mentoring-web#readme",
-
-   "devDependencies": {
-    "grunt": "~0.4.5",
+  "devDependencies": {
+    "grunt": "^1.0.1",
     "grunt-connect-proxy": "^0.2.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
@@ -30,5 +28,4 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-usemin": "^3.1.1"
   }
-  
 }
