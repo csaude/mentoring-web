@@ -6,10 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/steliomo/mentoring-web.git"
   },
+  
   "author": "Stelio Moiane",
   "license": "ISC",
   "bugs": {
