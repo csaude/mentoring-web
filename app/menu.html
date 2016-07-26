@@ -3,17 +3,17 @@
         <li>
             <a><i class="fa fa-users"></i> {{ 'TUTORES_AND_TUTOREDS' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
-                <li><a ui-sref="createTutor"><i class="fa fa-user-plus"></i> Cadstrar Tutores</a></li>
-                <li><a ui-sref="listTutor"><i class="fa fa-list"></i> Listar Tutores</a></li>
-                <li><a href="#/createCustomer"><i class="fa fa-user-plus"></i> Cadstrar Tutorando</a></li>
-                <li><a href="#/customers"><i class="fa fa-list"></i> Listar Tutorandos</a></li>
+                <li><a ui-sref="createTutor"><i class="fa fa-user-plus"></i> {{ 'CREATE_TUTOR' | translate }}</a></li>
+                <li><a ui-sref="listTutor"><i class="fa fa-list"></i> {{ 'LIST_TUTOR' | translate }}</a></li>
+                <li><a href="#/createCustomer"><i class="fa fa-user-plus"></i> {{ 'CREATE_TUTORED' | translate }}</a></li>
+                <li><a href="#/customers"><i class="fa fa-list"></i> {{ 'LIST_TUTORED' | translate }}</a></li>
             </ul>
         </li>
         <li>
             <a><i class="fa fa-institution"></i> {{'SECTORS' | translate }}<i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
-                <li><a ui-sref="createSector"><i class="fa fa-plus-square"></i> Cadstrar Sectores</a></li>
-                <li><a ui-sref="listSector"><i class="fa fa-list"></i> Listar Sectores</a></li>
+                <li><a ui-sref="createSector"><i class="fa fa-plus-square"></i> {{ 'CREATE_SECTOR' | translate }}</a></li>
+                <li><a ui-sref="listSector"><i class="fa fa-list"></i>{{ 'LIST_SECTOR' | translate }}</a></li>
             </ul>
         </li>
         
@@ -26,14 +26,14 @@
         </li>
         
         <li>
-            <a><i class="fa fa-file"></i> Formulários <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <a><i class="fa fa-file"></i> {{ 'FORM' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
-                <li><a href="#/createCustomer"><i class="fa fa-file-text"></i> Cadstrar Tutorando</a></li>
-                <li><a href="#/customers"><i class="fa fa-list"></i> Listar Tutorandos</a></li>
+                <li><a href="#/createCustomer"><i class="fa fa-file-text"></i> {{ 'CREATE_FORM' | translate }}</a></li>
+                <li><a href="#/customers"><i class="fa fa-list"></i> {{ 'LIST_FORM' | translate }}</a></li>
             </ul>
         </li>
 
-        <li><a ui-sref="home"><i class="glyphicon glyphicon-th-list" aria-hidden="true"></i> Relatórios</a></li>
+        <li><a ui-sref="home"><i class="glyphicon glyphicon-th-list" aria-hidden="true"></i> {{ 'REPORT' | translate }}</a></li>
         
     </ul>
 </div>
