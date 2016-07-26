@@ -17,11 +17,11 @@
 
 	<div class="form-group">
 		<div class="col-md-4">
-		    <input id="questionCode" placeholder="{{'CODE' | translate}}" name="'{{'CODE' | translate}}'" ng-model="questionFilter.code" type="text" class="form-control" required/>
+		    <input id="questionCode" placeholder="{{'CODE' | translate}}" name="'{{'CODE' | translate}}'" ng-model="questionFilter.code" type="text" class="form-control" autocomplete="off" required/>
 		</div>
 
 		<div class="col-md-4">
-		    <input id="question" placeholder="{{'QUESTION' | translate}}" name="'{{'QUESTION' | translate}}'" ng-model="questionFilter.question" type="text" class="form-control"/>
+		    <input id="question" placeholder="{{'QUESTION' | translate}}" name="'{{'QUESTION' | translate}}'" ng-model="questionFilter.question" type="text" class="form-control" autocomplete="off"/>
 		</div>
 		<div class="col-md-4">
 	        <select id="questionType" name="'{{'QUESTION_TYPE' | translate}}'" ng-model="questionFilter.questionType" type="text" class="form-control" required>
@@ -44,7 +44,7 @@
 	</thead>
 
 	<tbody>
-		<tr ng-click="onSelectTutor(question)"  data-toggle="modal" data-target="#questionModal" ng-repeat="question in questionsDisplayed">
+		<tr ng-click="onSelectQuestion(question)"  data-toggle="modal" data-target="#questionModal" ng-repeat="question in questionsDisplayed">
 			<td>{{question.code}}</td>
 			<td>{{question.question}}</td>
 			<td>{{question.questionType | translate}}</td>
