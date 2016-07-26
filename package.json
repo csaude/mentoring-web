@@ -30,4 +30,5 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-usemin": "^3.1.1"
   }
+  
 }
