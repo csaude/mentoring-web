@@ -14,4 +14,8 @@ mentoring.service("questionService", ["$http", function ($http){
 		});
 	};
 
+	this.updateQuestion = function(questionBeanResource){
+		return $http.put('/mentoring-integ/services/questions', questionBeanResource);
+	};
+
 }]);
