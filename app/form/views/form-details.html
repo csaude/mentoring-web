@@ -1,0 +1,39 @@
+<hr/>
+
+<div class="form-group">
+    <label for="question" class="col-md-2 control-label">{{ 'NAME' | translate }}:</label>
+    <div class="col-md-5">
+         <input id="name" name="'{{ 'NAME' | translate }}'" ng-model="form.name" type="text" class="form-control" autocomplete="off" required/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="programaticArea" class="col-md-2 control-label">{{ 'PROGRAMMATIC_AREA' | translate }}:</label>
+    <div class="col-md-5">
+        <select id="programmaticArea" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="form.programmaticArea" type="text" class="form-control" required>
+            <option value="MA" label="Monitoria e Avaliação"/>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="description" class="col-md-2 control-label">{{ 'DESCRIPTION' | translate }}:</label>
+    <div class="col-md-5">
+        <textarea id="description" name="'{{ 'DESCRIPTION' | translate }}'" ng-model="form.description" cols="80" rows= "3" class="form-control" required></textarea>
+    </div>
+</div>
+
+<hr/>
+
+<div class="navbar navbar-default">
+     <div class="col-md-12">
+        <button class="btn btn-success navbar-btn" ng-click="nextDetails()">
+          {{'NEXT' | translate}}
+          <span class="fa fa-step-forward"></span>
+        </button>
+        <button class="btn btn-default navbar-btn" ng-click = "cleanQuestion()">
+          {{'CLEAN' | translate}}
+          <span class="fa fa-refresh"></span>
+        </button>
+    </div>
+</div>
