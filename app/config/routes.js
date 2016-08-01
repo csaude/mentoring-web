@@ -55,7 +55,23 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         templateUrl : "question/views/list-questions.html",
         controller : "listQuestionsController",
         resolve : {init : "init"}
-    });
+    })
 
+    .state("form",{
+        url : "/form",
+        templateUrl : "form/views/form-template.html",
+        controller : "formController",
+        resolve : {init : "init"}
+    })
+
+    .state("form.details",{
+        url : "/form/details",
+        templateUrl : "form/views/form-details.html"
+    })
+
+    .state("form.questions",{
+        url : "/form/questions",
+        templateUrl : "form/views/form-questions.html"
+    });
 
 }]);
