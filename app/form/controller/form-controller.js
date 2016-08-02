@@ -1,18 +1,22 @@
-mentoring.controller("formController", ["$scope", "$state", "questionService", function ($scope, $state, questionService){
+mentoring.controller("formController", ["$scope", "$rootScope", "$state", "questionService", "programmaticAreaService", "formService", function ($scope, $rootScope, $state, questionService, programmaticAreaService, formService){
 
-	$scope.form = {
-		questions : []
-	};
-
+	$scope.form = {};
 	$scope.questions = [];
 	$scope.questionFilter = {};
+	$scope.addedQuestions = [];
+	$scope.isDisabled = false;
+	$scope.formBeanResource = {
+		userContext : $rootScope.userContext 
+	};
 
 	$scope.nextDetails = function (){
 
-		if($scope.createForm.$invalid)
+		if($scope.createFormFrom.$invalid)
 			return;
 
 		$scope.hasErrors = [];
+		$scope.message = "";
+		$scope.isDisabled = false;
 		$state.go("form.questions");
 	};
 
@@ -24,7 +28,7 @@ mentoring.controller("formController", ["$scope", "$state", "questionService", f
 
 		$scope.addQuestionErrorMessage = "";
 
-		var foundQuestion = _.find($scope.form.questions, function (q) {
+		var foundQuestion = _.find($scope.addedQuestions, function (q) {
 			return q.code == question.code;
 		});
 
@@ -33,11 +37,11 @@ mentoring.controller("formController", ["$scope", "$state", "questionService", f
 			return;
 		}
 
-		$scope.form.questions.push(question);
+		$scope.addedQuestions.push(question);
 	};
 
 	$scope.removeQuestion = function (question){
-		_.remove($scope.form.questions, function(q){
+		_.remove($scope.addedQuestions, function(q){
 			return q.code === question.code;
 		});
 	};
@@ -48,16 +52,16 @@ mentoring.controller("formController", ["$scope", "$state", "questionService", f
                 if(!Array.isArray(response.data.question)){
                     $scope.questions = [];
                     $scope.questions.push(response.data.question);
-                    $scope.errorMessage = "";
+                    $scope.addQuestionErrorMessage = "";
                     return;
                 }
 
                 $scope.questions = response.data.question;
-                $scope.errorMessage = "";
+                $scope.addQuestionErrorMessage = "";
 
             }else {
                $scope.questions = [];
-               $scope.errorMessage = "Nenhuma Questão encontrada para o filtro solicitado!"; 
+               $scope.addQuestionErrorMessage = "Nenhuma Questão encontrada para o filtro solicitado!"; 
             }
 		});
 	};
@@ -67,6 +71,50 @@ mentoring.controller("formController", ["$scope", "$state", "questionService", f
 		$scope.addQuestionErrorMessage = "";
 		$scope.addQuestionMessage = "";
 		$scope.questions = [];
+	};
+
+	$scope.programmaticAreas = [];
+
+	$scope.getProgrammaticAreas = function (){
+		programmaticAreaService.getProgrammaticAreas({}).then(function (response){
+			if(response.data){
+                if(!Array.isArray(response.data.programmaticArea)){
+                    $scope.programmaticAreas = [];
+                    $scope.programmaticAreas.push(response.data.programmaticArea);
+                    return;
+                }
+
+                $scope.programmaticAreas = response.data.programmaticArea;
+            }
+		});
+	};
+
+	$scope.getProgrammaticAreas();
+
+	$scope.createForm = function () {
+
+		$scope.formBeanResource.form = $scope.form;
+		$scope.formBeanResource.questions = $scope.addedQuestions;
+		$scope.errorMessage = "";
+
+		formService.createForm($scope.formBeanResource).then(function (response){
+			if(response.data && response.data.message){
+				$scope.errorMessage = response.data.message;
+				return;
+			}
+
+			var form = response.data;
+
+			$scope.message = "O formulário "+form.name+" foi criado com sucesso";
+			$scope.form = {};
+			$scope.addedQuestions = [];
+			$scope.isDisabled = true;
+		});
+	};
+
+	$scope.cleanForm = function (){
+		$scope.form = {};
+		$scope.message = "";
 	};
 
 }]);

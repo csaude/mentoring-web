@@ -30,15 +30,15 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         resolve: {init: "init"}
     })
 
-    .state("createSector",{
-        url : "/createSector",
-        templateUrl: "sector/views/create-sector.html",
+    .state("createProgrammaticArea",{
+        url : "/createProgrammaticArea",
+        templateUrl: "programmatic-area/views/create-sector.html",
         controller: "createSectorController",
         resolve: {init: "init"}
     })
-    .state("listSector",{
-        url : "/listSector",
-        templateUrl: "sector/views/list-sector.html",
+    .state("listProgrammaticAreas",{
+        url : "/listProgrammaticAreas",
+        templateUrl: "programmatic-area/views/list-sector.html",
         controller: "updateSectorController",
         resolve: {init: "init"}
    })

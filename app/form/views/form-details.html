@@ -10,8 +10,7 @@
 <div class="form-group">
     <label for="programaticArea" class="col-md-2 control-label">{{ 'PROGRAMMATIC_AREA' | translate }}:</label>
     <div class="col-md-5">
-        <select id="programmaticArea" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="form.programmaticArea" type="text" class="form-control" required>
-            <option value="MA" label="Monitoria e Avaliação"/>
+        <select id="programmaticArea" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="form.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.name for programmaticArea in programmaticAreas"required>
         </select>
     </div>
 </div>
@@ -31,7 +30,7 @@
           {{'NEXT' | translate}}
           <span class="fa fa-step-forward"></span>
         </button>
-        <button class="btn btn-default navbar-btn" ng-click = "cleanQuestion()">
+        <button class="btn btn-default navbar-btn" type="button" ng-click="cleanForm()" >
           {{'CLEAN' | translate}}
           <span class="fa fa-refresh"></span>
         </button>

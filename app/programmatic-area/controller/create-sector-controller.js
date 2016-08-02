@@ -1,6 +1,6 @@
-mentoring.controller("createSectorController", ["$scope", "$rootScope", "sectorService", function($scope, $rootScope, sectorService){
+mentoring.controller("createSectorController", ["$scope", "$rootScope", "programmaticAreaService", function($scope, $rootScope, programmaticAreaService){
 
-	var sectorBeanResource = {
+	var programmaticAreaBeanResource = {
 		userContext: $rootScope.userContext
 	};
 
@@ -9,9 +9,9 @@ mentoring.controller("createSectorController", ["$scope", "$rootScope", "sectorS
 		if($scope.createSectorForm.$invalid)
 			return;
 		
-		sectorBeanResource.sector = $scope.sector;
+		programmaticAreaBeanResource.programmaticArea = $scope.sector;
 
-		sectorService.createSector(sectorBeanResource).then(function success(response){
+		programmaticAreaService.createProgrammaticArea(programmaticAreaBeanResource).then(function success(response){
 
 			var sector = response.data;
 			$scope.message = "O Sector "+sector.name+" foi cadastrado com sucesso!";
