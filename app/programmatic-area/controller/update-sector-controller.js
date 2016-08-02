@@ -1,4 +1,4 @@
-mentoring.controller("updateSectorController", ["$scope", "$rootScope", "sectorService", function($scope, $rootScope, sectorService){
+mentoring.controller("updateSectorController", ["$scope", "$rootScope", "programmaticAreaService", function($scope, $rootScope, programmaticAreaService){
 
 var sectorBeanResource = {
 		userContext: $rootScope.userContext
@@ -6,7 +6,7 @@ var sectorBeanResource = {
 	
 	$scope.getSectorsBySelectedFilter = function(){
 
-		$scope.sectors = sectorService.getSectors($scope.sectorFilter).then(function(response){
+		$scope.sectors = programmaticAreaService.getSectors($scope.sectorFilter).then(function(response){
 			if(response.data){
                 if(!Array.isArray(response.data.sector)){
                     $scope.sectors = [];
@@ -41,7 +41,7 @@ var sectorBeanResource = {
 		$scope.hasErrors = [];
 
 		sectorBeanResource.sector = $scope.sector;
-		sectorService.updatesector(sectorBeanResource).then(function(response){
+		programmaticAreaService.updatesector(sectorBeanResource).then(function(response){
 			$scope.message = "sector editado com sucesso!";
 			$scope.isDisabled = true;
 		});
