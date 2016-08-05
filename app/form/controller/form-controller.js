@@ -115,6 +115,7 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 	$scope.cleanForm = function (){
 		$scope.form = {};
 		$scope.message = "";
+		$scope.hasErrors =[];
 	};
 
 }]);
