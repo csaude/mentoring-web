@@ -1,0 +1,67 @@
+<div class="header-menu">
+    <p>{{ 'CRITERIA' | translate }}<p>
+</div>
+
+<form class="form-horizontal" name="listFormQuestions" novalidate>
+
+	<div class="navbar navbar-default">
+	    <div class="col-md-6">
+            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" />
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar"/>
+        </div>
+	</div>
+
+	<messages error-message="{{errorMessage}}" ></messages>
+
+	<hr>
+
+	<div class="form-group">
+		<div class="col-md-3">
+		   <input id="" placeholder="Código" name="'Codigo'" ng-model="form.code" type="text" class="form-control" autocomplete="off" required/>
+		</div>
+
+		<div class="col-md-3">
+		     <input id="" placeholder="Nome" name="'Nome'" ng-model="form.name" type="text" class="form-control" autocomplete="off" required/>
+		</div>
+
+	 <div class="col-md-3">
+		     <input id="" placeholder="Area Programatica" name="'Nome'" ng-model="form.name" type="text" class="form-control" autocomplete="off" required/>
+		</div>
+	</div>
+
+	<hr>
+
+</form>
+
+<table  class="table table-bordered" >
+	<thead>
+		<tr>
+			<th class="col-md-1">{{ 'CODE' | translate }}</th>
+			<th class="col-md-5">{{ 'NAME' | translate }}</th>
+			<th class="col-md-2">{{ 'PROGRAMATIC_AREA' | translate }}</th>
+			<th class="col-md-2">{{ 'QUESTION' | translate }}</th>
+		</tr>	
+	</thead>
+
+	<tbody>
+		<tr  data-toggle="modal" data-target="#myModal">
+			<td>000PA</td>
+			<td>Monitoria e Avaliacao</td>
+			<td>MI</td>
+			<td>
+			   <li>Qualidade de Dados</li>	
+			   <li>Rapidez de Insercao</li>
+		  	</td>
+		</tr>
+	</tbody>
+
+	<tfoot style="border:none;">
+        <tr>
+            <td colspan="4" class="text-center">
+                <div></div>
+            </td>
+        </tr>
+	</tfoot>
+
+</table>
+</div>
