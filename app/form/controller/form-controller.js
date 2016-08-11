@@ -112,10 +112,32 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 		});
 	};
 
+	$scope.getFormsBySelectedFilter = function(){
+
+		$scope.forms = formService.getForms($scope.formFilter).then(function(response){
+			if(response.data){
+                if(!Array.isArray(response.data.form)){
+                    $scope.forms = [];
+                    $scope.forms.push(response.data.form);
+                    return;
+                }
+                
+                $scope.forms = response.data.form;
+
+            }else {
+               $scope.forms = [];
+               $scope.errorMessage = "Nenhuma Formulario foi encontrada para o filtro solicitado!"; 
+            }
+
+		});
+	};
+
+
 	$scope.cleanForm = function (){
 		$scope.form = {};
 		$scope.message = "";
 		$scope.hasErrors =[];
 	};
+
 
 }]);

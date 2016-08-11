@@ -1,14 +1,14 @@
-mentoring.service("programmaticAreaService", ["$http", function($http){
+mentoring.service("programmaticAreaService", ["$http", "config", function($http, config){
 
 	this.createProgrammaticArea = function (programmaticAreaBeanResource) {
 
-		return $http.post('/mentoring-integ/services/programmaticareas', programmaticAreaBeanResource);
+		return $http.post(config.baseUrl+'/programmaticareas', programmaticAreaBeanResource);
 	};
 
 
 	this.getProgrammaticAreas = function (programmaticarea) {
 
-		return $http.get('/mentoring-integ/services/programmaticareas',
+		return $http.get(config.baseUrl+'/programmaticareas',
 			{
 				params: {
 					code: programmaticarea.code,
@@ -19,7 +19,7 @@ mentoring.service("programmaticAreaService", ["$http", function($http){
 	};
 
 	this.updateProgrammaticArea = function(programmaticAreaBeanResource){
-		return $http.put('/mentoring-integ/services/programmaticareas', programmaticAreaBeanResource);
+		return $http.put(config.baseUrl+'/programmaticareas', programmaticAreaBeanResource);
 	};
 
 }]);
