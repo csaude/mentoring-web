@@ -2,11 +2,12 @@
     <p>{{ 'CRITERIA' | translate }}<p>
 </div>
 
-<form class="form-horizontal" name="listFormQuestions" novalidate>
+<form class="form-horizontal" name="listForms" novalidate>
 
 	<div class="navbar navbar-default">
 	    <div class="col-md-6">
-            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" />
+            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="getFormsBySelectedFilter()" />
+
             <input type="button" class="btn btn-default navbar-btn" value="Limpar"/>
         </div>
 	</div>
@@ -17,16 +18,16 @@
 
 	<div class="form-group">
 		<div class="col-md-3">
-		   <input id="" placeholder="Código" name="'Codigo'" ng-model="form.code" type="text" class="form-control" autocomplete="off" required/>
+		   <input id="" placeholder="Código" name="'Codigo'" ng-model="formFilter.code" type="text" class="form-control" autocomplete="off" required/>
 		</div>
 
 		<div class="col-md-3">
-		     <input id="" placeholder="Nome" name="'Nome'" ng-model="form.name" type="text" class="form-control" autocomplete="off" required/>
+		     <input id="" placeholder="Nome" name="'Nome'" ng-model="formFilter.name" type="text" class="form-control" autocomplete="off" required/>
 		</div>
 
 	 <div class="col-md-3">
-        <select id="programmaticArea"  placeholder="Area Programatica" type="text" class="form-control" required>
-        </select>
+        <select id="programmaticArea" ng-model="form.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.name for programmaticArea in programmaticAreas"required>
+        </select
 		</div>
 	</div>
 
@@ -40,19 +41,14 @@
 			<th class="col-md-1">{{ 'CODE' | translate }}</th>
 			<th class="col-md-5">{{ 'NAME' | translate }}</th>
 			<th class="col-md-2">{{ 'PROGRAMATIC_AREA' | translate }}</th>
-			<th class="col-md-2">{{ 'QUESTION' | translate }}</th>
 		</tr>	
 	</thead>
 
 	<tbody>
-		<tr  data-toggle="modal" data-target="#myModal">
-			<td>0000L</td>
-			<td>MIC</td>
-			<td>MI</td>
-			<td>
-			   <li>Qualidade de Dados</li>	
-			   <li>Rapidez de Insercao</li>
-		  	</td>
+		<tr  data-toggle="modal" data-target="#myModal" ng-repeat="form in forms">
+			<td>{{form.code}}</td>
+			<td>{{form.name}}</td>
+			<td>{{form.programmaticArea.name}}</td>
 		</tr>
 	</tbody>
 

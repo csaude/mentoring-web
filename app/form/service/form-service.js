@@ -10,7 +10,8 @@ mentoring.service("formService", ["$http", function ($http){
 			{
 				params: {
 					code: form.code,
-					name: form.name	
+					name: form.name,
+					programmaticArea: form.programmaticArea
 				}
 			}
 		);

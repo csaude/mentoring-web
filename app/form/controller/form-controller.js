@@ -113,7 +113,6 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 	};
 
 	$scope.getFormsBySelectedFilter = function(){
-
 		$scope.forms = formService.getForms($scope.formFilter).then(function(response){
 			if(response.data){
                 if(!Array.isArray(response.data.form)){
@@ -121,8 +120,9 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
                     $scope.forms.push(response.data.form);
                     return;
                 }
-                
+              
                 $scope.forms = response.data.form;
+                console.log($scope.forms);
 
             }else {
                $scope.forms = [];
@@ -134,10 +134,12 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 
 
 	$scope.cleanForm = function (){
+		$scope.formFilter = {};
 		$scope.form = {};
 		$scope.message = "";
 		$scope.hasErrors =[];
 	};
 
+	$scope.cleanForm();
 
 }]);
