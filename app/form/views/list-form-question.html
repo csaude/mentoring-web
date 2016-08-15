@@ -1,0 +1,64 @@
+<div class="header-menu">
+    <p>{{ 'CRITERIA' | translate }}<p>
+</div>
+
+<form class="form-horizontal" name="listForms" novalidate>
+
+	<div class="navbar navbar-default">
+	    <div class="col-md-6">
+            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="getFormsBySelectedFilter()" />
+
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar"/>
+        </div>
+	</div>
+
+	<messages error-message="{{errorMessage}}" ></messages>
+
+	<hr>
+
+	<div class="form-group">
+		<div class="col-md-3">
+		   <input id="code" placeholder="Código" name="'Codigo'" ng-model="formFilter.code" type="text" class="form-control" autocomplete="off" required/>
+		</div>
+
+		<div class="col-md-3">
+		     <input id="name" placeholder="Nome" name="'Nome'" ng-model="formFilter.name" type="text" class="form-control" autocomplete="off" required/>
+		</div>
+
+	 <div class="col-md-3">
+        <select id="programmaticArea" ng-model="form.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.name for programmaticArea in programmaticAreas"required>
+        </select
+		</div>
+	</div>
+
+	<hr>
+
+</form>
+
+<table  class="table table-bordered" >
+	<thead>
+		<tr>
+			<th class="col-md-1">{{ 'CODE' | translate }}</th>
+			<th class="col-md-5">{{ 'NAME' | translate }}</th>
+			<th class="col-md-2">{{ 'PROGRAMATIC_AREA' | translate }}</th>
+		</tr>	
+	</thead>
+
+	<tbody>
+		<tr  data-toggle="modal" data-target="#myModal" ng-repeat="form in forms">
+			<td>{{form.code}}</td>
+			<td>{{form.name}}</td>
+			<td>{{form.programmaticArea.name}}</td>
+		</tr>
+	</tbody>
+
+	<tfoot style="border:none;">
+        <tr>
+            <td colspan="4" class="text-center">
+                <div></div>
+            </td>
+        </tr>
+	</tfoot>
+
+</table>
+</div>

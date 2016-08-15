@@ -32,13 +32,13 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
 
     .state("createProgrammaticArea",{
         url : "/createProgrammaticArea",
-        templateUrl: "programmatic-area/views/create-sector.html",
+        templateUrl: "programmatic-area/views/create-programatic-area.html",
         controller: "createSectorController",
         resolve: {init: "init"}
     })
     .state("listProgrammaticAreas",{
         url : "/listProgrammaticAreas",
-        templateUrl: "programmatic-area/views/list-sector.html",
+        templateUrl: "programmatic-area/views/list-programatic-area.html",
         controller: "updateSectorController",
         resolve: {init: "init"}
    })
@@ -72,6 +72,11 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
     .state("form.questions",{
         url : "/form/questions",
         templateUrl : "form/views/form-questions.html"
+    })
+    .state("listFormQuestions",{
+        url : "/form/questions",
+        controller : "formController",
+        templateUrl : "form/views/list-form-question.html"
     });
 
 }]);

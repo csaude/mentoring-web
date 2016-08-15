@@ -4,28 +4,28 @@ mentoring.controller("createSectorController", ["$scope", "$rootScope", "program
 		userContext: $rootScope.userContext
 	};
 
-	$scope.createSector = function(){
+	$scope.createProgrammaticArea = function(){
 
-		if($scope.createSectorForm.$invalid)
+		if($scope.createProgrammaticAreaForm.$invalid)
 			return;
 		
-		programmaticAreaBeanResource.programmaticArea = $scope.sector;
+		programmaticAreaBeanResource.programmaticArea = $scope.programmaticArea;
 
 		programmaticAreaService.createProgrammaticArea(programmaticAreaBeanResource).then(function success(response){
 
-			var sector = response.data;
-			$scope.message = "O Sector "+sector.name+" foi cadastrado com sucesso!";
-			$scope.sector = {};	
+			var programmaticArea = response.data;
+			$scope.message = "A Area Programatica "+programmaticArea.name+" foi cadastrado com sucesso!";
+			$scope.programmaticArea = {};	
 		});
 	};
 
-	$scope.cleanSector = function(){
-		$scope.sector = {};
+	$scope.cleanProgrammaticArea= function(){
+		$scope.programmaticArea = {};
 		$scope.hasErrors = [];
 		$scope.message = "";
 		$scope.errorMessage = "";
 	};
 
-	$scope.cleanSector();
+	$scope.cleanProgrammaticArea();
 
 }]);

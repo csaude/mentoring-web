@@ -6,13 +6,13 @@ mentoring.service("programmaticAreaService", ["$http", function($http){
 	};
 
 
-	this.getProgrammaticAreas = function (sector) {
+	this.getProgrammaticAreas = function (programmaticarea) {
 
 		return $http.get('/mentoring-integ/services/programmaticareas',
 			{
 				params: {
-					code: sector.code,
-					name: sector.name	
+					code: programmaticarea.code,
+					name: programmaticarea.name	
 				}
 			}
 		);
