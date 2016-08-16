@@ -8,7 +8,7 @@
 	    <div class="col-md-6">
             <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="getFormsBySelectedFilter()" />
 
-            <input type="button" class="btn btn-default navbar-btn" value="Limpar"/>
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click="cleanFormFilter()"/>
         </div>
 	</div>
 
@@ -17,17 +17,16 @@
 	<hr>
 
 	<div class="form-group">
-		<div class="col-md-3">
-		   <input id="code" placeholder="Código" name="'Codigo'" ng-model="formFilter.code" type="text" class="form-control" autocomplete="off" required/>
+		<div class="col-md-4">
+		   <input id="code" placeholder="Código" name="'Codigo'" ng-model="formFilter.code" type="text" class="form-control" autocomplete="off"/>
 		</div>
 
-		<div class="col-md-3">
-		     <input id="name" placeholder="Nome" name="'Nome'" ng-model="formFilter.name" type="text" class="form-control" autocomplete="off" required/>
+		<div class="col-md-4">
+		     <input id="name" placeholder="Nome" name="'Nome'" ng-model="formFilter.name" type="text" class="form-control" autocomplete="off"/>
 		</div>
 
-	 <div class="col-md-3">
-        <select id="programmaticArea" ng-model="form.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.name for programmaticArea in programmaticAreas"required>
-        </select
+		<div class="col-md-4">
+		 	<select id="programmaticArea" ng-model="formFilter.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.name for programmaticArea in programmaticAreas"></select>
 		</div>
 	</div>
 
@@ -35,7 +34,7 @@
 
 </form>
 
-<table  class="table table-bordered" >
+<table st-table="displayedForms" st-safe-src="forms" class="table table-bordered" >
 	<thead>
 		<tr>
 			<th class="col-md-1">{{ 'CODE' | translate }}</th>
@@ -45,7 +44,7 @@
 	</thead>
 
 	<tbody>
-		<tr  data-toggle="modal" data-target="#myModal" ng-repeat="form in forms">
+		<tr ng-repeat="form in displayedForms">
 			<td>{{form.code}}</td>
 			<td>{{form.name}}</td>
 			<td>{{form.programmaticArea.name}}</td>
@@ -54,11 +53,9 @@
 
 	<tfoot style="border:none;">
         <tr>
-            <td colspan="4" class="text-center">
-                <div></div>
+            <td colspan="3" class="text-center">
+                <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
             </td>
         </tr>
 	</tfoot>
-
 </table>
-</div>
