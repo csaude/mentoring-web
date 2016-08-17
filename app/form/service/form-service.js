@@ -5,13 +5,12 @@ mentoring.service("formService", ["$http", function ($http){
 	};
 
 	this.getForms = function (form) {
-
 		return $http.get('/mentoring-integ/services/forms',
 			{
 				params: {
 					code: form.code,
 					name: form.name,
-					programmaticArea: form.programmaticArea
+					programmaticAreaCode: form.programmaticArea ? form.programmaticArea.code : form.programmaticArea	
 				}
 			}
 		);

@@ -89,7 +89,7 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
     })
     .state("listFormQuestions",{
         url : "/form/questions",
-        controller : "formController",
+        controller : "listFormController",
         templateUrl : "form/views/list-form-question.html"
     });
 
