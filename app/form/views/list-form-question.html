@@ -40,6 +40,7 @@
 			<th class="col-md-1">{{ 'CODE' | translate }}</th>
 			<th class="col-md-5">{{ 'NAME' | translate }}</th>
 			<th class="col-md-2">{{ 'PROGRAMATIC_AREA' | translate }}</th>
+			<th class="col-md-1"></th>
 		</tr>	
 	</thead>
 
@@ -48,14 +49,9 @@
 			<td>{{form.code}}</td>
 			<td>{{form.name}}</td>
 			<td>{{form.programmaticArea.name}}</td>
+			<td>
+			  <button class="fa fa-pencil-square-o" aria-hidden="true" ng-click="onSelectForm(form)" />
+		   </td>
 		</tr>
 	</tbody>
-
-	<tfoot style="border:none;">
-        <tr>
-            <td colspan="3" class="text-center">
-                <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
-            </td>
-        </tr>
-	</tfoot>
 </table>

@@ -1,0 +1,20 @@
+<div class="form-group">
+    <label for="question" class="col-md-2 control-label">{{ 'NAME' | translate }}:</label>
+    <div class="col-md-5">
+         <input id="name" name="'{{ 'NAME' | translate }}'" ng-model="form.name" type="text" class="form-control" autocomplete="off" required/>
+    </div>
+</div>
+<div class="form-group">
+    <label for="programaticArea" class="col-md-2 control-label">{{ 'PROGRAMMATIC_AREA' | translate }}:</label>
+    <div class="col-md-5">
+        <select id="programmaticArea" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="form.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.name for programmaticArea in programmaticAreas"required>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="description" class="col-md-2 control-label">{{ 'DESCRIPTION' | translate }}:</label>
+    <div class="col-md-5">
+        <textarea id="description" name="'{{ 'DESCRIPTION' | translate }}'" ng-model="form.description" cols="80" rows= "3" class="form-control" required></textarea>
+    </div>
+</div>

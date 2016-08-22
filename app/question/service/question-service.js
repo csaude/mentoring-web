@@ -18,4 +18,8 @@ mentoring.service("questionService", ["$http", function ($http){
 		return $http.put('/mentoring-integ/services/questions', questionBeanResource);
 	};
 
+	this.getQuestionsByForm =  function(code){
+		return $http.get('/mentoring-integ/services/questions/' + code);
+	};
+
 }]);

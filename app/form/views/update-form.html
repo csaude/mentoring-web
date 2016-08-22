@@ -1,13 +1,12 @@
 <hr>
-<p>{{form.name}}</p>
 <div ng-include="'form/views/form-details-template.html'"></div>
 <div class="navbar navbar-default">
      <div class="col-md-12">
-        <button class="btn btn-success navbar-btn" ng-click="nextDetails()">
+        <button class="btn btn-success navbar-btn" ng-click="nextPage()">
           <i class="fa fa-step-forward"></i>
           {{'NEXT' | translate}}
         </button>
-        <button class="btn btn-default navbar-btn" type="button" ng-click="cleanForm()" >
+        <button class="btn btn-default navbar-btn" type="button" ng-click="">
           <i class="fa fa-refresh"></i>
           {{'CLEAN' | translate}}
         </button>

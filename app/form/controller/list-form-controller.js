@@ -1,5 +1,7 @@
-mentoring.controller("listFormController", ["$scope", "formService", "programmaticAreaService", function ($scope, formService, programmaticAreaService) {
+mentoring.controller("listFormController", ["$scope", "$state","questionService", "$rootScope" ,"formService", "programmaticAreaService", function ($scope, $state, questionService,	 $rootScope, formService, programmaticAreaService) {
 	
+	$scope.form = $rootScope.form || {};
+
 	$scope.getFormsBySelectedFilter = function(){
 		$scope.forms = formService.getForms($scope.formFilter).then(function(response){
 			$scope.errorMessage="";
@@ -15,7 +17,7 @@ mentoring.controller("listFormController", ["$scope", "formService", "programmat
 
             }else {
                $scope.forms = [];
-               $scope.errorMessage = "Nenhuma Formulario foi encontrada para o filtro solicitado!"; 
+               $scope.errorMessage = "Nenhum Formulario foi encontrada para o filtro solicitado!"; 
             }
 
 		});
@@ -35,12 +37,36 @@ mentoring.controller("listFormController", ["$scope", "formService", "programmat
 		});
 	};
 
+
 	$scope.getProgrammaticAreas();
-	
+
 	$scope.cleanFormFilter = function (){
+		$scope.message = "";
 		$scope.formFilter = {};
 		$scope.errorMessage = "";
 		$scope.forms = [];
+	};
+
+	$scope.onSelectForm =  function(form){
+		$rootScope.form = form;
+		$scope.hasErrors = [];
+		$scope.isDisabled = false;
+		$state.go("form.update");
+	};
+
+	$scope.nextPage =  function(){
+		questionService.getQuestionsByForm($scope.form.code).then(function(response){
+		 $scope.questions.push(response.data.question);
+		});
+		$state.go("form.questions1");
+	};
+
+	$scope.removeQuestion =  function(question){
+		
+	};
+
+	$scope.getQuestionsUpdate =  function(){
+
 	};
 
 	$scope.cleanFormFilter();
