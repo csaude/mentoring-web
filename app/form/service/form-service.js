@@ -4,6 +4,10 @@ mentoring.service("formService", ["$http", function ($http){
 		return $http.post('/mentoring-integ/services/forms', formBeanResource);
 	};
 
+	this.updateForm = function (formBeanResource){
+		return $http.put('/mentoring-integ/services/forms', formBeanResource);
+	};
+
 	this.getForms = function (form) {
 		return $http.get('/mentoring-integ/services/forms',
 			{
