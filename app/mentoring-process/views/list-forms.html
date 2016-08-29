@@ -1,8 +1,4 @@
-<div class="header-menu">
-    <p>{{ 'CRITERIA' | translate }}<p>
-</div>
-
-<form class="form-horizontal" name="listForms" novalidate>
+<form class="form-horizontal" novalidate>
 
 	<div class="navbar navbar-default">
 	    <div class="col-md-6">
@@ -44,7 +40,7 @@
 	</thead>
 
 	<tbody>
-		<tr ng-repeat="form in displayedForms">
+		<tr ng-repeat="form in displayedForms" ng-click="selectedForm(form)">
 			<td>{{form.code}}</td>
 			<td>{{form.name}}</td>
 			<td>{{form.programmaticArea.name}}</td>

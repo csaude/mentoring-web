@@ -17,7 +17,6 @@ mentoring.controller("listFormController", ["$scope", "formService", "programmat
                $scope.forms = [];
                $scope.errorMessage = "Nenhuma Formulario foi encontrada para o filtro solicitado!"; 
             }
-
 		});
 	};
 
