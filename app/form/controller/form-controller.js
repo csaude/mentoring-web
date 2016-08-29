@@ -1,6 +1,5 @@
 mentoring.controller("formController", ["$scope", "$rootScope", "$state", "questionService", "programmaticAreaService", "formService", function ($scope, $rootScope, $state, questionService, programmaticAreaService, formService){
 
-	$scope.form = {};
 	$scope.questions = [];
 	$scope.questionFilter = {};
 	$scope.addedQuestions = [];
