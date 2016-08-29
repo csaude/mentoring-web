@@ -23,10 +23,24 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         resolve: {init: "init"}
     })
 
+    .state("createTutored",{
+        url : "/createTutored",
+        templateUrl: "tutored/views/create-tutored.html",
+        controller: "createTutoredController",
+        resolve: {init: "init"}
+    })
+
     .state("listTutor",{
         url : "/listTutor",
         templateUrl: "tutor/views/list-tutor.html",
         controller: "updateTutorController",
+        resolve: {init: "init"}
+    })
+
+    .state("listTutored",{
+        url : "/listTutored",
+        templateUrl: "tutored/views/list-tutored.html",
+        controller: "updateTutoredController",
         resolve: {init: "init"}
     })
 
@@ -68,15 +82,33 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         url : "/form/details",
         templateUrl : "form/views/form-details.html"
     })
-
+   
     .state("form.questions",{
         url : "/form/questions",
         templateUrl : "form/views/form-questions.html"
     })
+
     .state("listFormQuestions",{
         url : "/form/questions",
         controller : "listFormController",
         templateUrl : "form/views/list-form-question.html"
+    })
+
+    .state("formUpdate",{
+        url : "/formUpdate",
+        templateUrl : "form/views/update-form-template.html",
+        controller : "listFormController",
+        resolve: {init: "init"}
+    })
+
+    .state("formUpdate.updateDetails",{
+        url : "/formUpdate/updateDetails",
+        templateUrl : "form/views/update-form-details.html"
+    })
+
+    .state("formUpdate.questionsDetails",{
+        url : "/form/questionsDetails",
+        templateUrl : "form/views/update-form-questions.html"
     });
 
 }]);

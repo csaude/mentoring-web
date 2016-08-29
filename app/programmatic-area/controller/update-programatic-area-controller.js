@@ -25,10 +25,6 @@ var programmaticAreaBeanResource = {
 	};
 
 	$scope.onSelectprogrammaticArea = function(programmaticArea){
-
-		console.log($rootScope.userContext);
-	    console.log(programmaticArea);
-
 		$scope.message = "";
 		$scope.programmaticArea = programmaticArea;
 		$scope.hasErrors = [];

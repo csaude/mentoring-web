@@ -37,9 +37,9 @@
 <table st-table="displayedForms" st-safe-src="forms" class="table table-bordered" >
 	<thead>
 		<tr>
-			<th class="col-md-1">{{ 'CODE' | translate }}</th>
+			<th class="col-md-2">{{ 'CODE' | translate }}</th>
 			<th class="col-md-5">{{ 'NAME' | translate }}</th>
-			<th class="col-md-2">{{ 'PROGRAMATIC_AREA' | translate }}</th>
+			<th class="col-md-4">{{ 'PROGRAMATIC_AREA' | translate }}</th>
 		</tr>	
 	</thead>
 
@@ -48,14 +48,11 @@
 			<td>{{form.code}}</td>
 			<td>{{form.name}}</td>
 			<td>{{form.programmaticArea.name}}</td>
+			<td>
+			  <button class="btn btn-sm btn-danger" aria-hidden="true" ng-click="onSelectForm(form)">
+				  <i class="fa fa-times-circle-o"></i>
+			  </button>
+		   </td>
 		</tr>
 	</tbody>
-
-	<tfoot style="border:none;">
-        <tr>
-            <td colspan="3" class="text-center">
-                <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
-            </td>
-        </tr>
-	</tfoot>
 </table>
