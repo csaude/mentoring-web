@@ -1,22 +1,58 @@
-mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", function ($scope, $rootScope, $state, mentorshipService, formService) {
+mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", "questionService", "tutorService", "tutoredService", function ($scope, $rootScope, $state, mentorshipService, formService, questionService, tutorService, tutoredService) {
 
 	$scope.hasErrors = [];
+
 	$scope.questionId = 0;
 	$scope.questions = [];
+	$scope.question = {};
+
 	$scope.form = {};
 	$scope.formFilter = {};
-	$scope.tutor = {};
-	$scope.tutored = {};
 	$scope.hasForm = false;
-	$scope.tutors = [];
 
+	$scope.tutor = {};
+	$scope.tutorFilter ={};
+	$scope.tutors = [];
+	
+	$scope.tutored = {};
+	$scope.tutoredFilter = {};
+	$scope.tutoreds = [];
+
+	$scope.message = "";
+	
 	var mentorship = {};
+	mentorship.startDate = formatDateTime(new Date());
+
+	function formatDateTime(date){
+
+		var day = date.getDay();
+		if(day.toString().length == 1)
+			day = "0"+day;
+
+		var month  = date.getMonth() + 1;
+		if (month.toString().length == 1)
+			month = "0"+month;
+
+		var year = date.getFullYear();
+
+		var hours = date.getHours();
+		if (hours.toString().length == 1)
+			hours = "0"+hours;
+
+		var minutes = date.getMinutes();
+		if (minutes.toString().length ==1)
+			minutes = "0"+minutes;
+
+		var seconds = date.getSeconds();
+		if (seconds.toString().length == 1)
+			seconds = "0"+seconds;
+
+		return day +"-"+ month +"-"+ year +" "+ hours +":"+ minutes+":"+ seconds;
+	}
 
 	var mentorshipBeanResource = {
 		userContext : $rootScope.userContext
 	};
-
-	$scope.question = $scope.questions[$scope.questionId];
 
 	$scope.next = function (){
 
@@ -68,13 +104,14 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 
 		mentorship.tutor = $scope.tutor;
 		mentorship.tutored = $scope.tutored;
+		mentorship.endDate = formatDateTime(new Date());
 
 		mentorshipBeanResource.mentorship = mentorship;
 		mentorshipBeanResource.questions = $scope.questions;
 		mentorshipBeanResource.form = $scope.form;
 
 		mentorshipService.createMentorship(mentorshipBeanResource).then(function(response){
-			console.log(response);
+			$scope.message = "O processo de mentoria com o código "+ response.data.code + " foi cadastrado com sucesso!";
 		});
 
 	};
@@ -102,15 +139,66 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	$scope.selectedForm = function(form){
 		$scope.form = form;
 		$scope.hasForm = true;
+		$scope.questionId = 0;
 
-		$state.go("mentoringProcess.questions", {questionId : 1});
-		
-		console.log($scope.form);
-		console.log($scope.hasForm);
+		questionService.getQuestionsByForm(form.code).then(function(response){
+			if(response.data){
+        
+                if(!Array.isArray(response.data.question)){
+                    $scope.questions = [];
+                    $scope.questions.push(response.data.question);
+                    return;
+                }
+
+                $scope.questions = response.data.question;
+                $scope.question = $scope.questions[$scope.questionId];
+            }
+
+            $state.go("mentoringProcess.questions", {questionId : $scope.questionId});
+		});
 	};
 
 	$scope.onSelectTutor = function(tutor){
+		console.log(tutor);
+		console.log(mentorship.startDate);
 		$scope.tutor = tutor;
+	};
+
+	$scope.onSelectTutored = function(tutored){
+		$scope.tutored = tutored;
+	};
+
+	$scope.getTutorsBySelectedFilter = function(){
+
+		$scope.tutors = tutorService.getTutors($scope.tutorFilter).then(function(response){
+			if(response.data){
+
+                if(!Array.isArray(response.data.tutor)){
+                    $scope.tutors = [];
+                    $scope.tutors.push(response.data.tutor);
+                    return;
+                }
+                
+                $scope.tutors = response.data.tutor;
+            }
+		});
+	};
+
+	$scope.getTutoredsBySelectedFilter = function(){
+
+		$scope.tutoreds = tutoredService.getTutoreds($scope.tutoredFilter).then(function(response){
+			if(response.data){
+
+                if(!Array.isArray(response.data.tutored)){
+                    $scope.tutoreds = [];
+                    $scope.tutoreds.push(response.data.tutored);
+                    return;
+                }
+                
+                $scope.tutoreds = response.data.tutored;
+            }
+
+		});
 	};
 
 }]);
