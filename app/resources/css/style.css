@@ -181,3 +181,7 @@ table tbody tr:hover {
     cursor: pointer;
     background: #eee;
 }
+
+.panel-heading a, .alert-info a {
+    cursor: pointer;
+}

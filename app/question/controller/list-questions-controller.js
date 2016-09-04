@@ -22,7 +22,7 @@ mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questi
 	};
 
 
-	$scope.cleanQuestionFiter = function (){
+	$scope.cleanQuestionFilter = function (){
 		$scope.question = {};
 		$scope.questionFilter = {};
 		$scope.message = "";
@@ -31,7 +31,7 @@ mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questi
 		$scope.questions = [];
 	};
 
-	$scope.cleanQuestionFiter();
+	$scope.cleanQuestionFilter();
 
 
 	$scope.onSelectQuestion = function (question){

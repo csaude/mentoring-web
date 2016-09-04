@@ -1,4 +1,4 @@
-mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', function($stateProvider, $urlRouterProvider, $translateProvider){
+mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', "$locationProvider",     function($stateProvider, $urlRouterProvider, $translateProvider, $locationProvider){
 
     //init translate
     $translateProvider.preferredLanguage('pt');
@@ -7,6 +7,9 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
 
     // Default Url
     $urlRouterProvider.otherwise("/home");
+
+    //html routing style
+    //$locationProvider.html5Mode(true);
 
     $stateProvider
     
@@ -50,6 +53,7 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         controller: "createSectorController",
         resolve: {init: "init"}
     })
+
     .state("listProgrammaticAreas",{
         url : "/listProgrammaticAreas",
         templateUrl: "programmatic-area/views/list-programatic-area.html",
@@ -91,7 +95,21 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
     .state("listFormQuestions",{
         url : "/form/questions",
         controller : "listFormController",
-        templateUrl : "form/views/list-form-question.html"
+        templateUrl : "form/views/list-form-question.html",
+        resolve : {init : "init"}
+    })
+
+    .state("mentoringProcess", {
+        url : "/mentoringProcess",
+        templateUrl : "mentoring-process/views/create-mentoring-process.html",
+        controller : "mentoringProcessController",
+        resolve : {init : "init"}
+    })
+
+    .state("mentoringProcess.questions", {
+        url : "/mentoringProcess/questions/:questionId",
+        templateUrl : "mentoring-process/views/mentoring-process-questions.html",
+        resolve : {init : "init"}
     })
 
     .state("formUpdate",{

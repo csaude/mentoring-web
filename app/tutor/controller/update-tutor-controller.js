@@ -25,8 +25,6 @@ mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorSer
 	};
 
 	$scope.onSelectTutor = function(tutor){
-
-		console.log($rootScope.userContext);
 		$scope.message = "";
 		$scope.tutor = tutor;
 		$scope.hasErrors = [];
