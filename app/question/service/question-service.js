@@ -9,7 +9,8 @@ mentoring.service("questionService", ["$http", function ($http){
 			params : {
 				code : question.code,
 				question : question.question,
-				questionType : question.questionType
+				questionType : question.questionType,
+				questionCategory : question.questionCategory
 			}
 		});
 	};

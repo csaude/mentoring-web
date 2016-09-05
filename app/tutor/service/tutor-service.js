@@ -15,7 +15,8 @@ mentoring.service("tutorService", ["$http", function($http){
 					code: tutor.code,
 					name: tutor.name,
 					surname: tutor.surname,
-					category: tutor.category	
+					category: tutor.category,
+					phoneNumber: tutor.phoneNumber	
 				}
 			}
 		);
