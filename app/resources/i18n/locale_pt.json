@@ -58,5 +58,7 @@
 	"PHONE_NUMBER" : "Contacto",
 	"LIST_FORMS" : "Listar Formulários",
 	"LIST_TUTORS" : "Listar Tutores",
-	"LIST_TUTOREDS" : "Listar Tutorandos"
+	"LIST_TUTOREDS" : "Listar Tutorandos",
+	"QUESTION_CATEGORY" : "Categoria da Questão",
+	"ACCURACY" : "Exatidão"
 }
