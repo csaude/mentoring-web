@@ -16,16 +16,21 @@
 	<hr>
 
 	<div class="form-group">
-		<div class="col-md-4">
+		<div class="col-md-3">
 		    <input id="questionCode" placeholder="{{'CODE' | translate}}" name="'{{'CODE' | translate}}'" ng-model="questionFilter.code" type="text" class="form-control" autocomplete="off" required/>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 		    <input id="question" placeholder="{{'QUESTION' | translate}}" name="'{{'QUESTION' | translate}}'" ng-model="questionFilter.question" type="text" class="form-control" autocomplete="off"/>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 	        <select id="questionType" name="'{{'QUESTION_TYPE' | translate}}'" ng-model="questionFilter.questionType" type="text" class="form-control" required>
 	            <option value="TEXT" label="Texto"/>
+	        </select>
+    	</div>
+    	<div class="col-md-3">
+	        <select id="questionCategory" name="'{{'QUESTION_CATEGORY' | translate}}'" ng-model="questionFilter.questionCategory" type="text" class="form-control" required>
+	            <option value="ACCURACY" label="Exatidão"/>
 	        </select>
     	</div>
 	</div>
@@ -38,8 +43,9 @@
 	<thead>
 		<tr>
 			<th class="col-md-1">{{'CODE' | translate}}</th>
-			<th class="col-md-6">{{'QUESTION' | translate}}</th>
+			<th class="col-md-4">{{'QUESTION' | translate}}</th>
 			<th class="col-md-1">{{'QUESTION_TYPE' | translate}}</th>
+			<th class="col-md-1">{{'QUESTION_CATEGORY' | translate}}</th>
 		</tr>	
 	</thead>
 
@@ -48,6 +54,7 @@
 			<td>{{question.code}}</td>
 			<td>{{question.question}}</td>
 			<td>{{question.questionType | translate}}</td>
+			<td>{{question.questionCategory | translate}}</td>
 		</tr>
 	</tbody>
 

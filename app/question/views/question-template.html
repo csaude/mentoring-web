@@ -13,3 +13,12 @@
         </select>
     </div>
 </div>
+
+<div class="form-group">
+    <label for="questionCategory" class="col-md-2 control-label">{{ 'QUESTION_CATEGORY' | translate }}:</label>
+    <div class="col-md-3">
+        <select id="questionCategory" name="'{{ 'QUESTION_CATEGORY' | translate }}'" ng-model="question.questionCategory" type="text" class="form-control" required>
+            <option value="ACCURACY" label="'{{ 'ACCURACY' | translate }}'"/>
+        </select>
+    </div>
+</div>
