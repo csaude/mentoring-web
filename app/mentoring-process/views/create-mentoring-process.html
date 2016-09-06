@@ -87,7 +87,7 @@
 		<a data-toggle="modal" data-target="#selectFromModal"><strong>{{'FORM' | translate}} <i class="fa fa-user-plus"></i></strong>:</a>
 		<span>
 			<strong>{{form.code}} / {{form.name}}</strong>   |  
-			<strong>{{'PROGRAMATIC_AREA' | translate}}: {{form.programmaticArea.name}}</strong>	
+			<strong>{{'PROGRAMMATIC_AREA' | translate}}: {{form.programmaticArea.name}}</strong>	
 		</span>
 	</div>
 	
@@ -99,7 +99,7 @@
 		      <i class="fa fa-save"></i>
 		      {{'SAVE' | translate}}
 		    </button>
-		    <button class="btn btn-default navbar-btn" ng-click = "previews()" ng-disabled="isDisabled">
+		    <button class="btn btn-default navbar-btn" ng-click = "clean()" ng-disabled="isDisabled" type="button">
 		      <span class="fa fa-refresh"></span>
 		      {{'CLEAN' | translate}}
 		    </button>

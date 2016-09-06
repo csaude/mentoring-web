@@ -88,17 +88,24 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 
 	$scope.saveMentoringProcess = function (){
 
+		$scope.errorMessage = "";
+
 		if($scope.answerQuestions.$invalid){
 			return;
 		}
 
-		if(!$scope.tutor){
-			$scope.errorMessage = " O Tutor deve ser seleccionado!";
+		if(!$scope.tutor.code){
+			$scope.errorMessage = "O Tutor deve ser seleccionado!";
 			return;
 		}
 
-		if(!$scope.tutored){
-			$scope.errorMessage = " O Tutorando deve ser seleccionado!";	
+		if(!$scope.tutored.code){
+			$scope.errorMessage = "O Tutorando deve ser seleccionado!";	
+			return;
+		}
+
+		if(!$scope.form.code){
+			$scope.errorMessage = "O Formulario a preencher deve ser seleccionado!"
 			return;
 		}
 
@@ -199,6 +206,10 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
             }
 
 		});
+	};
+
+	$scope.clean = function(){
+	
 	};
 
 }]);
