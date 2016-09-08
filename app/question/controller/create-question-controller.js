@@ -6,6 +6,8 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 
 	$scope.createQuestion = function(){
 
+	 $scope.getQuestionsCategory();
+
 		if($scope.createQuestionForm.$invalid)
 			return;
 
@@ -18,10 +20,28 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 			$scope.question = {};
 
 		});
+          
+	};
 
+	$scope.getQuestionsCategory = function(){
+		questionService.getQuestionsCategory().then(function (response){
+			$scope.categorys = [];
+			$scope.categorys = response.data;
+			$scope.categorys = response.data.questionCategory;
+		});
+	};
+	
+	$scope.getQuestionsType =  function(){
+		questionService.getQuestionsType().then(function (response){
+			$scope.types = [];
+			$scope.types = response.data;
+			$scope.types = response.data.questionType;
+		});
 	};
 
 	$scope.cleanQuestion = function (){
+		$scope.getQuestionsType();
+		$scope.getQuestionsCategory();
 		$scope.question = {};
 		$scope.message = "";
 		$scope.errorMessages = "";

@@ -59,5 +59,14 @@
 	"LIST_TUTORS" : "Listar Tutores",
 	"LIST_TUTOREDS" : "Listar Tutorandos",
 	"QUESTION_CATEGORY" : "Categoria da Questão",
-	"ACCURACY" : "Exatidão"
+	"ACCURACY" : "Exatidão",
+	"PUNCTUALITY" : "Pontualidade",
+	"TOTALITY" : "Totalidade",
+	"PRECISION" : "Precisão",
+	"RELIABILITY" : "Confiabilidade",
+	"INTEGRITY" : "Integridade",
+	"BOOLEAN" : "Boleano",
+	"NUMERIC" : "Numerica",
+	"DECIMAL" : "Decimal",
+	"CURRENCY" : "Monetaria"
 }
