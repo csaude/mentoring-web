@@ -30,7 +30,7 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 			$scope.categorys = response.data.questionCategory;
 		});
 	};
-	
+
 	$scope.getQuestionsType =  function(){
 		questionService.getQuestionsType().then(function (response){
 			$scope.types = [];
@@ -40,15 +40,19 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 	};
 
 	$scope.cleanQuestion = function (){
-		$scope.getQuestionsType();
-		$scope.getQuestionsCategory();
 		$scope.question = {};
 		$scope.message = "";
 		$scope.errorMessages = "";
 		$scope.hasErrors = [];
 	};
+	
+	$scope.exposeQuestionsUntilResources =  function(){
+		$scope.getQuestionsType();
+		$scope.getQuestionsCategory();
+	};
 
 	$scope.cleanQuestion();
+	$scope.exposeQuestionsUntilResources();
 
 	
 }]);
