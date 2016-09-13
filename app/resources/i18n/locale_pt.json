@@ -73,6 +73,10 @@
 	"PUNCTUALITY" : "Pontualidade",
 	"TOTALITY" : "Totalidade",
 	"PRECISION" : "Precisão",
-	"RELIABILITY" : "Fiabilidade",
-	"INTEGRITY" : "Integridade"
+	"RELIABILITY" : "Confiabilidade",
+	"INTEGRITY" : "Integridade",
+	"BOOLEAN" : "Boleano",
+	"NUMERIC" : "Numerica",
+	"DECIMAL" : "Decimal",
+	"CURRENCY" : "Monetária"
 }

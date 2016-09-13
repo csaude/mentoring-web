@@ -21,7 +21,6 @@ mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questi
 		});
 	};
 
-
 	$scope.cleanQuestionFilter = function (){
 		$scope.question = {};
 		$scope.questionFilter = {};
