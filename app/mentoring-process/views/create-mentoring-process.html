@@ -45,31 +45,14 @@
 	<div class="form-group">
 	    <label for="tutorName" class="col-md-2 control-label">{{'PROVINCE' | translate }}:</label>
 	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="province" type="text" class="form-control">
-	            <option value="ZAMBEZIA" label="Zambézia"/>
+	        <select id="province" name="'{{ 'PROVINCE' | translate }}'" ng-model="province" type="text" class="form-control" ng-click="onSelectProvince()">
+	        	<option ng-repeat="province in provinces" label="{{province | translate}}" value="{{province}}"></option>	
 	        </select>
    		</div>
 
    		<label for="tutorName" class="col-md-2 control-label">{{'DISTRICT' | translate }}:</label>
 	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="district" type="text" class="form-control">
-	            <option value="ILE" label="ILE"/>
-	        </select>
-   		</div>
-
-   		<label for="tutorName" class="col-md-2 control-label">{{'POST_ADMIN' | translate }}:</label>
-	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="postAdmin" type="text" class="form-control">
-	            <option value="ALTO" label="Molocue"/>
-	        </select>
-   		</div>
-	</div>
-
-	<div class="form-group">
-   		<label for="tutorName" class="col-md-2 control-label">{{'LOCALITY' | translate }}:</label>
-	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="locality" type="text" class="form-control">
-	            <option value="PANDA" label="Panda"/>
+	        <select id="district" name="'{{ 'DISTRICT' | translate }}'" ng-model="district" type="text" class="form-control" ng-options="district.district for district in districts">
 	        </select>
    		</div>
 

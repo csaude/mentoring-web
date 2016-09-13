@@ -1,4 +1,4 @@
-mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", "questionService", "tutorService", "tutoredService", function ($scope, $rootScope, $state, mentorshipService, formService, questionService, tutorService, tutoredService) {
+mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", "questionService", "tutorService", "tutoredService", "resourceUtilsService", "districtSevice", function ($scope, $rootScope, $state, mentorshipService, formService, questionService, tutorService, tutoredService, resourceUtilsService, districtSevice) {
 
 	$scope.hasErrors = [];
 
@@ -17,6 +17,11 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	$scope.tutored = {};
 	$scope.tutoredFilter = {};
 	$scope.tutoreds = [];
+
+	$scope.province = "";
+	$scope.provinces = [];
+
+	$scope.districts = [];
 
 	$scope.message = "";
 	
@@ -105,7 +110,7 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 		}
 
 		if(!$scope.form.code){
-			$scope.errorMessage = "O Formulario a preencher deve ser seleccionado!"
+			$scope.errorMessage = "O Formulario a preencher deve ser seleccionado!";
 			return;
 		}
 
@@ -210,6 +215,28 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 
 	$scope.clean = function(){
 	
+	};
+
+
+	$scope.getProvinces = function(){
+		resourceUtilsService.getProvinces().then(function(response){
+			$scope.provinces = response.data.province;
+		});
+	};
+
+	$scope.getProvinces();
+
+	$scope.onSelectProvince = function(){
+		districtSevice.getDistrictsByProvince($scope.province).then(function(response){
+			$scope.districts = [];
+			if(response.data){
+				$scope.districts = response.data.district;
+			}	
+		});
+	};
+
+	$scope.onSelectDistrict = function(){
+		
 	};
 
 }]);

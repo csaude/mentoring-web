@@ -59,5 +59,20 @@
 	"LIST_TUTORS" : "Listar Tutores",
 	"LIST_TUTOREDS" : "Listar Tutorandos",
 	"QUESTION_CATEGORY" : "Categoria da Questão",
-	"ACCURACY" : "Exatidão"
+	"MAPUTO" : "Maputo",
+	"GAZA" : "Gaza",
+	"INHAMBANE" : "Inhambane",
+	"MANICA" : "Manica",
+	"SOFALA" : "Sofala",
+	"TETE" : "Tete", 
+	"ZAMBEZIA": "Zambézia",
+	"NAMPULA": "Nampula",
+	"NIASSA" : "Niassa",
+	"CABO_DELEGADO" : "Cabo Delegado",
+	"ACCURACY" : "Exatidão",
+	"PUNCTUALITY" : "Pontualidade",
+	"TOTALITY" : "Totalidade",
+	"PRECISION" : "Precisão",
+	"RELIABILITY" : "Fiabilidade",
+	"INTEGRITY" : "Integridade"
 }
