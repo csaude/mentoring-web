@@ -8,17 +8,14 @@
 <div class="form-group">
     <label for="questionType" class="col-md-2 control-label">{{ 'QUESTION_TYPE' | translate }}:</label>
     <div class="col-md-3">
-        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="question.questionType" type="text" class="form-control" required>
-            <option value="TEXT" label="Texto"/>
+        <select id="questionType" ng-model="question.questionType" ng-options="key as value for (key , value) in types | translate " type="text" class="form-control" required>
         </select>
     </div>
 </div>
-
 <div class="form-group">
     <label for="questionCategory" class="col-md-2 control-label">{{ 'QUESTION_CATEGORY' | translate }}:</label>
     <div class="col-md-3">
-        <select id="questionCategory" name="'{{ 'QUESTION_CATEGORY' | translate }}'" ng-model="question.questionCategory" type="text" class="form-control" required>
-            <option value="ACCURACY" label="'{{ 'ACCURACY' | translate }}'"/>
+        <select id="questionCategory"  ng-model="question.questionCategory" type="text" class="form-control" ng-options="key as value for (key , value) in categorys | translate ">
         </select>
     </div>
 </div>
