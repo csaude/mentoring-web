@@ -1,25 +1,31 @@
-mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorService", function($scope, $rootScope, tutorService){
+mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorService", "resourceUtilsService", "carrerService", function($scope, $rootScope, tutorService, resourceUtilsService, carrerService){
 
 	var tutorBeanResource = {
 		userContext: $rootScope.userContext
 	};
-	
+	$scope.carrerType = {name:""};
+
 	$scope.getTutorsBySelectedFilter = function(){
 
 		$scope.tutors = tutorService.getTutors($scope.tutorFilter).then(function(response){
 			if(response.data){
+
                 if(!Array.isArray(response.data.tutor)){
                     $scope.tutors = [];
                     $scope.tutors.push(response.data.tutor);
+                    console.log($scope.tutors);
                     return;
                 }
                 
                 $scope.tutors = response.data.tutor;
+                
 
             }else {
                $scope.tutors = [];
                $scope.errorMessage = "Nenhum tutor encontrado para o filtro solicitado!"; 
             }
+
+           
 
 		});
 	};
@@ -56,7 +62,29 @@ mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorSer
 		$scope.isDisabled = false;
 	};
 
+	$scope.getCarrertypes = function(){
+		resourceUtilsService.getCarrertypes().then(function (response){
+			$scope.carrertypes = [];
+			$scope.carrertypes = response.data.carrerType;
+		});
+
+	};
+	
+	$scope.changeValues = function(){
+			$scope.carres = [];
+			carrerService.getCarrerByCarrerType($scope.carrerType.name).then(function (response){
+				if(response.data){
+                if(!Array.isArray(response.data.carrer)){
+                    $scope.carres.push(response.data.carrer);
+                    return;
+                }
+				$scope.carres = response.data.carrer;
+			}
+		});
+	};
+
 
 	$scope.cleanTutor();
+	$scope.getCarrertypes();
 
 }]);

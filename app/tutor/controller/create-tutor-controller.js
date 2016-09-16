@@ -4,8 +4,7 @@ mentoring.controller("createTutorController", ["$scope", "$rootScope", "tutorSer
 		userContext: $rootScope.userContext,
 	};
 	$scope.carrerType = {name:""};
-	$scope.carrer = {};
-
+	
 	$scope.createTutor = function(){
 
 		if($scope.createTutorForm.$invalid)
@@ -34,10 +33,6 @@ mentoring.controller("createTutorController", ["$scope", "$rootScope", "tutorSer
 			$scope.carrertypes = response.data.carrerType;
 		});
 
-	};
-
-	$scope.setCarrer =  function(){
-		tutorBeanResource =  $scope.tutor.carrer;
 	};
 
 	$scope.changeValues = function(){
