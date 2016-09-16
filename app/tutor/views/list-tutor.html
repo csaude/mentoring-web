@@ -27,9 +27,9 @@
 		    <input id="tutorSurname" placeholder="Apelido" name="'Apelido'" ng-model="tutorFilter.surname" type="text" class="form-control"/>
 		</div>
 		<div class="col-md-3">
-	        <select id="category" name="'Categoria'" ng-model="tutorFilter.category" type="text" class="form-control" required>
-	            <option value="DATA_MANAGER" label="Gestor de Dados"/>
-	        </select>
+        	<select id="carrer" name="'Carreira'"  ng-model="tutorFilter.carrer" type="text" class="form-control" 
+	       	 ng-options="carrer.position for carrer in carres" value="{{carrer}}" required> 
+       		</select>
     	</div>
 	</div>
 
