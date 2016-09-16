@@ -12,10 +12,12 @@ mentoring.directive('form', function () {
                 scope.hasErrors = [];
                 
                 angular.forEach( form , function ( formElement , fieldName) {
-                    if ( fieldName[0] === '$' ) return;
+                    if ( fieldName[0] === '$' ) 
+                        return;
                     
-                    if(formElement.$invalid)
+                    if(formElement.$invalid && formElement.$name !== "''")
                         scope.hasErrors.push({field: "O campo "+fieldName+" deve ser preenchido!"});
+                    
                 },this);
                 
                 scope.$apply();

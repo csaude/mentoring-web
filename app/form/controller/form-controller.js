@@ -83,6 +83,8 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
                     return;
                 }
 
+                console.log(response);
+
                 $scope.programmaticAreas = response.data.programmaticArea;
             }
 		});

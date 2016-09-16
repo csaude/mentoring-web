@@ -14,13 +14,6 @@ mentoring.service("questionService", ["$http", function ($http){
 			}
 		});
 	};
-	this.getQuestionsCategory = function(){
-		return $http.get('/mentoring-integ/services/utils/questionsCategory');
-	};
-
-	this.getQuestionsType =  function(){
-		return $http.get('/mentoring-integ/services/utils/questionsType');
-	};
 
 	this.updateQuestion = function(questionBeanResource){
 		return $http.put('/mentoring-integ/services/questions', questionBeanResource);

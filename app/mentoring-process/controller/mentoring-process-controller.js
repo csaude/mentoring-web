@@ -1,4 +1,4 @@
-mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", "questionService", "tutorService", "tutoredService", function ($scope, $rootScope, $state, mentorshipService, formService, questionService, tutorService, tutoredService) {
+mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", "questionService", "tutorService", "tutoredService", "resourceUtilsService", "districtSevice", "healthFacilityService", function ($scope, $rootScope, $state, mentorshipService, formService, questionService, tutorService, tutoredService, resourceUtilsService, districtSevice, healthFacilityService) {
 
 	$scope.hasErrors = [];
 
@@ -17,6 +17,14 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	$scope.tutored = {};
 	$scope.tutoredFilter = {};
 	$scope.tutoreds = [];
+
+	$scope.province = "";
+	$scope.provinces = [];
+
+	$scope.district = {};
+	$scope.districts = [];
+
+	$scope.healthFacilities = [];
 
 	$scope.message = "";
 	
@@ -88,17 +96,24 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 
 	$scope.saveMentoringProcess = function (){
 
+		$scope.errorMessage = "";
+
 		if($scope.answerQuestions.$invalid){
 			return;
 		}
 
-		if(!$scope.tutor){
-			$scope.errorMessage = " O Tutor deve ser seleccionado!";
+		if(!$scope.tutor.code){
+			$scope.errorMessage = "O Tutor deve ser seleccionado!";
 			return;
 		}
 
-		if(!$scope.tutored){
-			$scope.errorMessage = " O Tutorando deve ser seleccionado!";	
+		if(!$scope.tutored.code){
+			$scope.errorMessage = "O Tutorando deve ser seleccionado!";	
+			return;
+		}
+
+		if(!$scope.form.code){
+			$scope.errorMessage = "O Formulario a preencher deve ser seleccionado!";
 			return;
 		}
 
@@ -159,8 +174,6 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	};
 
 	$scope.onSelectTutor = function(tutor){
-		console.log(tutor);
-		console.log(mentorship.startDate);
 		$scope.tutor = tutor;
 	};
 
@@ -198,6 +211,38 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
                 $scope.tutoreds = response.data.tutored;
             }
 
+		});
+	};
+
+	$scope.clean = function(){
+	
+	};
+
+
+	$scope.getProvinces = function(){
+		resourceUtilsService.getProvinces().then(function(response){
+			$scope.provinces = response.data.province;
+		});
+	};
+
+	$scope.getProvinces();
+
+	$scope.onSelectProvince = function(){
+		districtSevice.getDistrictsByProvince($scope.province).then(function(response){
+			$scope.districts = [];
+			$scope.healthFacilities = [];
+			if(response.data){
+				$scope.districts = response.data.district;
+			}	
+		});
+	};
+
+	$scope.onSelectDistrict = function(){
+		healthFacilityService.getHealthFacilitiesByDistrictId($scope.district.id).then(function(response){
+			$scope.healthFacilities = [];
+			if(response.data){
+				$scope.healthFacilities = response.data.healthFacility;
+			}
 		});
 	};
 

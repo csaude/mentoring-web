@@ -1,12 +1,13 @@
-mentoring.controller("createQuestionController", ["$scope", "$rootScope", "questionService", function ($scope, $rootScope, questionService) {
+mentoring.controller("createQuestionController", ["$scope", "$rootScope", "questionService", "resourceUtilsService", function ($scope, $rootScope, questionService, resourceUtilsService) {
 
 	var questionBeanResource = {
 		userContext : $rootScope.userContext
 	};
 
-	$scope.createQuestion = function(){
+	$scope.questionTypes = [];
+	$scope.questionCategories = [];
 
-	 $scope.getQuestionsCategory();
+	$scope.createQuestion = function(){
 
 		if($scope.createQuestionForm.$invalid)
 			return;
@@ -23,36 +24,31 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
           
 	};
 
-	$scope.getQuestionsCategory = function(){
-		questionService.getQuestionsCategory().then(function (response){
-			$scope.categorys = [];
-			$scope.categorys = response.data;
-			$scope.categorys = response.data.questionCategory;
-		});
-	};
-
-	$scope.getQuestionsType =  function(){
-		questionService.getQuestionsType().then(function (response){
-			$scope.types = [];
-			$scope.types = response.data;
-			$scope.types = response.data.questionType;
-		});
-	};
-
 	$scope.cleanQuestion = function (){
 		$scope.question = {};
 		$scope.message = "";
 		$scope.errorMessages = "";
 		$scope.hasErrors = [];
 	};
-	
-	$scope.exposeQuestionsUntilResources =  function(){
-		$scope.getQuestionsType();
-		$scope.getQuestionsCategory();
-	};
 
 	$scope.cleanQuestion();
-	$scope.exposeQuestionsUntilResources();
+
+   	// just to return QuestionTypes an QuestionsCategories
+	(function(){
+
+		resourceUtilsService.getQuestionTypes().then(function(response){
+			if(response.data){
+				$scope.questionTypes = response.data.questionType;
+			}
+		});
+
+		resourceUtilsService.getQuestionCategories().then(function(response){
+			if(response.data){
+				$scope.questionCategories = response.data.questionCategory;
+			}
+		});
+
+	})();
 
 	
 }]);

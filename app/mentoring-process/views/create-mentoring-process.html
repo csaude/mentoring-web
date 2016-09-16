@@ -45,38 +45,20 @@
 	<div class="form-group">
 	    <label for="tutorName" class="col-md-2 control-label">{{'PROVINCE' | translate }}:</label>
 	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="province" type="text" class="form-control">
-	            <option value="ZAMBEZIA" label="Zambézia"/>
+	        <select id="province" name="'{{ 'PROVINCE' | translate }}'" ng-model="province" type="text" class="form-control" ng-click="onSelectProvince()">
+	        	<option ng-repeat="province in provinces" label="{{province | translate}}" value="{{province}}"></option>	
 	        </select>
    		</div>
 
    		<label for="tutorName" class="col-md-2 control-label">{{'DISTRICT' | translate }}:</label>
 	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="district" type="text" class="form-control">
-	            <option value="ILE" label="ILE"/>
-	        </select>
-   		</div>
-
-   		<label for="tutorName" class="col-md-2 control-label">{{'POST_ADMIN' | translate }}:</label>
-	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="postAdmin" type="text" class="form-control">
-	            <option value="ALTO" label="Molocue"/>
-	        </select>
-   		</div>
-	</div>
-
-	<div class="form-group">
-   		<label for="tutorName" class="col-md-2 control-label">{{'LOCALITY' | translate }}:</label>
-	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="locality" type="text" class="form-control">
-	            <option value="PANDA" label="Panda"/>
+	        <select id="district" name="'{{ 'DISTRICT' | translate }}'" ng-model="district" type="text" class="form-control" ng-options="district.district for district in districts" ng-click="onSelectDistrict()">
 	        </select>
    		</div>
 
    		<label for="tutorName" class="col-md-2 control-label">{{'HEALTH_FACILITY' | translate }}:</label>
 	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="form.healthFacility" type="text" class="form-control" required>
-	            <option value="PANDA" label="Panda"/>
+	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="form.healthFacility" type="text" class="form-control" ng-options="healthFacility.healthFacility for healthFacility in healthFacilities" required>
 	        </select>
    		</div>
 	</div>
@@ -87,7 +69,7 @@
 		<a data-toggle="modal" data-target="#selectFromModal"><strong>{{'FORM' | translate}} <i class="fa fa-user-plus"></i></strong>:</a>
 		<span>
 			<strong>{{form.code}} / {{form.name}}</strong>   |  
-			<strong>{{'PROGRAMATIC_AREA' | translate}}: {{form.programmaticArea.name}}</strong>	
+			<strong>{{'PROGRAMMATIC_AREA' | translate}}: {{form.programmaticArea.name}}</strong>	
 		</span>
 	</div>
 	
@@ -99,7 +81,7 @@
 		      <i class="fa fa-save"></i>
 		      {{'SAVE' | translate}}
 		    </button>
-		    <button class="btn btn-default navbar-btn" ng-click = "previews()" ng-disabled="isDisabled">
+		    <button class="btn btn-default navbar-btn" ng-click = "clean()" ng-disabled="isDisabled" type="button">
 		      <span class="fa fa-refresh"></span>
 		      {{'CLEAN' | translate}}
 		    </button>
