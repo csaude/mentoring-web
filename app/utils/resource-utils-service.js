@@ -11,5 +11,8 @@ mentoring.service("resourceUtilsService", ["$http", function ($http) {
 	this.getQuestionCategories = function(){
 		return $http.get('/mentoring-integ/services/utils/questionscategories');
 	};
+	this.getCarrertypes = function(){
+		return $http.get('/mentoring-integ/services/utils/carrertypes');
+	};
 
 }]);
