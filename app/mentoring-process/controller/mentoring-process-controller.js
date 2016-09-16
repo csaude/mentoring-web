@@ -1,4 +1,4 @@
-mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", "questionService", "tutorService", "tutoredService", "resourceUtilsService", "districtSevice", function ($scope, $rootScope, $state, mentorshipService, formService, questionService, tutorService, tutoredService, resourceUtilsService, districtSevice) {
+mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$state", "mentorshipService", "formService", "questionService", "tutorService", "tutoredService", "resourceUtilsService", "districtSevice", "healthFacilityService", function ($scope, $rootScope, $state, mentorshipService, formService, questionService, tutorService, tutoredService, resourceUtilsService, districtSevice, healthFacilityService) {
 
 	$scope.hasErrors = [];
 
@@ -21,7 +21,10 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	$scope.province = "";
 	$scope.provinces = [];
 
+	$scope.district = {};
 	$scope.districts = [];
+
+	$scope.healthFacilities = [];
 
 	$scope.message = "";
 	
@@ -171,8 +174,6 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	};
 
 	$scope.onSelectTutor = function(tutor){
-		console.log(tutor);
-		console.log(mentorship.startDate);
 		$scope.tutor = tutor;
 	};
 
@@ -229,6 +230,7 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	$scope.onSelectProvince = function(){
 		districtSevice.getDistrictsByProvince($scope.province).then(function(response){
 			$scope.districts = [];
+			$scope.healthFacilities = [];
 			if(response.data){
 				$scope.districts = response.data.district;
 			}	
@@ -236,7 +238,12 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	};
 
 	$scope.onSelectDistrict = function(){
-		
+		healthFacilityService.getHealthFacilitiesByDistrictId($scope.district.id).then(function(response){
+			$scope.healthFacilities = [];
+			if(response.data){
+				$scope.healthFacilities = response.data.healthFacility;
+			}
+		});
 	};
 
 }]);
