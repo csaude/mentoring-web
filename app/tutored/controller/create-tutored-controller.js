@@ -1,8 +1,10 @@
-mentoring.controller("createTutoredController", ["$scope", "$rootScope", "tutoredService", function($scope, $rootScope, tutoredService){
+mentoring.controller("createTutoredController", ["$scope", "$rootScope", "tutoredService", "resourceUtilsService", "carrerService", function($scope, $rootScope, tutoredService, resourceUtilsService, carrerService){
 
 	var tutorededBeanResource = {
 		userContext: $rootScope.userContext
 	};
+	
+	$scope.carrerType = {name:""};
 
 	$scope.createTutored = function(){
 
@@ -19,6 +21,27 @@ mentoring.controller("createTutoredController", ["$scope", "$rootScope", "tutore
 		});
 	};
 
+	$scope.getCarrertypes = function(){
+		resourceUtilsService.getCarrertypes().then(function (response){
+			$scope.carrertypes = [];
+			$scope.carrertypes = response.data.carrerType;
+		});
+
+	};
+
+	$scope.onSelectCarrerType = function(){
+			$scope.carres = [];
+			carrerService.getCarrerByCarrerType($scope.carrerType.name).then(function (response){
+				if(response.data){
+                if(!Array.isArray(response.data.carrer)){
+                    $scope.carres.push(response.data.carrer);
+                    return;
+                }
+				$scope.carres = response.data.carrer;
+			}
+		});
+	};
+
 	$scope.cleanTutored = function(){
 		$scope.tutored = {};
 		$scope.hasErrors = [];
@@ -27,5 +50,6 @@ mentoring.controller("createTutoredController", ["$scope", "$rootScope", "tutore
 	};
 
 	$scope.cleanTutored();
+	$scope.getCarrertypes();
 
 }]);
