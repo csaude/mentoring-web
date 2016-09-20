@@ -27,9 +27,12 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	$scope.healthFacilities = [];
 
 	$scope.message = "";
+	$scope.errorMessageDialog = "";
 	
-	var mentorship = {};
-	mentorship.startDate = formatDateTime(new Date());
+	$scope.mentorship = {};
+	$scope.mentorship.startDate = formatDateTime(new Date());
+
+	$scope.isDisabled = false;
 
 	function formatDateTime(date){
 
@@ -75,7 +78,7 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	};
 
 	$scope.previews = function() {
-		$scope.questionId	--;
+		$scope.questionId--;
 		$scope.question = $scope.questions[$scope.questionId];		
 		$state.go("mentoringProcess.questions", {questionId : $scope.questionId});
 	};
@@ -117,23 +120,24 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 			return;
 		}
 
-		mentorship.tutor = $scope.tutor;
-		mentorship.tutored = $scope.tutored;
-		mentorship.endDate = formatDateTime(new Date());
+		$scope.mentorship.tutor = $scope.tutor;
+		$scope.mentorship.tutored = $scope.tutored;
+		$scope.mentorship.endDate = formatDateTime(new Date());
 
-		mentorshipBeanResource.mentorship = mentorship;
+		mentorshipBeanResource.mentorship = $scope.mentorship;
 		mentorshipBeanResource.questions = $scope.questions;
 		mentorshipBeanResource.form = $scope.form;
 
 		mentorshipService.createMentorship(mentorshipBeanResource).then(function(response){
 			$scope.message = "O processo de mentoria com o código "+ response.data.code + " foi cadastrado com sucesso!";
+			$scope.isDisabled = true;
 		});
 
 	};
 
 	$scope.getFormsBySelectedFilter = function(){
 		$scope.forms = formService.getForms($scope.formFilter).then(function(response){
-			$scope.errorMessage="";
+			$scope.errorMessageDialog="";
 			if(response.data){
 
                 if(!Array.isArray(response.data.form)){
@@ -146,7 +150,7 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 
             }else {
                $scope.forms = [];
-               $scope.errorMessage = "Nenhuma Formulario foi encontrada para o filtro solicitado!"; 
+               $scope.errorMessageDialog = "Nenhuma Formulario foi encontrada para o filtro solicitado!"; 
             }
 		});
 	};
@@ -158,7 +162,6 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 
 		questionService.getQuestionsByForm(form.code).then(function(response){
 			if(response.data){
-        
                 if(!Array.isArray(response.data.question)){
                     $scope.questions = [];
                     $scope.questions.push(response.data.question);
@@ -169,21 +172,49 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
                 $scope.question = $scope.questions[$scope.questionId];
             }
 
+            $scope.messageDialog = "O formulário "+form.name+" foi seleccionado!";
+
             $state.go("mentoringProcess.questions", {questionId : $scope.questionId});
 		});
 	};
 
+	$scope.onOpenFormsDialog = function (){
+		$scope.formFilter = {};
+		$scope.errorMessageDialog = "";
+		$scope.messageDialog = "";
+		$scope.forms = [];
+	};
+
 	$scope.onSelectTutor = function(tutor){
 		$scope.tutor = tutor;
+		$scope.messageDialog = "O Tutor "+tutor.name+" "+tutor.surname+ " foi seleccionado!"; 
+	};
+
+	$scope.onOpenTutorDialog = function (){
+		$scope.messageDialog = "";
+		$scope.errorMessageDialog = "";
+		$scope.tutors = [];
+		$scope.tutorFilter = {};
 	};
 
 	$scope.onSelectTutored = function(tutored){
 		$scope.tutored = tutored;
+		$scope.messageDialog = "O Tutorando "+tutored.name+" "+tutored.surname+ " foi seleccionado!"; 
+	};
+
+	$scope.onOpenTutoredDialog = function (){
+		$scope.messageDialog = "";
+		$scope.errorMessageDialog = "";
+		$scope.tutoreds = [];
+		$scope.tutoredFilter = {};
 	};
 
 	$scope.getTutorsBySelectedFilter = function(){
 
 		$scope.tutors = tutorService.getTutors($scope.tutorFilter).then(function(response){
+
+			$scope.errorMessageDialog = "";
+
 			if(response.data){
 
                 if(!Array.isArray(response.data.tutor)){
@@ -193,6 +224,11 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
                 }
                 
                 $scope.tutors = response.data.tutor;
+
+            }else{
+
+            	$scope.tutors = [];
+            	$scope.errorMessageDialog = "Nenhuma Tutor foi encontrada para o filtro solicitado!"; 
             }
 		});
 	};
@@ -200,6 +236,9 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	$scope.getTutoredsBySelectedFilter = function(){
 
 		$scope.tutoreds = tutoredService.getTutoreds($scope.tutoredFilter).then(function(response){
+
+			$scope.errorMessageDialog = ""; 
+
 			if(response.data){
 
                 if(!Array.isArray(response.data.tutored)){
@@ -209,13 +248,37 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
                 }
                 
                 $scope.tutoreds = response.data.tutored;
+            }else{
+
+            	$scope.tutoreds = [];
+            	$scope.errorMessageDialog = "Nenhuma Tutorando foi encontrada para o filtro solicitado!"; 
             }
 
 		});
 	};
 
 	$scope.clean = function(){
-	
+
+		$scope.hasErrors = [];
+		$scope.form = {};
+		$scope.hasForm = false;
+		$scope.province = "";
+		$scope.district = {};
+		$scope.message = "";
+		$scope.mentorship = {};
+		$scope.mentorship.startDate = formatDateTime(new Date());
+		$scope.isDisabled = false;
+		$scope.tutor = {};
+		$scope.tutored = {};
+		$scope.form = {};
+		$scope.formFilter = {};
+		$scope.hasForm = false;
+		$scope.questions = [];
+		$scope.question = {};
+		$scope.message = "";
+		$scope.errorMessage = "";
+		$scope.districts = [];
+		$scope.healthFacilities = [];
 	};
 
 

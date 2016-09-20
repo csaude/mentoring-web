@@ -3,11 +3,11 @@
 	<div class="navbar navbar-default">
 	    <div class="col-md-6">
             <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="getTutorsBySelectedFilter()"/>
-            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "cleanTutor()"/>
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "onOpenTutorDialog()"/>
         </div>
 	</div>
 
-	<messages error-message="{{errorMessage}}" ></messages>
+	<messages error-message="{{errorMessageDialog}}" message={{messageDialog}} ></messages>
 
 	<hr>
 

@@ -15,16 +15,16 @@
     <div class="col-md-3">
         <select id="category" ng-click ="changeValues()" name="'Categoria'" ng-model="carrerType.name" type="text" class="form-control" ng-options="carrerType | translate for carrerType in carrertypes" required>
         </select>
- </div>
+    </div>
     <label for="carrer" class="col-md-2 control-label">{{ 'CARRER' | translate }}:</label>
     <div class="col-md-3">
         <select id="carrer" name="'Carreira'"  ng-model="tutor.carrer" type="text" class="form-control" 
         ng-options="carrer.position for carrer in carres" required> 
         </select>
-</div>
+    </div>
 </div>
 <div class="form-group">
-<label for="phoneNumber" class="col-md-2 control-label">{{ 'PHONE_NUMBER' | translate }}:</label>
+    <label for="phoneNumber" class="col-md-2 control-label">{{ 'PHONE_NUMBER' | translate }}:</label>
     <div class="col-md-3">
          <input id="tutorPhoneNumber" name="'Telefone'" ng-model="tutor.phoneNumber" type="text" class="form-control" autocomplete="off" required/>
     </div>

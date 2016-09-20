@@ -12,12 +12,13 @@
 	    	<div class="panel panel-info">
 	
 				<div class="panel-heading">
-					<a data-toggle="modal" data-target="#selectTutorModal"><strong>{{'TUTOR' | translate}} <i class="fa fa-user-plus"></i></strong></a>
+					<a data-toggle="modal" ng-click="onOpenTutorDialog()" data-target="#selectTutorModal"><strong>{{'TUTOR' | translate}} <i class="fa fa-user-plus"></i></strong></a>
 				</div>
 				
 				<div class="panel-body">
 					<p><strong>{{'NAME' | translate }}:</strong> {{tutor.name}} {{tutor.surname}}</p>
-					<p><strong>{{'CATEGORY' | translate }}:</strong> {{tutor.category}}</p>
+					<p><strong>{{'CATEGORY' | translate }}:</strong> {{tutor.carrer.carrerType | translate}}</p>
+					<p><strong>{{'CARRER' | translate }}:</strong> {{tutor.carrer.position}}</p>
 					<p><strong>{{'PHONE_NUMBER' | translate }}:</strong> {{tutor.phoneNumber}}</p>
 			  	</div>
   			</div>
@@ -27,12 +28,13 @@
 	     	<div class="panel panel-warning">
 	
 				<div class="panel-heading">
-					<a data-toggle="modal" data-target="#selectTutoredModal"><strong>{{'TUTORED' | translate}} <i class="fa fa-user-plus"></i></strong></a>
+					<a data-toggle="modal" ng-click="onOpenTutoredDialog()" data-target="#selectTutoredModal"><strong>{{'TUTORED' | translate}} <i class="fa fa-user-plus"></i></strong></a>
 				</div>
 				
 				<div class="panel-body">
 					<p><strong>{{'NAME' | translate }}:</strong> {{tutored.name}} {{tutored.surname}}</p>
-					<p><strong>{{'CATEGORY' | translate }}:</strong> {{tutored.category}}</p>
+					<p><strong>{{'CATEGORY' | translate }}:</strong> {{tutored.carrer.category}}</p>
+					<p><strong>{{'CARRER' | translate }}:</strong> {{tutored.carrer.position}}</p>
 					<p><strong>{{'PHONE_NUMBER' | translate }}:</strong> {{tutored.phoneNumber}}</p>
 			  	</div>
   			</div>
@@ -58,7 +60,7 @@
 
    		<label for="tutorName" class="col-md-2 control-label">{{'HEALTH_FACILITY' | translate }}:</label>
 	   	<div class="col-md-2">
-	        <select id="questionType" name="'{{ 'QUESTION_TYPE' | translate }}'" ng-model="form.healthFacility" type="text" class="form-control" ng-options="healthFacility.healthFacility for healthFacility in healthFacilities" required>
+	        <select id="questionType" name="'{{ 'HEALTH_FACILITY' | translate }}'" ng-model="mentorship.healthFacility" type="text" class="form-control" ng-options="healthFacility.healthFacility for healthFacility in healthFacilities" required>
 	        </select>
    		</div>
 	</div>
@@ -66,7 +68,7 @@
 	<hr/>
 
 	<div class="alert alert-info" role="alert">
-		<a data-toggle="modal" data-target="#selectFromModal"><strong>{{'FORM' | translate}} <i class="fa fa-user-plus"></i></strong>:</a>
+		<a data-toggle="modal" ng-click="onOpenFormsDialog()" data-target="#selectFromModal"><strong>{{'FORM' | translate}} <i class="fa fa-user-plus"></i></strong>:</a>
 		<span>
 			<strong>{{form.code}} / {{form.name}}</strong>   |  
 			<strong>{{'PROGRAMMATIC_AREA' | translate}}: {{form.programmaticArea.name}}</strong>	
@@ -77,11 +79,11 @@
 
 	<div class="navbar navbar-default">
 		<div class="col-md-12">
-		    <button class="btn btn-success navbar-btn" ng-click="saveMentoringProcess()">
+		    <button class="btn btn-success navbar-btn" ng-click="saveMentoringProcess()" ng-disabled="isDisabled" >
 		      <i class="fa fa-save"></i>
 		      {{'SAVE' | translate}}
 		    </button>
-		    <button class="btn btn-default navbar-btn" ng-click = "clean()" ng-disabled="isDisabled" type="button">
+		    <button class="btn btn-default navbar-btn" ng-click = "clean()" type="button">
 		      <span class="fa fa-refresh"></span>
 		      {{'CLEAN' | translate}}
 		    </button>
