@@ -1,11 +1,11 @@
 <div class="sidebar-nav">
     <ul class="nav" menu >
         <li>
-            <a><i class="fa fa-users"></i> {{ 'TUTORES_AND_TUTOREDS' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <a id="tutorsAndTutoreds"><i class="fa fa-users"></i> {{ 'TUTORES_AND_TUTOREDS' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
                 <li><a ui-sref="createTutor"><i class="fa fa-user-plus"></i> {{ 'CREATE_TUTOR' | translate }}</a></li>
                 <li><a ui-sref="listTutor"><i class="fa fa-list"></i> {{ 'LIST_TUTOR' | translate }}</a></li>
-                <li><a ui-sref="createTutored"><i class="fa fa-user-plus"></i> {{ 'CREATE_TUTORED' | translate }}</a></li>
+                <li><a ui-sref="createTutored" id="createTutored"><i class="fa fa-user-plus"></i> {{ 'CREATE_TUTORED' | translate }}</a></li>
                 <li><a ui-sref="listTutored"><i class="fa fa-list"></i> {{ 'LIST_TUTORED' | translate }}</a></li>
             </ul>
         </li>
@@ -34,9 +34,9 @@
         </li>
 
         <li>
-            <a><i class="fa fa-file"></i> {{ 'MENTORING' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <a><i class="fa fa-gears"></i> {{ 'MENTORING' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
             <ul class="nav nav-second-level">
-                <li><a ui-sref="mentoringProcess.questions({questionId : questionId})"><i class="fa fa-file-text"></i> {{ 'CREATE_MENTORING_PROCESS' | translate }}</a></li>
+                <li><a ui-sref="mentoringProcess.questions({questionId : questionId})"><i class="fa fa-gear"></i> {{ 'CREATE_MENTORING_PROCESS' | translate }}</a></li>
                 <li><a ui-sref="listFormQuestions"><i class="fa fa-list"></i> {{ 'LIST_MENTORING_PROCESS' | translate }}</a></li>
             </ul>
         </li>

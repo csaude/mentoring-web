@@ -4,11 +4,11 @@
 	    <div class="col-md-6">
             <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="getFormsBySelectedFilter()" />
 
-            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click="cleanFormFilter()"/>
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click="onOpenFormsDialog()"/>
         </div>
 	</div>
 
-	<messages error-message="{{errorMessage}}" ></messages>
+	<messages error-message="{{errorMessageDialog}}" message={{messageDialog}} ></messages>
 
 	<hr>
 
