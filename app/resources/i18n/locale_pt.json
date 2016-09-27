@@ -1,4 +1,5 @@
 {
+	"VERSION" : "v1.0.0",
 	"CREATE" : "Cadastrar",
 	"CLEAN" : "Limpar",
 	"SEARCH" : "Pesquisar",
