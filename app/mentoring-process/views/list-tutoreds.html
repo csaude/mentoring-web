@@ -36,10 +36,10 @@
 <table st-table="tutoredsDisplayed" class="table table-bordered" st-safe-src="tutoreds" >
 	<thead>
 		<tr>
-			<th class="col-md-1">Codigo</th>
-			<th class="col-md-5">Nome</th>
-			<th class="col-md-2">Apelido</th>
-			<th class="col-md-3">Categoria</th>
+			<th class="col-md-1">{{'CODE' | translate}}</th>
+			<th class="col-md-5">{{'NAME' | translate}}</th>
+			<th class="col-md-2">{{'SURNAME' | translate}}</th>
+			<th class="col-md-3">{{'CARRER' | translate}}</th>
 		</tr>	
 	</thead>
 
@@ -48,7 +48,7 @@
 			<td>{{tutored.code}}</td>
 			<td>{{tutored.name}}</td>
 			<td>{{tutored.surname}}</td>
-			<td>{{tutored.category}}</td>
+			<td>{{tutored.carrer.position}}</td>
 		</tr>
 	</tbody>
 

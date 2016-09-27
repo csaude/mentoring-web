@@ -107,8 +107,6 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 			var form = response.data;
 
 			$scope.message = "O formulário "+form.name+" foi criado com sucesso";
-			$scope.form = {};
-			$scope.addedQuestions = [];
 			$scope.isDisabled = true;
 		});
 	};
@@ -117,6 +115,8 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 		$scope.form = {};
 		$scope.message = "";
 		$scope.hasErrors =[];
+		$scope.form = {};
+		$scope.addedQuestions = [];
 	};
 
 	$scope.cleanForm();
