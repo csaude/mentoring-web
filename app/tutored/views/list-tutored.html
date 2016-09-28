@@ -38,11 +38,11 @@
 <table st-table="tutoredsDisplayed" class="table table-bordered" st-safe-src="tutoreds" >
 	<thead>
 		<tr>
-			<th class="col-md-1">Codigo</th>
-			<th class="col-md-3">Nome</th>
-			<th class="col-md-3">Apelido</th>
-			<th class="col-md-2">Cargo</th>
-			<th class="col-md-2">Telemovel</th>
+			<th class="col-md-1">{{'CODE' | translate}}</th>
+			<th class="col-md-3">{{'NAME' | translate}}</th>
+			<th class="col-md-3">{{'SURNAME' | translate}}</th>
+			<th class="col-md-2">{{'CARRER' | translate}}</th>
+			<th class="col-md-2">{{'PHONE_NUMBER' | translate}}</th>
 		</tr>	
 	</thead>
 
@@ -58,7 +58,7 @@
 
 	<tfoot style="border:none;">
         <tr>
-            <td colspan="4" class="text-center">
+            <td colspan="5" class="text-center">
                 <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
             </td>
         </tr>
