@@ -1,4 +1,7 @@
-mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questionService", function ($scope, $rootScope, questionService){
+mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questionService", "resourceUtilsService", function ($scope, $rootScope, questionService, resourceUtilsService){
+
+	$scope.questionTypes = [];
+	$scope.questionCategories = [];
 
 	$scope.getQuestions = function (){
 
@@ -40,6 +43,23 @@ mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questi
 		$scope.errorMessage = "";
 
 		$scope.question = question;
+
+		// just to return QuestionTypes an QuestionsCategories
+		(function(){
+
+			resourceUtilsService.getQuestionTypes().then(function(response){
+				if(response.data){
+					$scope.questionTypes = response.data.questionType;
+				}
+			});
+
+			resourceUtilsService.getQuestionCategories().then(function(response){
+				if(response.data){
+					$scope.questionCategories = response.data.questionCategory;
+				}
+			});
+
+		})();
 	};
 
 
