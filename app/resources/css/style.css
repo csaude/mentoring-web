@@ -53,11 +53,11 @@
 }
 
 @media (min-width: 960px) {
-	.sidebar {
+	.sidebar, footer {
 		margin-left: 0px;
 	}
 	
-	.sidebar.is-toggled {
+	.sidebar.is-toggled, footer.is-toggled {
 		margin-left: -251px;
 	}
 }
@@ -84,11 +84,11 @@
 }
 
 @media (min-width: 960px) {
-	.content {
+	.content, footer {
 		margin-left: 260px;
 	}
 	
-	.content.is-toggled {
+	.content.is-toggled, footer.is-toggled {
 		margin-left: 0;
 	}
 }
@@ -197,11 +197,11 @@ table tbody tr:hover {
 }
 
 footer {
-    padding: 0.8em;
+    padding: 0.6em;
     color: white;
     text-align: center;
-    right:0;
-    left:0; 
+    right: 0;
+    left: -11px; 
     bottom: 0;
     background:#00695C;
     position: fixed;
