@@ -65,7 +65,7 @@ mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorSer
 	$scope.getCarrertypes = function(){
 		resourceUtilsService.getCarrertypes().then(function (response){
 			$scope.carrertypes = [];
-			$scope.carrertypes = response.data.carrerType;
+			$scope.carrertypes = response.data.careerType;
 		});
 
 	};
@@ -74,11 +74,11 @@ mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorSer
 			$scope.carres = [];
 			carrerService.getCarrerByCarrerType($scope.carrerType.name).then(function (response){
 				if(response.data){
-                if(!Array.isArray(response.data.carrer)){
-                    $scope.carres.push(response.data.carrer);
+                if(!Array.isArray(response.data.career)){
+                    $scope.carres.push(response.data.career);
                     return;
                 }
-				$scope.carres = response.data.carrer;
+				$scope.carres = response.data.career;
 			}
 		});
 	};

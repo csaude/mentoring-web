@@ -112,6 +112,13 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         resolve : {init : "init"}
     })
 
+    .state("listMentoringProcess", {
+        url : "/mentoringProcess/list",
+        templateUrl : "mentoring-process/views/list-mentoring-process.html",
+        controller : "listMentoringProcessController",
+        resolve : {init : "init"}
+    })
+
     .state("formUpdate",{
         url : "/formUpdate",
         templateUrl : "form/views/update-form-template.html",
