@@ -15,10 +15,10 @@
         <select id="category" ng-click ="onSelectCarrerType()" name="'Categoria'" ng-model="carrerType.name" type="text" class="form-control" ng-options="carrerType | translate for carrerType in carrertypes" required>
         </select>
     </div>
-    <label for="carrer" class="col-md-2 control-label">{{ 'CARRER' | translate }}:</label>
+    <label for="career" class="col-md-2 control-label">{{ 'CARRER' | translate }}:</label>
     <div class="col-md-3">
-        <select id="carrer" name="'Carreira'"  ng-model="tutored.carrer" type="text" class="form-control" 
-        ng-options="carrer.position for carrer in carres" required> 
+        <select id="career" name="'Carreira'"  ng-model="tutored.career" type="text" class="form-control" 
+        ng-options="career.position for career in carres" required> 
         </select>
     </div>
 </div>

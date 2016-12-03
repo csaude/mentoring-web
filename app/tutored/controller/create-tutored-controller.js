@@ -12,7 +12,6 @@ mentoring.controller("createTutoredController", ["$scope", "$rootScope", "tutore
 			return;
 		
 		tutorededBeanResource.tutored = $scope.tutored;
-
 		tutoredService.createTutored(tutorededBeanResource).then(function success(response){
 
 			var tutored = response.data;
