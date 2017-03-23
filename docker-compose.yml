@@ -3,7 +3,7 @@ services:
     apache2-mentoring:
        build: apache
        ports: 
-        - "8080:80"
+        - "80:80"
        network_mode: bridge
        external_links:
          - tomcat-mentoring
