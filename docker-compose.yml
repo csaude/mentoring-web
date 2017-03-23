@@ -1,0 +1,16 @@
+version: '2'
+services:
+    apache2-mentoring:
+       build: apache
+       ports: 
+        - "80:80"
+       network_mode: bridge
+       external_links:
+         - tomcat-mentoring
+       container_name: apache2-mentoring
+       environment:
+          COMPOSE_HTTP_TIMEOUT: 200
+       # volumes:
+       #   - /opt/data
+       hostname: apache2-mentoring
+       restart: unless-stopped
