@@ -13,6 +13,7 @@ mentoring.controller("updateTutoredController", ["$scope", "$rootScope", "tutore
                 if(!Array.isArray(response.data.tutored)){
                     $scope.tutoreds = [];
                     $scope.tutoreds.push(response.data.tutored);
+                    console.log(response.data.tutored);
                     return;
                 }
                 

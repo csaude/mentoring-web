@@ -101,6 +101,20 @@ module.exports = function(grunt){
                 ]
             }
         },
+
+        compress :{
+            main: {
+                options: {
+                  archive: 'apache/<%= pkg.name %>.zip'
+                },
+                files: [{
+                  expand: true,
+                  cwd: 'dist/',
+                  src: ['**/*'],
+                  dest: '/'
+                }]
+              }
+        },
         
         connect:{
             server:{
@@ -140,10 +154,12 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-connect-proxy');
+    grunt.loadNpmTasks('grunt-contrib-compress');
     
     grunt.registerTask('test', ['jshint']);
     grunt.registerTask('default', ['jshint']);
     grunt.registerTask('build', ['jshint','copy', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
+    grunt.registerTask('package', ['jshint','copy', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin', 'compress']);
     
     grunt.registerTask('serve', function(){
         return grunt.task.run(['build', 'configureProxies:server', 'connect']);
