@@ -76,6 +76,7 @@
 	"PRECISION" : "Precisão",
 	"RELIABILITY" : "Confiabilidade",
 	"INTEGRITY" : "Integridade",
+	"CONFIDENTIALITY" : "Confidencialidade",
 	"BOOLEAN" : "Boleano",
 	"NUMERIC" : "Numerica",
 	"DECIMAL" : "Decimal",
