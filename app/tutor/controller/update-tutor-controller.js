@@ -3,6 +3,7 @@ mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorSer
 	var tutorBeanResource = {
 		userContext: $rootScope.userContext
 	};
+	
 	$scope.carrerType = {name:""};
 
 	$scope.getTutorsBySelectedFilter = function(){
@@ -24,8 +25,6 @@ mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorSer
                $scope.tutors = [];
                $scope.errorMessage = "Nenhum tutor encontrado para o filtro solicitado!"; 
             }
-
-           
 
 		});
 	};
