@@ -139,6 +139,12 @@ module.exports = function(grunt){
                         context: '/mentoring-integ',
                         host: 'localhost',
                         port: 8081
+                    },
+
+                    {
+                        context: '/account-manager-web',
+                        host: 'localhost',
+                        port: 8080
                     }
                 ]
             }

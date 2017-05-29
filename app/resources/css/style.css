@@ -207,3 +207,18 @@ footer {
     position: fixed;
     font-weight: bold;
 }
+
+.menu-button{
+	float: right;
+	margin-top: 15px;
+	margin-right: 30px;
+}
+
+.menu-button ul{
+	background-color: #fff;
+	border-radius: 3px 3px 3px 3px;
+}
+
+.menu-button ul a:hover{
+	border-radius: 3px 3px 3px 3px;
+}

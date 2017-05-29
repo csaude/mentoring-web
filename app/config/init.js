@@ -1,12 +1,15 @@
-mentoring.factory('init', ['$rootScope', '$http', function($rootScope) {
+mentoring.factory('init', ['$rootScope', '$location', '$cookies', function($rootScope, $location, $cookies) {
 
 	var loadContext  = function(){
-		$rootScope.userContext = {
-			id: "1",
-			username: "steliomo"
-		};
-	};
 
+		// var userContext = $cookies.getObject("usercontext");
+
+		// if (!usercontext) {
+		// 	return;
+		// };
+
+		// $rootScope.userContext = userContext.data;
+	};
 	
 	return {
 		context : loadContext()

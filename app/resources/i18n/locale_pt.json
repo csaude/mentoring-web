@@ -1,5 +1,6 @@
 {
 	"VERSION" : "v1.0.0",
+	"YEAR" : "2017",
 	"CREATE" : "Cadastrar",
 	"CLEAN" : "Limpar",
 	"SEARCH" : "Pesquisar",
@@ -10,6 +11,10 @@
 	"PREVIEWS" : "Anterior", 
 	"CODE" : "Código",
 	"NAME" : "Nome",
+	"START_SESSION" : "Iniciar a Sessão",
+	"SUBMIT" : "Entrar",
+	"USER" : "Utilizador",
+	"PASSWORD" : "Senha",
 	"SURNAME" : "Apelido",
 	"CATEGORY" : "Categoria",
 	"DESCRIPTION" : "Descrição",
