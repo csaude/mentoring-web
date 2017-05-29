@@ -1,0 +1,36 @@
+<div class="header-menu">
+    <p>Ligar Tutor a Area Programatica<p>
+</div>
+
+<form class="form-horizontal" name="linkTutorController" novalidate>
+    
+    <div class="navbar navbar-default">
+        <div class="col-md-6">
+            <input type="submit" class="btn btn-success navbar-btn" value="Cadastrar" ng-click="getTutors()"/>
+            <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "linkTutorProgramaticArea()"/>
+        </div>
+    </div>
+    
+    <!-- Messages   -->
+    <messages message="{{message}}" error-message="{{errorMessage}}" has-errors="hasErrors" ></messages>
+   
+    <hr/>
+    <div>
+
+    <div class="form-group">
+    <label for="tutor" class="col-md-2 control-label">{{ 'TUTOR' | translate }}:</label>
+    <div class="col-md-3">
+           <select id="tutor" name="'Tutor'" type="text" class="form-control" ng-model="tutorProgramaticArea.tutor" ng-options="tutor.name for tutor in tutors" value="{{tutor}}" require>
+        </select>
+    </div>
+
+    <label for="tutor" class="col-md-2 control-label">{{ 'PROGRAMMATIC_AREAS' | translate }}:</label>
+    <div class="col-md-3">
+        <select id="programaticArea"  type="text" class="form-control"  ng-model="tutorProgramaticArea.programmaticArea" ng-options="programmaticArea.name for programmaticArea in programmaticAreas" value="{{programmaticArea}}" required> 
+        </select>
+    </div>
+  </div>
+</div>
+
+    <hr/>
+</form>

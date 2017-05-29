@@ -142,6 +142,14 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
     .state("formUpdate.questionsDetails",{
         url : "/form/questionsDetails",
         templateUrl : "form/views/update-form-questions.html"
+    })
+
+    .state("linkTutor",{
+        url : "/tutor",
+        templateUrl : "tutor/views/link-tutor-to-programatic-area.html",
+        controller : "linkTutorController",
+        resolve: {init: "init"}
+
     });
 
 }])
