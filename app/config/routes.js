@@ -1,4 +1,4 @@
-mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', "$locationProvider",     function($stateProvider, $urlRouterProvider, $translateProvider, $locationProvider){
+mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', "$locationProvider", function($stateProvider, $urlRouterProvider, $translateProvider, $locationProvider){
 
     //init translate
     $translateProvider.preferredLanguage('pt');
@@ -15,7 +15,15 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
     
     .state("home", {
     	url: "/home",
-    	templateUrl: "home.html",
+    	templateUrl: "home/views/home.html",
+        controller : "homeController",
+        resolve: {init: "init"}
+    })
+
+    .state("login", {
+        url: "/login",
+        templateUrl: "home/views/login.html",
+        controller : "loginController",
         resolve: {init: "init"}
     })
 
@@ -136,4 +144,27 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         templateUrl : "form/views/update-form-questions.html"
     });
 
+}])
+
+.run(['$rootScope','$location','$cookies',
+    function ($rootScope, $location, $cookies) {
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+
+            var usercontext = $cookies.getObject("usercontext");
+
+            if ($location.path() !== '/login' && !usercontext) {
+                $location.path('/login');
+                return;
+            }
+
+            if ($location.path() === '/login' && usercontext && usercontext.isLogged) {
+                $rootScope.usercontext = usercontext.data;
+                $location.path('/home');
+            }
+
+            if(usercontext && usercontext.isLogged){
+                $rootScope.visible = true;
+            }
+        });
 }]);
