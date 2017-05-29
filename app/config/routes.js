@@ -158,12 +158,12 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
                 return;
             }
 
-            if ($location.path() === '/login' && usercontext && usercontext.isLogged) {
+            if ($location.path() === '/login' && usercontext) {
                 $rootScope.usercontext = usercontext.data;
                 $location.path('/home');
             }
 
-            if(usercontext && usercontext.isLogged){
+            if(usercontext){
                 $rootScope.visible = true;
             }
         });
