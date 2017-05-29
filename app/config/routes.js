@@ -159,7 +159,7 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
             }
 
             if ($location.path() === '/login' && usercontext) {
-                $rootScope.usercontext = usercontext.data;
+                $rootScope.userContext = usercontext.data;
                 $location.path('/home');
             }
 
