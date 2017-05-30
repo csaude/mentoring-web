@@ -1,4 +1,4 @@
-mentoring.controller("createSectorController", ["$scope", "$rootScope", "$cookies", "programmaticAreaService", function($scope, $rootScope, $cookies, programmaticAreaService){
+mentoring.controller("createSectorController", ["$scope", "$rootScope", "programmaticAreaService", function($scope, $rootScope, programmaticAreaService){
 
 	var programmaticAreaBeanResource = {
 		userContext: $rootScope.userContext
