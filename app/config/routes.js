@@ -159,12 +159,12 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
             }
 
             if ($location.path() === '/login' && usercontext) {
-                $rootScope.userContext = usercontext.data;
                 $location.path('/home');
             }
 
             if(usercontext){
                 $rootScope.visible = true;
+                $rootScope.userContext = usercontext.data;
             }
         });
 }]);
