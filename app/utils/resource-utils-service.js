@@ -1,18 +1,19 @@
-mentoring.service("resourceUtilsService", ["$http", function ($http) {
+mentoring.service("resourceUtilsService", ['requestProcessService', function (requestProcessService) {
 
 	this.getProvinces = function(){
-		return $http.get('/mentoring-integ/services/utils/provinces');
+		return requestProcessService.get('/mentoring-integ/services/utils/provinces');
 	};
 
 	this.getQuestionTypes = function(){
-		return $http.get('/mentoring-integ/services/utils/questiontypes');
+		return requestProcessService.get('/mentoring-integ/services/utils/questiontypes');
 	};
 
 	this.getQuestionCategories = function(){
-		return $http.get('/mentoring-integ/services/utils/questionscategories');
+		return requestProcessService.get('/mentoring-integ/services/utils/questionscategories');
 	};
+
 	this.getCarrertypes = function(){
-		return $http.get('/mentoring-integ/services/utils/careertypes');
+		return requestProcessService.get('/mentoring-integ/services/utils/careertypes');
 	};
 
 }]);

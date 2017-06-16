@@ -14,14 +14,15 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 
 		questionBeanResource.question = $scope.question;
 
-		questionService.createQuestion(questionBeanResource).then(function (response){
-
-			var question = response.data;
-			$scope.message = "A questão com o código "+question.code+" foi cadastrada com sucesso!";
-			$scope.question = {};
-
-		});
-          
+		questionService.createQuestion(questionBeanResource)
+			.then(function (response){
+				var question = response.data;
+				$scope.message = response.data;
+				$scope.question = {};
+			})
+			.catch(function(error){
+				$scope.message = error.data;
+			});
 	};
 
 	$scope.cleanQuestion = function (){

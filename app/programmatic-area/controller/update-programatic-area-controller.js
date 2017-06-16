@@ -40,7 +40,7 @@ var programmaticAreaBeanResource = {
 
 		programmaticAreaBeanResource.programmaticArea = $scope.programmaticArea;
 		programmaticAreaService.updateProgrammaticArea(programmaticAreaBeanResource).then(function(response){
-			$scope.message = "Area Programatica editada com sucesso!";
+			$scope.message = response.data;
 			$scope.isDisabled = true;
 		});
 		

@@ -14,9 +14,7 @@ mentoring.controller("createTutorController", ["$scope", "$rootScope", "tutorSer
 		tutorBeanResource.tutor = $scope.tutor;
 
 		tutorService.createTutor(tutorBeanResource).then(function success(response){
-
-			var tutor = response.data;
-			$scope.message = "O Tutor "+tutor.name+" foi cadastrado com sucesso!";
+			$scope.message = response.data;
 			$scope.tutor = {};	
 		});
 	};

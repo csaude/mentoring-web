@@ -45,7 +45,7 @@ mentoring.controller("updateTutorController", ["$scope", "$rootScope", "tutorSer
 
 		tutorBeanResource.tutor = $scope.tutor;
 		tutorService.updateTutor(tutorBeanResource).then(function(response){
-			$scope.message = "Tutor editado com sucesso!";
+			$scope.message = response.data;
 			$scope.isDisabled = true;
 		});
 		

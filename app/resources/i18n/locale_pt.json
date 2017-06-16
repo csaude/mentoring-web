@@ -97,5 +97,17 @@
 	"HEALTH_TECHNICIAN" : "Técnico de Saúde",
 	"HEALTH_TECHNICIAL_SPECIALIST" : "Técnico Especializado de Saúde",
 	"HEALTH_ASSOCIATE_DEGREE_N1" : "Técnico Superior de Saúde N1",
-	"HEALTH_ASSOCIATE_DEGREE_N2" : "Técnico Superior de Saúde N2"
+	"HEALTH_ASSOCIATE_DEGREE_N2" : "Técnico Superior de Saúde N2",
+	"SPINNER" : "A processar... por favor aguarde...",
+	"QUESTION_CREATED_WITH_SUCCESS" : "A questão foi criada com sucesso!",
+	"CONNECTION_PROBLEMS" : "Problemas de comunicação com o servidor... Tente novamente",
+	"TUTORED_CREATED_WITH_SUCCESS" : "O Tutorando foi criado com sucesso!",
+	"TUTORED_EDITED_WITH_SUCCESS" : "Tutorando foi editado com sucesso",
+	"TUTOR_CREATED_WITH_SUCCESS" : "O Tutor foi criado com sucesso!",
+	"TUTOR_EDITED_WITH_SUCCESS" : "O Tutor foi editado com sucesso",
+	"AREA_CREATED_WITH_SUCCESS" : "Área Programática foi criada com sucesso",
+	"AREA_EDITED_WITH_SUCCESS" : "Área Programática foi editada com sucesso",
+	"FORM_CREATED_WITH_SUCESS" : "O Formulário foi criado com sucesso",
+	"FORM_EDITED_WITH_SUCESS" : "O Formulário foi editado com sucesso",
+	"MENTORING_CREATED_WITH_SUCCESS" : "Processo de Mentoria realizado com sucesso"
 }
