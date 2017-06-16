@@ -122,9 +122,7 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 				return;
 			}
 
-			var form = response.data;
-
-			$scope.message = "O formulário "+form.name+" foi actualizado com sucesso";
+			$scope.message = response.data;
 			$scope.form = {};
 			$scope.questions = [];
 			$scope.isDisabled = true;

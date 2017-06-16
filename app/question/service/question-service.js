@@ -1,7 +1,36 @@
-mentoring.service("questionService", ["$http", function ($http){
+mentoring.service("questionService", ["$http", "$q", '$filter', "spinnerService", function ($http, $q, $filter, spinnerService){
 
 	this.createQuestion = function (questionBeanResource){
-		return $http.post('/mentoring-integ/services/questions', questionBeanResource);
+
+		return $q(function(resolve, reject){
+
+			spinnerService.show('processSpinner');
+
+			$http.post('/mentoring-integ/services/questions', questionBeanResource)
+				.success(function(response){
+
+					var message = response.message;
+
+					if(message){
+						
+						reject({
+							message : message
+						});
+
+						return;
+					}
+
+					resolve({
+						data : $filter('translate')('QUESTION_CREATED_WITH_SUCCESS')
+					});
+				})
+				.error(function(error){
+					console.log(error);
+				})
+				.finally(function(){
+					spinnerService.hide('processSpinner');
+				});
+		});
 	};
 
 	this.getQuestions = function(question){

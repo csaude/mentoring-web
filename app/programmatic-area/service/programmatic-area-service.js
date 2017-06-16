@@ -1,25 +1,24 @@
-mentoring.service("programmaticAreaService", ["$http", function($http){
+mentoring.service("programmaticAreaService", ['$filter', 'requestProcessService', function($filter, requestProcessService){
 
 	this.createProgrammaticArea = function (programmaticAreaBeanResource) {
-
-		return $http.post('/mentoring-integ/services/programmaticareas', programmaticAreaBeanResource);
+		return requestProcessService.post('/mentoring-integ/services/programmaticareas', 
+			programmaticAreaBeanResource, $filter('translate')('AREA_CREATED_WITH_SUCCESS'));
 	};
 
 
 	this.getProgrammaticAreas = function (programmaticarea) {
 
-		return $http.get('/mentoring-integ/services/programmaticareas',
-			{
-				params: {
-					code: programmaticarea.code,
-					name: programmaticarea.name	
-				}
-			}
-		);
+		var params ={
+						code: programmaticarea.code,
+						name: programmaticarea.name	
+					};
+
+		return requestProcessService.get('/mentoring-integ/services/programmaticareas', params);
 	};
 
 	this.updateProgrammaticArea = function(programmaticAreaBeanResource){
-		return $http.put('/mentoring-integ/services/programmaticareas', programmaticAreaBeanResource);
+		return requestProcessService.put('/mentoring-integ/services/programmaticareas', 
+			programmaticAreaBeanResource, $filter('translate')('AREA_EDITED_WITH_SUCCESS'));
 	};
 
 }]);

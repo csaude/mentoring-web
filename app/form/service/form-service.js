@@ -1,23 +1,24 @@
-mentoring.service("formService", ["$http", function ($http){
+mentoring.service("formService", ['$filter', 'requestProcessService', function ($filter, requestProcessService){
 
 	this.createForm = function (formBeanResource){
-		return $http.post('/mentoring-integ/services/forms', formBeanResource);
+		return requestProcessService.post('/mentoring-integ/services/forms', formBeanResource, 
+			$filter('translate')('FORM_CREATED_WITH_SUCESS'));
 	};
 
 	this.updateForm = function (formBeanResource){
-		return $http.put('/mentoring-integ/services/forms', formBeanResource);
+		return requestProcessService.put('/mentoring-integ/services/forms', formBeanResource,
+			$filter('translate')('FORM_EDITED_WITH_SUCESS'));
 	};
 
 	this.getForms = function (form) {
-		return $http.get('/mentoring-integ/services/forms',
-			{
-				params: {
-					code: form.code,
-					name: form.name,
-					programmaticAreaCode: form.programmaticArea ? form.programmaticArea.code : form.programmaticArea	
-				}
-			}
-		);
+
+		var params = {
+						code: form.code,
+						name: form.name,
+						programmaticAreaCode: form.programmaticArea ? form.programmaticArea.code : form.programmaticArea	
+					};
+
+		return requestProcessService.get('/mentoring-integ/services/forms', params);
 	};
 
 }]);

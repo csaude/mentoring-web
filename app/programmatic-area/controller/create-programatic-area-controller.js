@@ -12,9 +12,7 @@ mentoring.controller("createSectorController", ["$scope", "$rootScope", "program
 		programmaticAreaBeanResource.programmaticArea = $scope.programmaticArea;
 
 		programmaticAreaService.createProgrammaticArea(programmaticAreaBeanResource).then(function success(response){
-
-			var programmaticArea = response.data;
-			$scope.message = "A Area Programatica "+programmaticArea.name+" foi cadastrado com sucesso!";
+			$scope.message = response.data;
 			$scope.programmaticArea = {};	
 		});
 	};

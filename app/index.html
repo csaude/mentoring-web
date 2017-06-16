@@ -61,6 +61,10 @@
         <div ng-include = "'menu.html'" class="navbar-default"/>
     </aside>
 
+    <spinner name="processSpinner" img-src="resources/img/ajax-loader.gif" id="spinner">
+         <p>{{ 'SPINNER' | translate }}</p>
+    </spinner>
+
 	<section class="content">
 		<div ui-view />
 	</section>
@@ -76,6 +80,7 @@
     <script type="text/javascript" src="../bower_components/angular-translate/angular-translate.min.js"></script>
     <script type="text/javascript" src="../bower_components/lodash/dist/lodash.min.js"></script>
     <script type="text/javascript" src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="../bower_components/raphael/raphael.min.js"></script>
@@ -91,6 +96,7 @@
     <script type="text/javascript" src="config/translate.js"></script>
 
     <script type="text/javascript" src="utils/resource-utils-service.js"></script>
+    <script type="text/javascript" src="utils/request-process-service.js"></script>
     <script type="text/javascript" src="location/service/district-service.js"></script>
     <script type="text/javascript" src="location/service/health-facility-service.js"></script>
     

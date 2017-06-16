@@ -43,7 +43,7 @@ mentoring.controller("updateTutoredController", ["$scope", "$rootScope", "tutore
 
 		tutoredBeanResource.tutored = $scope.tutored;
 		tutoredService.updateTutored(tutoredBeanResource).then(function(response){
-			$scope.message = "Tutorando editado com sucesso!";
+			$scope.message = response.data;
 			$scope.isDisabled = true;
 		});
 		

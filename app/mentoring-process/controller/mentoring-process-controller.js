@@ -129,7 +129,7 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 		mentorshipBeanResource.form = $scope.form;
 
 		mentorshipService.createMentorship(mentorshipBeanResource).then(function(response){
-			$scope.message = "O processo de mentoria com o código "+ response.data.code + " foi cadastrado com sucesso!";
+			$scope.message = response.data;
 			$scope.isDisabled = true;
 		});
 
