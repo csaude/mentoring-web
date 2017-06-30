@@ -48,7 +48,7 @@ module.exports = function(grunt){
                     {
                         expand : true,
                         cwd: 'app/resources',
-                        src: ['**/*.png', '**/*.json'],
+                        src: ['**/*.png', '**/*.json', '**/*.gif'],
                         dest: 'dist/<%= pkg.name %>/resources'
                     }
                 ]
