@@ -109,5 +109,20 @@
 	"AREA_EDITED_WITH_SUCCESS" : "Área Programática foi editada com sucesso",
 	"FORM_CREATED_WITH_SUCESS" : "O Formulário foi criado com sucesso",
 	"FORM_EDITED_WITH_SUCESS" : "O Formulário foi editado com sucesso",
-	"MENTORING_CREATED_WITH_SUCCESS" : "Processo de Mentoria realizado com sucesso"
+	"MENTORING_CREATED_WITH_SUCCESS" : "Processo de Mentoria realizado com sucesso",
+	"SERVICE_AGENT" : "Agente de Serviço",
+	"REFERRED_MONTH" :"Mês de Refêrencia",
+	"PERFORMED_DATE" :"Data de realização",
+	"JANUARY" : "Janeiro",
+	"FEBRUARY" : "Fevereiro",
+	"MARCH" : "Março",
+	"APRIL" : "Abril",
+	"MAY" : "Maio",
+	"JUNE" : "Junho",
+	"JULY" : "Julho",
+	"AUGUST" : "Agosto",
+	"SEPTEMBER" : "Setembro",
+	"OCTOBER" : "Outubro",
+	"NOVEMBER" : "Novembro",
+	"DECEMBER" : "Dezembro"
 }

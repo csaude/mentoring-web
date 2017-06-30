@@ -282,13 +282,17 @@ mentoring.controller("mentoringProcessController", ["$scope", "$rootScope", "$st
 	};
 
 
-	$scope.getProvinces = function(){
+	(function(){
 		resourceUtilsService.getProvinces().then(function(response){
 			$scope.provinces = response.data.province;
 		});
-	};
+	})();
 
-	$scope.getProvinces();
+	(function(){
+		resourceUtilsService.getMonths().then(function(response){
+			$scope.months = response.data.month;
+		});
+	})();
 
 	$scope.onSelectProvince = function(){
 		districtSevice.getDistrictsByProvince($scope.province).then(function(response){

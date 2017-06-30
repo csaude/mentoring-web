@@ -4,6 +4,10 @@ mentoring.service("resourceUtilsService", ['requestProcessService', function (re
 		return requestProcessService.get('/mentoring-integ/services/utils/provinces');
 	};
 
+	this.getMonths = function(){
+		return requestProcessService.get('/mentoring-integ/services/utils/months');
+	};
+
 	this.getQuestionTypes = function(){
 		return requestProcessService.get('/mentoring-integ/services/utils/questiontypes');
 	};
@@ -15,5 +19,5 @@ mentoring.service("resourceUtilsService", ['requestProcessService', function (re
 	this.getCarrertypes = function(){
 		return requestProcessService.get('/mentoring-integ/services/utils/careertypes');
 	};
-
+	
 }]);

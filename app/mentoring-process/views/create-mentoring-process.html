@@ -45,7 +45,24 @@
 	<hr/>
 
 	<div class="form-group">
-	    <label for="tutorName" class="col-md-1 control-label">{{'PROVINCE' | translate }}:</label>
+	    <label for="performedDate" class="col-md-2 control-label">{{'PERFORMED_DATE' | translate }}:</label>
+	   	<div class="col-md-2">
+			<input id="performedDate" ng-model="mentorship.performedDate" name="{{PERFORMED_DATE | translate}}" type="text" class="form-control" autocomplete="off" readonly required datepicker>
+   		</div>
+
+   		<label for="referredMonth" class="col-md-2 control-label">{{'REFERRED_MONTH' | translate }}:</label>
+	   	<div class="col-md-2">
+	        <select id="referredMonth" name="'{{ 'REFERRED_MONTH' | translate }}'" ng-model="mentorship.referredMonth" type="text" class="form-control" ng-options="month | translate for month in months">
+	        </select>
+   		</div>
+
+   		<label class="col-md-2 control-label"></label>
+	   	<div class="col-md-2">
+   		</div>
+	</div>
+
+	<div class="form-group">
+	    <label for="tutorName" class="col-md-2 control-label">{{'PROVINCE' | translate }}:</label>
 	   	<div class="col-md-2">
 	        <select id="province" name="'{{ 'PROVINCE' | translate }}'" ng-model="province" type="text" class="form-control" ng-click="onSelectProvince()">
 	        	<option ng-repeat="province in provinces" label="{{province | translate}}" value="{{province}}"></option>	
