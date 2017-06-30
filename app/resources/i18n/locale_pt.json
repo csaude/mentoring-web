@@ -1,5 +1,5 @@
 {
-	"VERSION" : "v1.0.0",
+	"VERSION" : "v1.2.0",
 	"YEAR" : "2017",
 	"CREATE" : "Cadastrar",
 	"CLEAN" : "Limpar",
@@ -44,7 +44,6 @@
 	"EDIT_FORM" : "Editar Formulários",
 	"LIST_FORM" : "Listar Formulários",
 	"REPORT" : "Relatórios",
-	"CREATE_FORM" : "Criar Formulário",
 	"ADD_QUESTIONS" : "Adicionar Questões",
 	"PROGRAMMATIC_AREA" : "Área Programática",
 	"PROGRAMMATIC_AREAS" : "Áreas Programáticas",
