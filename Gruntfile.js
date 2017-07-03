@@ -137,13 +137,13 @@ module.exports = function(grunt){
                 proxies: [
                     {
                         context: '/mentoring-integ',
-                        host: '192.168.56.1',
+                        host: 'localhost',
                         port: 8081
                     },
 
                     {
                         context: '/account-manager-web',
-                        host: '192.168.56.1',
+                        host: 'localhost',
                         port: 8080
                     }
                 ]
