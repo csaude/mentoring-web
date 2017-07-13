@@ -1,5 +1,6 @@
 {
 	"VERSION" : "v1.2.0",
+	"WELCOME" : "Seja bem vindo ao sistema de Mentoria da FGH",
 	"YEAR" : "2017",
 	"CREATE" : "Cadastrar",
 	"CLEAN" : "Limpar",
