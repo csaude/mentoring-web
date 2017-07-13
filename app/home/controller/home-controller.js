@@ -6,6 +6,7 @@ mentoring.controller('homeController', ['$scope', '$filter', 'mentorshipService'
 
 		mentorshipService.findSubmitedSessionsPerHealthFacility()
 						 .then(function(response){
+							 
 							 $scope.submissions = response.data.submitedSessions;
 							 
 							 Morris.Bar({
@@ -20,9 +21,17 @@ mentoring.controller('homeController', ['$scope', '$filter', 'mentorshipService'
 								 labels:[$filter('translate')('NUMBER_OF_SUBMISSIONS')],
 
 								 hideHover: 'auto',
+								 
+								 barRatio: 0.4,
+								 
+								 xLabelAngle: 45,
+
+								 gridTextWeight: 'bold',
 
 								 resize: true
 								});
+
+								$("svg").css("min-height", "380");
 						 })
 						 .catch(function(error){
 							 console.log(error);
