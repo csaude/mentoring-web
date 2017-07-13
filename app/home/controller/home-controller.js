@@ -1,48 +1,36 @@
-mentoring.controller('homeController', ['$scope', function($scope) {
+mentoring.controller('homeController', ['$scope', '$filter', 'mentorshipService', function($scope, $filter, mentorshipService) {
+
+	$scope.submissions = [];
 
 	(function(){
 
-		Morris.Bar({
+		mentorshipService.findSubmitedSessionsPerHealthFacility()
+						 .then(function(response){
+							 $scope.submissions = response.data.submitedSessions;
+							 
+							 Morris.Bar({
+								 element: 'morris-bar-chart',
 
-	        element: 'morris-bar-chart',
+								 data: $scope.submissions,
 
-	        data: [{
-	            y: '2006',
-	            a: 100,
-	            b: 90
-	        }, {
-	            y: '2007',
-	            a: 75,
-	            b: 65
-	        }, {
-	            y: '2008',
-	            a: 50,
-	            b: 40
-	        }, {
-	            y: '2009',
-	            a: 75,
-	            b: 65
-	        }, {
-	            y: '2010',
-	            a: 50,
-	            b: 40
-	        }, {
-	            y: '2011',
-	            a: 75,
-	            b: 65
-	        }, {
-	            y: '2012',
-	            a: 100,
-	            b: 90
-	        }],
+								 xkey: 'healthFacility',
 
-	        xkey: 'y',
-	        ykeys: ['a', 'b'],
-	        labels: ['Series A', 'Series B'],
-	        hideHover: 'auto',
-	        resize: true
-    	});
+								 ykeys: ['totalSubmited'],
+
+								 labels:[$filter('translate')('NUMBER_OF_SUBMISSIONS')],
+
+								 hideHover: 'auto',
+
+								 resize: true
+								});
+						 })
+						 .catch(function(error){
+							 console.log(error);
+						 });		
 
 	})();
+
+
+
 
 }]);

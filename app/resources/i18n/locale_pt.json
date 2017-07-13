@@ -1,5 +1,6 @@
 {
 	"VERSION" : "v1.2.0",
+	"WELCOME" : "Seja bem vindo ao sistema de Mentoria da FGH",
 	"YEAR" : "2017",
 	"CREATE" : "Cadastrar",
 	"CLEAN" : "Limpar",
@@ -123,5 +124,10 @@
 	"SEPTEMBER" : "Setembro",
 	"OCTOBER" : "Outubro",
 	"NOVEMBER" : "Novembro",
-	"DECEMBER" : "Dezembro"
+	"DECEMBER" : "Dezembro",
+	"MENTORHIP_DETAILS": "Detalhes da Mentoria",
+	"ANSWER" : "Resposta",
+	"NUMBER_OF_SUBMISSIONS" : "Sessões Realizadas",
+	"LAST_UPDATE": "Última Actualização",
+	"DATA" : "Dados"
 }
