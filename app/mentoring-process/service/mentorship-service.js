@@ -11,10 +11,20 @@ mentoring.service("mentorshipService", ['$filter', 'requestProcessService', func
 		var params = {
 						code: mentorship.code,
 						tutor: mentorship.tutor,
-						tutored: mentorship.tutored				
+						tutored: mentorship.tutored	,
+						form: mentorship.form,
+						healthFacility: mentorship.healthFacility					
 					};
 
 		return requestProcessService.get('/mentoring-integ/services/mentorships', params);
+	};
+
+	this.getAnswersByMentorshipUuid = function(mentorshipUuid){
+		return requestProcessService.get('/mentoring-integ/services/answers/'+ mentorshipUuid);
+	};
+
+	this.findSubmitedSessionsPerHealthFacility = function(){
+		return requestProcessService.get('/mentoring-integ/services/mentorships/sessions');
 	};
 
 }]);

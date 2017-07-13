@@ -3,13 +3,14 @@ mentoring.controller("listMentoringProcessController", ["$scope", "$rootScope", 
 	var tutoredBeanResource = {
 		userContext: $rootScope.userContext
 	};
-	
-	$scope.carrerType = {name:""};
+
+	$scope.mentorshipFilter = {};
+	$scope.mentorship = {};
 
 	$scope.getTutoredsBySelectedFilter = function(){
 
-		$scope.mentorships = mentorshipService.getMentorshipService({}).then(function(response){
-			
+		$scope.mentorships = mentorshipService.getMentorshipService($scope.mentorshipFilter).then(function(response){
+
 			if(response.data){
                 if(!Array.isArray(response.data.mentorship)){
                     $scope.mentorships = [];
@@ -30,12 +31,21 @@ mentoring.controller("listMentoringProcessController", ["$scope", "$rootScope", 
 	$scope.cleanMentorship = function(){
 		$scope.mentorshipFilter = {};
 		$scope.mentorships = [];
-		$scope.message = "";
 		$scope.errorMessage = "";
-		$scope.hasErrors = [];
-		$scope.isDisabled = false;
 	};
 
-
+	$scope.findAnswersByMentorship = function(mentorship){
+		
+		$scope.mentorship = mentorship;
+		$scope.answers = [];
+		
+		mentorshipService.getAnswersByMentorshipUuid(mentorship.uuid)
+						 .then(function(response){
+							$scope.answers = response.data.textAnswer;
+						 })
+						 .catch(function(error){
+							 console.log(error);
+						 });
+	};
 
 }]);
