@@ -227,7 +227,16 @@ div.ui-datepicker{
 /* table tr*/
 table tbody tr:hover {
     cursor: pointer;
-    background: #eee;
+    /* background: #eee; */
+}
+
+table thead th {
+	font-weight: bold;
+	text-align: center
+}
+
+table thead:first-child {
+	background-color: #ccc;
 }
 
 .panel-heading a, .alert-info a {
@@ -241,6 +250,10 @@ table tbody tr:hover {
 	padding: 2px;
 	background-color: #fff;
 	border-radius: 3px 3px 3px 3px;
+}
+
+.logo {
+	margin-left: 8px;
 }
 
 footer {
@@ -301,5 +314,11 @@ footer {
 	margin-top: -75px;
 	font-style: italic;
 	font-family: Arial;
+	font-weight: bold;
+}
+
+.selectedTr {
+	background-color: #00796B;
+	color: #fff;
 	font-weight: bold;
 }

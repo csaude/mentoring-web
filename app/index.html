@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
     <title>{{ 'MENTORING' | translate }}</title>
+    <link rel="icon" href="resources/img/fgh.png"/>
     <!--base href="/" /-->
     
     <!--  build:css resources/css/mentoring-web.min.css  -->
     <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css">
     <link rel="stylesheet" type="text/css" href="../bower_components/jquery-ui/themes/pepper-grinder/jquery-ui.min.css"/>
     <link rel="stylesheet" type="text/css" href="../bower_components/metisMenu/dist/metisMenu.min.css"/>
     <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.min.css"/>
@@ -64,7 +66,7 @@
     <spinner name="processSpinner" img-src="resources/img/ajax-loader.gif" id="spinner">
          <p>{{ 'SPINNER' | translate }}</p>
     </spinner>
-
+    
 	<section class="content">
 		<div ui-view />
 	</section>
@@ -75,6 +77,7 @@
     <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js"></script>
     <script type="text/javascript" src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script type="text/javascript" src="../bower_components/angular-smart-table/dist/smart-table.min.js"></script>
     <script type="text/javascript" src="../bower_components/angular-translate/angular-translate.min.js"></script>
@@ -107,7 +110,9 @@
 
     <script type="text/javascript" src="tutor/controller/create-tutor-controller.js"></script> 
     <script type="text/javascript" src="tutor/controller/update-tutor-controller.js"></script> 
-    <script type="text/javascript" src="tutor/service/tutor-service.js"></script>  
+    <script type="text/javascript" src="tutor/controller/map-tutor-controller.js"></script> 
+    <script type="text/javascript" src="tutor/service/tutor-service.js"></script> 
+    <script type="text/javascript" src="tutor/service/map-tutor-service.js"></script>  
 
     <script type="text/javascript" src="tutored/controller/create-tutored-controller.js"></script> 
     <script type="text/javascript" src="tutored/controller/update-tutored-controller.js"></script> 

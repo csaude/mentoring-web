@@ -17,8 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.5.0",
-    "angular-ui-router": "~0.3.1",
+    "angular": "1.5.7",
+    "angular-ui-router": "0.3.1",
     "bootstrap": "3.3.6",
     "jquery": "2.2.2",
     "jquery-ui": "^1.11.4",
@@ -26,7 +26,9 @@
     "metisMenu": "~2.5.2",
     "font-awesome": "~4.6.3",
     "morrisjs": "~0.5.1",
-    "angular-cookies" : "~1.6.4"
+    "angular-cookies": "1.5.7",
+    "angular-spinners": "3.1.2",
+    "angular-bootstrap-toggle": "^0.1.2"
   },
   "devDependencies": {
     "angular-translate": "^2.11.1",

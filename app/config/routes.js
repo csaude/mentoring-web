@@ -142,6 +142,23 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
     .state("formUpdate.questionsDetails",{
         url : "/form/questionsDetails",
         templateUrl : "form/views/update-form-questions.html"
+    })
+    
+    .state("mapTutorToProgrammaticArea", {
+        url : "/mapTutorToProgrammaticArea",
+        templateUrl : "tutor/views/map-tutor-template.html",
+        controller : "mapTutorController",
+        resolve : {init : "init"}
+    })
+    
+    .state("mapTutorToProgrammaticArea.selectTutor", {
+        url : "/mapTutorToProgrammaticArea/selectTutor",
+        templateUrl : "tutor/views/map-tutor-select.html"
+    })
+    
+    .state("mapTutorToProgrammaticArea.mapTutor", {
+        url : "mapTutorToProgrammaticArea.mapTutor",
+        templateUrl : "tutor/views/map-tutor-programmatic-area.html"
     });
 
 }])
