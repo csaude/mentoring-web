@@ -12,7 +12,7 @@ mentoring.service("tutorService", ['$filter', 'requestProcessService', function(
 					code: tutor.code,
 					name: tutor.name,
 					surname: tutor.surname,
-					category: tutor.category,
+					careerType: tutor.careerType,
 					phoneNumber: tutor.phoneNumber	
 				};
 

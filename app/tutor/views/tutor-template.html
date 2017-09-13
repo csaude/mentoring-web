@@ -19,7 +19,7 @@
     <label for="carrer" class="col-md-2 control-label">{{ 'CARRER' | translate }}:</label>
     <div class="col-md-3">
         <select id="carrer" name="'Carreira'"  ng-model="tutor.career" type="text" class="form-control" 
-        ng-options="carrer.position for carrer in carres" required> 
+        ng-options="carrer.position for carrer in carres" required>
         </select>
     </div>
 </div>
@@ -28,4 +28,9 @@
     <div class="col-md-3">
          <input id="tutorPhoneNumber" name="'Telefone'" ng-model="tutor.phoneNumber" type="text" class="form-control" autocomplete="off" required/>
     </div>
+
+    <label for="phoneEmail" class="col-md-2 control-label">{{ 'EMAIL' | translate }}:</label>
+    <div class="col-md-3">
+        <input id="tutorEmail" name="'Email'" ng-model="tutor.email" type="email" class="form-control" autocomplete="off" required/>
+   </div>
 </div>
