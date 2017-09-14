@@ -7,7 +7,6 @@ mentoring.service('authService', ['$http', '$q', 'spinnerService', function ($ht
 			spinnerService.show('processSpinner');
 
 			$http.post('/account-manager-web/services/users', userContext)
-				
 				.success(function(response){
 
 					var message = response.message;
