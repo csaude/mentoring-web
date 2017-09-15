@@ -99,23 +99,41 @@ module.exports = function(grunt){
                         dest: 'dist/<%= pkg.name %>/resources/css/images'
                     }
                 ]
+            },
+
+            deploy:{
+                files:[
+                    {
+                        expand : true,
+                        src : ['dist/**'],
+                        dest: '/opt/data/webapp/mentoring'
+                    }
+                ]
             }
         },
 
-        compress :{
-            main: {
-                options: {
-                  archive: 'apache/<%= pkg.name %>.zip'
-                },
-                files: [{
-                  expand: true,
-                  cwd: 'dist/',
-                  src: ['**/*'],
-                  dest: '/'
-                }]
-              }
+        // compress :{
+        //     main: {
+        //         options: {
+        //           archive: 'apache/<%= pkg.name %>.zip'
+        //         },
+        //         files: [{
+        //           expand: true,
+        //           cwd: 'dist/',
+        //           src: ['**/*'],
+        //           dest: '/'
+        //         }]
+        //       }
+        // },
+
+        clean : {
+            options: {
+                'force': true
+            },
+            build : ['dist/<%= pkg.name %>'],
+            deploy: ['dist/<%= pkg.name %>', '/opt/data/webapp/mentoring/dist/<%= pkg.name %>']
         },
-        
+
         connect:{
             server:{
                 options:{
@@ -160,12 +178,13 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-connect-proxy');
-    grunt.loadNpmTasks('grunt-contrib-compress');
+    // grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     
     grunt.registerTask('test', ['jshint']);
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('build', ['jshint','copy', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
-    grunt.registerTask('package', ['jshint','copy', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin', 'compress']);
+    grunt.registerTask('build', ['clean:build', 'jshint','copy:main', 'copy:resources', 'copy:views', 'copy:fonts0', 'copy:fonts1', 'copy:img', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
+    grunt.registerTask('deploy', ['clean:deploy', 'build', 'copy:deploy']);
     
     grunt.registerTask('serve', function(){
         return grunt.task.run(['build', 'configureProxies:server', 'connect']);

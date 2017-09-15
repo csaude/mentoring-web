@@ -11,7 +11,7 @@ services:
        container_name: apache2-mentoring
        environment:
           COMPOSE_HTTP_TIMEOUT: 200
-       # volumes:
-       #   - /opt/data
+       volumes:
+         - /opt/data/webapp/mentoring/dist:/usr/local/apache2/htdocs
        hostname: apache2-mentoring
        restart: unless-stopped
