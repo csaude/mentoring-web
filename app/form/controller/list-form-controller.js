@@ -1,4 +1,4 @@
-mentoring.controller("listFormController", ["$scope", "$state","questionService", "$rootScope" ,"formService", "programmaticAreaService", function ($scope, $state, questionService, $rootScope, formService, programmaticAreaService) {
+mentoring.controller("listFormController", ["$scope", "$state","questionService", "$rootScope" ,"formService", "programmaticAreaService", "resourceUtilsService", function ($scope, $state, questionService, $rootScope, formService, programmaticAreaService, resourceUtilsService) {
 	
 	$scope.form = $rootScope.form || {};
 	$scope.questions = [];
@@ -153,5 +153,14 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 	};
 
 	$scope.cleanFormFilter();
+
+	$scope.getFormTypes = function(){
+		resourceUtilsService.getFormTypes().then(function (response){
+			$scope.formTypes = [];
+			$scope.formTypes = response.data.formType;
+		});
+	};
+
+	$scope.getFormTypes();
 
 }]);

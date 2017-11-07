@@ -4,6 +4,15 @@
          <input id="name" name="'{{ 'NAME' | translate }}'" ng-model="form.name" type="text" class="form-control" autocomplete="off" required/>
     </div>
 </div>
+
+<div class="form-group">
+    <label for="formType" class="col-md-2 control-label">{{ 'FORM_TYPE' | translate }}:</label>
+    <div class="col-md-5">
+        <select id="formType" name="'{{ 'FORM_TYPE' | translate }}'" ng-model="form.formType" type="text" class="form-control" ng-options="formType | translate for formType in formTypes" required>
+        </select>
+    </div>
+</div>
+
 <div class="form-group">
     <label for="programaticArea" class="col-md-2 control-label">{{ 'PROGRAMMATIC_AREA' | translate }}:</label>
     <div class="col-md-5">
