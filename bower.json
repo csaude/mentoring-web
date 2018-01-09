@@ -28,7 +28,8 @@
     "morrisjs": "~0.5.1",
     "angular-cookies": "1.5.7",
     "angular-spinners": "3.1.2",
-    "angular-bootstrap-toggle": "^0.1.2"
+    "angular-bootstrap-toggle": "^0.1.2",
+    "json-export-excel": "ng-json-export-excel#^1.0.2"
   },
   "devDependencies": {
     "angular-translate": "^2.11.1",

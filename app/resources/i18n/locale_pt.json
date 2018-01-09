@@ -148,5 +148,11 @@
 	"true" : "Sim",
 	"false" : "Não", 
 	"INDICATORS" : "Indicadores",
-	"FORM_TYPE" : "Tipo de Formulário"
+	"FORM_TYPE" : "Tipo de Formulário",
+	"SAMPLE_INDICATORS": "Indicadores de Amostras",
+	"INDICATOR" : "Indicador",
+	"TOTAL" : "Total",
+	"START_DATE" : "Data de Início",
+	"END_DATE" : "Data Final",
+	"EXPORT" : "Exportar"
 }

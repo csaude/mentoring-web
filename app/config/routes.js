@@ -159,6 +159,13 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
     .state("mapTutorToProgrammaticArea.mapTutor", {
         url : "mapTutorToProgrammaticArea.mapTutor",
         templateUrl : "tutor/views/map-tutor-programmatic-area.html"
+    })
+    
+    .state("sampleIndicatorsReport", {
+        url : "/sampleIndicatorsReport",
+        templateUrl : "reports/views/sample-indicators.html",
+        controller : "sampleIndicatorsController",
+        resolve : {init : "init"}
     });
 
 }])
