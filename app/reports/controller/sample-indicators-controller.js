@@ -1,7 +1,7 @@
 mentoring.controller("sampleIndicatorsController", ["$scope", "$filter", "reportsService", "resourceUtilsService", "districtSevice", "healthFacilityService", function($scope, $filter, reportsService, resourceUtilsService, districtSevice, healthFacilityService){
 
     $scope.sampleIndicators = [];
-    $scope.sampleForms = []
+    $scope.sampleForms = [];
 
     $scope.filter = {
         district : {},

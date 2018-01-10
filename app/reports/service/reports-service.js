@@ -8,9 +8,7 @@ mentoring.service("reportsService", ["requestProcessService", function(requestPr
             formUuid : filter.form.uuid,
             startDate : filter.startDate,
             endDate : filter.endDate
-        }
-
-        console.log(params);
+        };
 
         return requestProcessService.get("/mentoring-integ/services/indicators/sample-indicators", params);
     };
