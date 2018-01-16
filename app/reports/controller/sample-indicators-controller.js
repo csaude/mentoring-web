@@ -24,6 +24,9 @@ mentoring.controller("sampleIndicatorsController", ["$scope", "$filter", "report
     $scope.fileName = $filter('translate')('SAMPLE_INDICATORS');
 
     $scope.findSampleindicatorsBySelectedFilter = function(){
+        
+        $scope.sampleIndicators = [];
+
         reportsService.getSampleIndicators($scope.filter)
             .then(function(response){
                 $scope.sampleIndicators = response.data.sampleIndicator;
