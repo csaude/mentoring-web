@@ -154,5 +154,6 @@
 	"TOTAL" : "Total",
 	"START_DATE" : "Data de Início",
 	"END_DATE" : "Data Final",
-	"EXPORT" : "Exportar"
+	"EXPORT" : "Exportar",
+	"TARGET" : "Objectivo de preenchimento"
 }
