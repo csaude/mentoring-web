@@ -4,6 +4,7 @@ services:
        build: apache
        ports: 
         - "80:80"
+        - "443:443"
        network_mode: bridge
        external_links:
          - tomcat-mentoring
