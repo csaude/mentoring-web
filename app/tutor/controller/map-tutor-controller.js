@@ -4,12 +4,11 @@ mentoring.controller('mapTutorController', ['$scope', '$filter', '$state', '$roo
     $scope.careerTypes = [];
     $scope.tutorFilter = {};
     $scope.tutors = [];
-    $scope.selectedTutor = {};
     $scope.errorMessage = "";
     $scope.message = "";
     $scope.programmaticAreas = [];
-    $scope.selectedProgrammaticArea = {};
     $scope.disabled = false;
+    $scope.tutorProgramaticArea = {};
 
     (function(){
         resourceUtilsService.getCarrertypes()
@@ -42,13 +41,12 @@ mentoring.controller('mapTutorController', ['$scope', '$filter', '$state', '$roo
         $scope.tutorFilter = {};
         $scope.tutors = [];
         $scope.errorMessage = "";
-        $scope.selectedTutor = {};
-        $scope.selectedProgrammaticArea = {};
+        $scope.tutorProgramaticArea = {};
         $scope.message = "";
     };
 
     $scope.onSelectTutor = function(tutor){
-        $scope.selectedTutor = tutor;
+        $scope.tutorProgramaticArea.tutor = tutor;
     };
 
     $scope.next = function(){
@@ -57,7 +55,7 @@ mentoring.controller('mapTutorController', ['$scope', '$filter', '$state', '$roo
         $scope.disabled = false;
         $scope.message = "";
         
-        if(!$scope.selectedTutor.id){
+        if(!$scope.tutorProgramaticArea.tutor){
             $scope.errorMessage = $filter('translate')('TUTOR_MUST_BE_SELECTED');
             return;
         }
@@ -74,7 +72,7 @@ mentoring.controller('mapTutorController', ['$scope', '$filter', '$state', '$roo
 
     $scope.onSelectProgrammaticArea = function(programmaticArea){
         $scope.errorMessage = "";
-        $scope.selectedProgrammaticArea = programmaticArea;
+        $scope.tutorProgramaticArea.programmaticArea = programmaticArea;
     };
 
     $scope.save = function(){
@@ -82,19 +80,14 @@ mentoring.controller('mapTutorController', ['$scope', '$filter', '$state', '$roo
         $scope.errorMessage = "";
         $scope.message = "";
 
-        if(!$scope.selectedProgrammaticArea.id){
+        if(!$scope.tutorProgramaticArea.programmaticArea){
             $scope.errorMessage = $filter('translate')('PROGRAMMATIC_AREA_MUST_BE_SELECTED');
             return;
         }
 
-        $scope.selectedTutor.isUser = $scope.tutorFilter.isUser ? $scope.tutorFilter.isUser : $scope.selectedTutor.isUser;
-
         var tutorProgrammaticAreaBeanResource = {
             userContext : $rootScope.userContext,
-            tutorProgramaticArea : {
-                tutor : $scope.selectedTutor,
-                programmaticArea : $scope.selectedProgrammaticArea
-            }
+            tutorProgramaticArea : $scope.tutorProgramaticArea
         };
 
         mapTutorService.mapTutorToProgrammaticArea(tutorProgrammaticAreaBeanResource)

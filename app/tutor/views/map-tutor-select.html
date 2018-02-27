@@ -41,7 +41,7 @@
 	</thead>
 
 	<tbody>
-		<tr ng-click="onSelectTutor(tutor)" ng-class="{selectedTr : tutor.id === selectedTutor.id}" ng-repeat="tutor in tutorsDisplayed">
+		<tr ng-click="onSelectTutor(tutor)" ng-class="{selectedTr : tutor.id === tutorProgramaticArea.tutor.id}" ng-repeat="tutor in tutorsDisplayed">
 			<td>{{tutor.code}}</td>
 			<td>{{tutor.name}}</td>
 			<td>{{tutor.surname}}</td>

@@ -41,7 +41,7 @@ mentoring.controller("listMentoringProcessController", ["$scope", "$rootScope", 
 		
 		mentorshipService.getAnswersByMentorshipUuid(mentorship.uuid)
 						 .then(function(response){
-							$scope.answers = response.data.textAnswer;
+							$scope.answers = response.data.answerBeanResource;
 						 })
 						 .catch(function(error){
 							 console.log(error);

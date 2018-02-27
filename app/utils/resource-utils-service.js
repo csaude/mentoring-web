@@ -19,5 +19,9 @@ mentoring.service("resourceUtilsService", ['requestProcessService', function (re
 	this.getCarrertypes = function(){
 		return requestProcessService.get('/mentoring-integ/services/utils/careertypes');
 	};
+
+	this.getFormTypes =  function(){
+		return requestProcessService.get('/mentoring-integ/services/utils/formtypes');
+	};
 	
 }]);

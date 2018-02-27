@@ -42,7 +42,12 @@
             </ul>
         </li>
 
-        <li><a ui-sref="home"><i class="glyphicon glyphicon-th-list" aria-hidden="true"></i> {{ 'REPORT' | translate }}</a></li>
+        <li>
+            <a><i class="fa fa-th-list"></i> {{ 'REPORT' | translate }} <i class="fa fa-chevron-circle-right" style="float:right"></i></a>
+            <ul class="nav nav-second-level">
+                <li><a ui-sref="sampleIndicatorsReport"><i class="fa fa-flask"></i> {{ 'SAMPLE_INDICATORS' | translate }}</a></li>
+            </ul>
+        </li>
         
     </ul>
 </div>

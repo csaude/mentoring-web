@@ -1,4 +1,4 @@
-mentoring.controller("formController", ["$scope", "$rootScope", "$state", "questionService", "programmaticAreaService", "formService", function ($scope, $rootScope, $state, questionService, programmaticAreaService, formService){
+mentoring.controller("formController", ["$scope", "$rootScope", "$state", "questionService", "programmaticAreaService", "formService", "resourceUtilsService", function ($scope, $rootScope, $state, questionService, programmaticAreaService, formService, resourceUtilsService){
 
 	$scope.questions = [];
 	$scope.questionFilter = {};
@@ -81,10 +81,8 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
                     $scope.programmaticAreas = [];
                     $scope.programmaticAreas.push(response.data.programmaticArea);
                     return;
-                }
-
-                console.log(response);
-
+				}
+				
                 $scope.programmaticAreas = response.data.programmaticArea;
             }
 		});
@@ -118,5 +116,14 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 	};
 
 	$scope.cleanForm();
+
+	$scope.getFormTypes = function(){
+		resourceUtilsService.getFormTypes().then(function (response){
+			$scope.formTypes = [];
+			$scope.formTypes = response.data.formType;
+		});
+	};
+
+	$scope.getFormTypes();
 
 }]);
