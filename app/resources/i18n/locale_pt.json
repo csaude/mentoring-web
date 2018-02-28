@@ -146,7 +146,7 @@
 	"TUTORED_MAPPED_SUCCESS" : "O tutor foi associado com sucesso!",
 	"IS_USER" : "É Utilizador",
 	"true" : "Sim",
-	"false" : "Não", 
+	"false" : "Não",
 	"INDICATORS" : "Indicadores",
 	"FORM_TYPE" : "Tipo de Formulário",
 	"SAMPLE_INDICATORS": "Indicadores de Amostras",
@@ -155,5 +155,7 @@
 	"START_DATE" : "Data de Início",
 	"END_DATE" : "Data Final",
 	"EXPORT" : "Exportar",
-	"TARGET" : "Objectivo de preenchimento"
+	"TARGET" : "Objectivo de preenchimento",
+	"SEQUENCE": "seqüência",
+	"FORM_TYPE": "Tipo de Formulário"
 }

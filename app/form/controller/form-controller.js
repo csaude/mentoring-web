@@ -1,6 +1,9 @@
-mentoring.controller("formController", ["$scope", "$rootScope", "$state", "questionService", "programmaticAreaService", "formService", "resourceUtilsService", function ($scope, $rootScope, $state, questionService, programmaticAreaService, formService, resourceUtilsService){
+mentoring.controller("formController", ["$scope", "$rootScope", "$state", "questionService", "programmaticAreaService",
+	"formService", 'FormUtilService', "resourceUtilsService", function ($scope, $rootScope, $state, questionService,
+	programmaticAreaService, formService, FormUtilService, resourceUtilsService) {
 
 	$scope.questions = [];
+	$scope.sequences = [];
 	$scope.questionFilter = {};
 	$scope.addedQuestions = [];
 	$scope.isDisabled = false;
@@ -36,13 +39,33 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 			return;
 		}
 
+		// Add sequencing.
+        question.sequence = question.newSequence = $scope.addedQuestions.length + 1;
+
 		$scope.addedQuestions.push(question);
+        $scope.sequences.push($scope.addedQuestions.length);
 	};
 
 	$scope.removeQuestion = function (question){
 		_.remove($scope.addedQuestions, function(q){
 			return q.code === question.code;
 		});
+
+        // Updated sequencing information
+        for(var i = index; i < $scope.addedQuestions.length; i++) {
+            $scope.addedQuestions[i].sequence = $scope.addedQuestions[i].newSequence = $scope.addedQuestions[i].sequence - 1;
+        }
+
+        $scope.sequences = FormUtilService.createSequenceArray($scope.addedQuestions.length);
+	};
+
+	$scope.onSequenceChange = function(question) {
+		FormUtilService.handleSequenceChanges(question, $scope.addedQuestions);
+
+		// Dirty trick to make angular think that the array has changed.
+		$scope.addedQuestions.unshift(Object.assign({}, $scope.addedQuestions.shift()));
+
+		$scope.addedQuestions = FormUtilService.sortQuestionsBySequence($scope.addedQuestions);
 	};
 
 	$scope.getQuestions = function (){
@@ -93,7 +116,7 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 	$scope.createForm = function () {
 
 		$scope.formBeanResource.form = $scope.form;
-		$scope.formBeanResource.questions = $scope.addedQuestions;
+        $scope.formBeanResource.questionSequences = FormUtilService.createQuestionSequencePayload($scope.addedQuestions);
 		$scope.errorMessage = "";
 
 		formService.createForm($scope.formBeanResource).then(function (response){

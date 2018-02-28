@@ -49,6 +49,7 @@
 <table st-table="addedquestions" class="table table-bordered" st-safe-src="addedQuestions" >
   <thead>
     <tr>
+      <th class="text-capitalize">{{ 'SEQUENCE' | translate }}</th>
       <th class="col-md-2">{{'CODE' | translate}}</th>
       <th class="col-md-7">{{'QUESTION' | translate}}</th>
       <th class="col-md-2">{{'QUESTION_TYPE' | translate}}</th>
@@ -57,6 +58,12 @@
 
   <tbody>
     <tr ng-repeat="question in addedquestions">
+        <td>
+            <select class="form-control" ng-model="question.newSequence"
+                    ng-options="sequence as sequence for sequence in sequences" ng-change="onSequenceChange(question)">
+                <option value=""></option>
+            </select>
+        </td>
       <td>{{question.code}}</td>
       <td>{{question.question}}</td>
       <td>{{question.questionType | translate}}</td>
