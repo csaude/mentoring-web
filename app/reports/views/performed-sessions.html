@@ -1,12 +1,12 @@
 <div class="header-menu">
-    <p>{{'SAMPLE_INDICATORS' | translate}}<p>
+    <p>{{'PERFORMED_SESSIONS' | translate}}<p>
 </div>
 
-<form class="form-horizontal" name="sampleIndicatorsController" novalidate>
+<form class="form-horizontal" name="performedSessionsController" novalidate>
 
     <div class="navbar navbar-default">
         <div class="col-md-6">
-            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="findSampleindicatorsBySelectedFilter()"/>
+            <input type="submit" class="btn btn-success navbar-btn" value="Pesquisar" ng-click="findPerformedSessionsBySelectedFilter()"/>
             <input type="button" class="btn btn-default navbar-btn" value="Limpar" ng-click = "clean()"/>
         </div>
     </div>
@@ -37,23 +37,31 @@
         </div>
 
         <div class="col-md-4">
-            <label for="form" class="control-label">{{'FORM' | translate }}:</label>
-            <select id="form" name="'{{ 'FORM' | translate }}'" ng-model="filter.form" type="text" class="form-control" ng-options="form.name for form in sampleForms" required>
+            <label for="programmaticArea" class="control-label">{{'PROGRAMMATIC_AREA' | translate }}:</label>
+            <select id="programmaticArea" name="'{{ 'FORM' | translate }}'" ng-model="filter.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.description for programmaticArea in programmaticAreas" ng-change="onSelectProgrammaticArea()">
             </select>
         </div>
     
     </div>
 
     <div class="form-group">
+
+        <div class="col-md-4">
+            <label for="form" class="control-label">{{'FORM' | translate }}:</label>
+            <select id="form" name="'{{ 'FORM' | translate }}'" ng-model="filter.form" type="text" class="form-control" ng-options="form.name for form in forms" required>
+            </select>
+        </div>
+
         <div class="col-md-2">
             <label for="startDate" class="control-label">{{'START_DATE' | translate }}:</label>
             <input id="startDate" ng-model="filter.startDate" name="{{PERFORMED_DATE | translate}}" type="text" class="form-control" autocomplete="off" readonly required datepicker>
-            </div>
+        </div>
 
-            <div class="col-md-2">
+        <div class="col-md-2">
             <label for="endDate" class="control-label">{{'END_DATE' | translate }}:</label>
             <input id="endDate" ng-model="filter.endDate" name="{{PERFORMED_DATE | translate}}" type="text" class="form-control" autocomplete="off" readonly required datepicker>
         </div>
+        
     </div>
 
     <hr>
@@ -61,39 +69,33 @@
 </form>
 
 <div class="btn-excel">
-    <button type="button" class="btn btn-success" ng-json-export-excel data="sampleIndicators" report-fields= "reportHeader" separator = "," filename = "fileName" >
+    <button type="button" class="btn btn-success" ng-json-export-excel data="performedSessions" report-fields= "reportHeader" separator = "," filename = "fileName" >
         <span class="fa fa-file-excel-o"></span> {{'EXPORT' | translate}}
     </button>
 </div>
 
-<table st-table="sampleIndicatorsDisplayed" class="table table-bordered" st-safe-src="sampleIndicators" >
+<table st-table="performedSessionsDisplayed" class="table table-bordered" st-safe-src="performedSessions" >
     <thead>
         <tr>
             <th class="col-md-1">{{'DISTRICT'| translate}}</th>
             <th class="col-md-2">{{'HEALTH_FACILITY' | translate}}</th>
-            <th class="col-md-4">{{'FORM' | translate}}</th>
-            <th class="col-md-1">{{'COLLECTED_SAMPLES' | translate}}</th>
-            <th class="col-md-1">{{'REFFERED_SAMPLES' | translate}}</th>
-            <th class="col-md-1">{{'REJECTED_SAMPLES' | translate}}</th>
-            <th class="col-md-1">{{'RECEIVED_SAMPLES' | translate}}</th>
+            <th>{{'FORM' | translate}}</th>
+            <th class="col-md-1">{{'TOTAL' | translate}}</th>
         </tr>	
     </thead>
 
     <tbody>
-        <tr ng-repeat="sampleIndicator in sampleIndicatorsDisplayed">
-            <td>{{sampleIndicator.district}}</td>
-            <td>{{sampleIndicator.healthFacility}}</td>
-            <td>{{sampleIndicator.form}}</td>
-            <td style="text-align: center;">{{sampleIndicator.collectedSamples}}</td>
-            <td style="text-align: center;">{{sampleIndicator.transportedSamples}}</td>
-            <td style="text-align: center;">{{sampleIndicator.rejectedSamples}}</td>
-            <td style="text-align: center;">{{sampleIndicator.receivedSamples}}</td>
+        <tr ng-repeat="performedSession in performedSessionsDisplayed">
+            <td>{{performedSession.district}}</td>
+            <td>{{performedSession.healthFacility}}</td>
+            <td>{{performedSession.formName}}</td>
+            <td style="text-align: center;">{{performedSession.totalPerformed}}</td>
         </tr>
     </tbody>
 
     <tfoot style="border:none;">
         <tr>
-            <td colspan="6" class="text-center">
+            <td colspan="4" class="text-center">
                 <div st-pagination="" st-items-by-page="10" st-displayed-pages="5"></div>
             </td>
         </tr>

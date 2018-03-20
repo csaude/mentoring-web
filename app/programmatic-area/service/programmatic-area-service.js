@@ -8,10 +8,15 @@ mentoring.service("programmaticAreaService", ['$filter', 'requestProcessService'
 
 	this.getProgrammaticAreas = function (programmaticarea) {
 
-		var params ={
-						code: programmaticarea.code,
-						name: programmaticarea.name	
-					};
+		var params = {};
+
+		if(programmaticarea){
+			
+			params ={
+				code: programmaticarea.code,
+				name: programmaticarea.name	
+			};
+		}
 
 		return requestProcessService.get('/mentoring-integ/services/programmaticareas', params);
 	};

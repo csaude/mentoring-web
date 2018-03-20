@@ -17,4 +17,18 @@ mentoring.service("reportsService", ["requestProcessService", function(requestPr
         return requestProcessService.get("/mentoring-integ/services/forms/sample-forms");
     };
 
+    this.getPerformedSessions = function(filter){
+
+        var params = {
+            districtUuid : filter.district.uuid,
+            healthFacilityUuid : filter.healthFacility.uuid,
+            programmaticAreaUuid : filter.programmaticArea.uuid,
+            formUuid : filter.form.uuid,
+            startDate : filter.startDate,
+            endDate : filter.endDate
+        };
+
+        return requestProcessService.get("/mentoring-integ/services/mentorships/performed-sessions", params);
+    };
+
 }]);

@@ -16,9 +16,10 @@ mentoring.controller("sampleIndicatorsController", ["$scope", "$filter", "report
         district : $filter('translate')('DISTRICT'),
         healthFacility : $filter('translate')('HEALTH_FACILITY'),
         form : $filter('translate')('FORM'),
-        indicator : $filter('translate')('INDICATOR'),
-        referredMonth : $filter('translate')('REFERRED_MONTH'),
-        value : $filter('translate')('TOTAL')
+        collectedSamples : $filter('translate')('COLLECTED_SAMPLES'),
+        transportedSamples : $filter('translate')('REFFERED_SAMPLES'),
+        rejectedSamples : $filter('translate')('REJECTED_SAMPLES'),
+        receivedSamples : $filter('translate')('RECEIVED_SAMPLES')
     };
 
     $scope.fileName = $filter('translate')('SAMPLE_INDICATORS');
@@ -51,7 +52,6 @@ mentoring.controller("sampleIndicatorsController", ["$scope", "$filter", "report
 	})();
 
 	$scope.onSelectProvince = function(){
-        console.log($scope.filter);
 		districtSevice.getDistrictsByProvince($scope.filter.province).then(function(response){
 			$scope.districts = [];
 			$scope.healthFacilities = [];
