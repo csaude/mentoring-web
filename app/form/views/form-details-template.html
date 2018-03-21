@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="question" class="col-md-2 control-label">{{ 'NAME' | translate }}:</label>
+    <label for="name" class="col-md-2 control-label">{{ 'NAME' | translate }}:</label>
     <div class="col-md-5">
          <input type="text" id="name" name="'{{ 'NAME' | translate }}'" ng-model="form.name" type="text" class="form-control" autocomplete="off" required/>
     </div>
@@ -16,15 +16,16 @@
 <div class="form-group">
     <label for="programaticArea" class="col-md-2 control-label">{{ 'PROGRAMMATIC_AREA' | translate }}:</label>
     <div class="col-md-5">
-        <select id="programmaticArea" name="'{{ 'PROGRAMMATIC_AREA' | translate }}'" ng-model="form.programmaticArea" type="text" class="form-control" ng-options="programmaticArea.name for programmaticArea in programmaticAreas" required>
+        <select id="programaticArea" name="'{{ 'PROGRAMMATIC_AREA' | translate }}'" ng-model="form.programmaticArea" type="text" class="form-control"
+                ng-options="programmaticArea.name for programmaticArea in programmaticAreas track by programmaticArea.id" required>
         </select>
     </div>
 </div>
 
 <div class="form-group">
     <label for="target" class="col-md-2 control-label">{{ 'TARGET' | translate }}:</label>
-    <div class="col-md-1">
-        <input type="number" string-to-number id="target" name="'{{ 'TARGET' | translate }}'" ng-model="form.target" type="text" class="form-control" autocomplete="off" required/>
+    <div class="col-md-5">
+        <input id="target" string-to-int name="'{{ 'TARGET' | translate }}'" ng-model="form.target" type="number" class="form-control" required />
     </div>
 </div>
 

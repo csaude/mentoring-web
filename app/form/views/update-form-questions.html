@@ -42,6 +42,7 @@
 <table st-table="questionsDisplayed" class="table table-bordered" st-safe-src="questions" >
   <thead>
     <tr>
+      <th class="text-capitalize">{{ 'SEQUENCE' | translate }}</th>
       <th class="col-md-2">{{'CODE' | translate}}</th>
       <th class="col-md-7">{{'QUESTION' | translate}}</th>
       <th class="col-md-2">{{'QUESTION_TYPE' | translate}}</th>
@@ -49,7 +50,14 @@
   </thead>
 
   <tbody>
-    <tr ng-repeat="question in questionsDisplayed">
+    <tr ng-repeat="question in questionsDisplayed track by $index">
+      <td>
+          <select class="form-control" ng-model="question.newSequence"
+                  ng-options="sequence as sequence for sequence in sequences" ng-change="onSequenceChange(question)">
+              <!--<option ng-repeat="sequence in sequences" ng-selected="question.sequence === sequence">{{ sequence }}</option>-->
+              <option value=""></option>
+          </select>
+      </td>
       <td>{{question.code}}</td>
       <td>{{question.question}}</td>
       <td>{{question.questionType | translate}}</td>

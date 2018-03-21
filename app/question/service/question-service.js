@@ -52,4 +52,10 @@ mentoring.service("questionService", ["$http", "$q", '$filter', "spinnerService"
 		return $http.get('/mentoring-integ/services/questions/' + code);
 	};
 
+	this.getFormQuestionsByFormId = function(formId) {
+		return $http.get('/mentoring-integ/services/formquestions', {
+			params: { formId: formId }
+        });
+	};
+
 }]);
