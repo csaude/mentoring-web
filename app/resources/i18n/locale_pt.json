@@ -156,6 +156,10 @@
 	"END_DATE" : "Data Final",
 	"EXPORT" : "Exportar",
 	"TARGET" : "Objectivo de preenchimento",
-	"SEQUENCE": "seqüência",
-	"FORM_TYPE": "Tipo de Formulário"
+	"COLLECTED_SAMPLES" : "Amostras Colhidas",
+	"REFFERED_SAMPLES" : "Amostras Referidas",
+	"REJECTED_SAMPLES" : "Amostras Rejeitadas",
+	"RECEIVED_SAMPLES" : "Amostras Recebidas",
+	"PERFORMED_SESSIONS" : "Sessões de Tutoria",
+	"SEQUENCE": "Sequência"
 }
