@@ -166,5 +166,12 @@
 	"TRANSPORT_%"  : "Transporte (%)",
 	"REJECTION_%": "Rejeição (%)",
 	"RESULT_%": "Resultado (%)",
-	"TOTAL_RESULT_%": "Resultado Total (%)"
+	"TOTAL_RESULT_%": "Resultado Total (%)",
+	"PATIENT_REFERENCE_FOR_TESTING" : "Referência de Pacientes para Testagem",
+	"PRE_TEST_COUNSELING": "Aconselhamento Pré-Teste",
+	"RAPID_TEST_EXECUTION" : "Realização do Teste Rápido",
+	"POST_TEST_COUNSELING" : "Aconselhamento Pós-Teste",
+	"FAMILY_SCREENING_AND_INDEX_CASE_APPROACH" : "Rastreio familiar  e Abordagem de Caso Indice",
+	"LINKAGE_CLINICAL_CARE" : "Ligação à Cuidados Clínicos",
+	"COMUNICATION" : "Comunicação"
 }
