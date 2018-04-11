@@ -31,4 +31,15 @@ mentoring.service("reportsService", ["requestProcessService", function(requestPr
         return requestProcessService.get("/mentoring-integ/services/mentorships/performed-sessions", params);
     };
 
+    this.getAnalysisTables = function(filter){
+
+        var params = {
+            districtUuid : filter.district.uuid,
+            startDate : filter.startDate,
+            endDate : filter.endDate
+        };
+
+        return requestProcessService.get("/mentoring-integ/services/indicators/analysis-tables", params);
+    };
+
 }]);

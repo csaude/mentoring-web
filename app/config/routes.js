@@ -173,6 +173,13 @@ mentoring.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', 
         templateUrl : "reports/views/performed-sessions.html",
         controller : "performedSessionsController",
         resolve : {init : "init"}
+    })
+    
+    .state("analysisTableReport", {
+        url : "/analysisTableReport",
+        templateUrl : "reports/views/analysis-tables.html",
+        controller : "analysisTablesController",
+        resolve : {init : "init"}
     });
 
 }])
