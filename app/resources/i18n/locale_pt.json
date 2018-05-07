@@ -173,5 +173,6 @@
 	"POST_TEST_COUNSELING" : "Aconselhamento Pós-Teste",
 	"FAMILY_SCREENING_AND_INDEX_CASE_APPROACH" : "Rastreio familiar  e Abordagem de Caso Indice",
 	"LINKAGE_CLINICAL_CARE" : "Ligação à Cuidados Clínicos",
-	"COMUNICATION" : "Comunicação"
+	"COMUNICATION" : "Comunicação",
+	"FEEDBACK_QUESTIONS" : "Questões de feedback" 
 }
