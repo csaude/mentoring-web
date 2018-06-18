@@ -109,6 +109,16 @@ module.exports = function(grunt){
                         dest: '/opt/data/webapp/mentoring'
                     }
                 ]
+            },
+
+            test:{
+                files:[
+                    {
+                        expand : true,
+                        src : ['dist/**'],
+                        dest: '/opt/data/webapp/test/mentoring'
+                    }
+                ]
             }
         },
 
@@ -131,7 +141,8 @@ module.exports = function(grunt){
                 'force': true
             },
             build : ['dist/<%= pkg.name %>'],
-            deploy: ['dist/<%= pkg.name %>', '/opt/data/webapp/mentoring/dist/<%= pkg.name %>']
+            deploy: ['dist/<%= pkg.name %>', '/opt/data/webapp/mentoring/dist/<%= pkg.name %>'],
+            test: ['dist/<%= pkg.name %>', '/opt/data/webapp/test/mentoring/dist/<%= pkg.name %>']
         },
 
         connect:{
@@ -185,6 +196,7 @@ module.exports = function(grunt){
     grunt.registerTask('default', ['jshint']);
     grunt.registerTask('build', ['clean:build', 'jshint','copy:main', 'copy:resources', 'copy:views', 'copy:fonts0', 'copy:fonts1', 'copy:img', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
     grunt.registerTask('deploy', ['clean:deploy', 'build', 'copy:deploy']);
+    grunt.registerTask('deploy-test', ['clean:test', 'build', 'copy:test']);
     
     grunt.registerTask('serve', function(){
         return grunt.task.run(['build', 'configureProxies:server', 'connect']);
