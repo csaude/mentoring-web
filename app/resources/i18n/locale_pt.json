@@ -174,5 +174,6 @@
 	"FAMILY_SCREENING_AND_INDEX_CASE_APPROACH" : "Rastreio familiar  e Abordagem de Caso Indice",
 	"LINKAGE_CLINICAL_CARE" : "Ligação à Cuidados Clínicos",
 	"COMUNICATION" : "Comunicação",
-	"FEEDBACK_QUESTIONS" : "Questões de feedback" 
+	"FEEDBACK_QUESTIONS" : "Questões de feedback",
+	"NO_RESULT_FOUND" : "Nenhum resultado foi encontrado!"
 }
