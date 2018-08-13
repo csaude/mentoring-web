@@ -8,7 +8,7 @@ ADD httpd-vhosts.conf /usr/local/apache2/conf/httpd-vhosts.conf
 
 # ADD mentoring-web.zip /usr/local/apache2/htdocs/
 
-# RUN apk add --update unzip
+RUN apk add --update certbot
 
 # RUN unzip /usr/local/apache2/htdocs/mentoring-web.zip -d /usr/local/apache2/htdocs/
 

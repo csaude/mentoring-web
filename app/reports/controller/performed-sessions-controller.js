@@ -8,6 +8,7 @@ mentoring.controller("performedSessionsController", ["$scope", "$filter", "repor
         $scope.mentoringForms = [];
         $scope.districts = [];
         $scope.healthFacilities = [];
+        $scope.errorMessage = "";
 
         $scope.filter = {
             district : {},
@@ -31,12 +32,14 @@ mentoring.controller("performedSessionsController", ["$scope", "$filter", "repor
     $scope.findPerformedSessionsBySelectedFilter = function(){
         
         $scope.performedSessions = [];
+        $scope.errorMessage = "";
 
         reportsService.getPerformedSessions($scope.filter)
             .then(function(response){
                 $scope.performedSessions = response.data.performedSession;
             })
             .catch(function(error){
+                $scope.errorMessage = error.data;
                 console.log(error);
             });
     };
@@ -82,10 +85,18 @@ mentoring.controller("performedSessionsController", ["$scope", "$filter", "repor
         
         formService.getForms({ programmaticArea : $scope.filter.programmaticArea })
             .then(function(response){
+
+                if(!Array.isArray(response.data.form)){
+                    $scope.forms.push(response.data.form);
+                    return;
+                }
+                
                 $scope.forms = response.data.form;
+
                 $scope.forms = $scope.forms.filter(function(form){
                    return form.formType === "MENTORING";
                 });
+                
             }).catch(function(error){
                 console.log(error);
             });

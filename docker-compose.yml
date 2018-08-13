@@ -9,10 +9,13 @@ services:
        external_links:
          - tomcat-mentoring
          - tomcat-account
+         - tomcat-mentoring-test
+         - tomcat-account-test
        container_name: apache2-mentoring
        environment:
           COMPOSE_HTTP_TIMEOUT: 200
        volumes:
          - /opt/data/webapp/mentoring/dist:/usr/local/apache2/htdocs
+         - /opt/data/webapp/test/mentoring/dist:/usr/local/apache2/htdocs/test
        hostname: apache2-mentoring
        restart: unless-stopped

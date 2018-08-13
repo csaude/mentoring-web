@@ -43,7 +43,15 @@ mentoring.service("requestProcessService", ["$http", '$q', '$filter', "spinnerSe
 			$http.get(url, {params : params})
 				
 				.success(function(response){
-					var message = response.message;
+
+					var message = "";
+
+					if(response == null){
+						reject({data : $filter('translate')('NO_RESULT_FOUND')});
+						return;
+					}
+					
+					message = response.message;
 
 					if(message){
 						reject({data : message});
