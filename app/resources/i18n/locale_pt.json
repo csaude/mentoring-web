@@ -175,5 +175,7 @@
 	"LINKAGE_CLINICAL_CARE" : "Ligação à Cuidados Clínicos",
 	"COMUNICATION" : "Comunicação",
 	"FEEDBACK_QUESTIONS" : "Questões de feedback",
-	"NO_RESULT_FOUND" : "Nenhum resultado foi encontrado!"
+	"NO_RESULT_FOUND" : "Nenhum resultado foi encontrado!",
+	"CLINICAL_AREA"  : "Área Clínica",
+	"MONITORING_AND_EVALUATION" : "Monitoria e Avaliação"
 }
