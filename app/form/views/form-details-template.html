@@ -23,9 +23,16 @@
 </div>
 
 <div class="form-group">
-    <label for="target" class="col-md-2 control-label">{{ 'TARGET' | translate }}:</label>
+    <label for="targetPatient" class="col-md-2 control-label">{{ 'TARGET_PATIENT' | translate }}:</label>
     <div class="col-md-5">
-        <input id="target" string-to-int name="'{{ 'TARGET' | translate }}'" ng-model="form.target" type="number" class="form-control" required />
+        <input id="targetPatient" string-to-int name="'{{ 'TARGET_PATIENT' | translate }}'" ng-model="form.targetPatient" type="number" class="form-control" required />
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="targetFile" class="col-md-2 control-label">{{ 'TARGET_FILE' | translate }}:</label>
+    <div class="col-md-5">
+        <input id="targetFile" string-to-int name="'{{ 'TARGET_FILE' | translate }}'" ng-model="form.targetFile" type="number" class="form-control" required />
     </div>
 </div>
 
