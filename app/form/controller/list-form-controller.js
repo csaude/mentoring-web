@@ -1,11 +1,12 @@
 mentoring.controller("listFormController", ["$scope", "$state","questionService", "$rootScope" ,"formService",
-	"programmaticAreaService", 'FormUtilService', "resourceUtilsService", function ($scope, $state, questionService,
-	$rootScope, formService, programmaticAreaService, FormUtilService, resourceUtilsService) {
+	"programmaticAreaService", "resourceUtilsService", function ($scope, $state, questionService,
+	$rootScope, formService, programmaticAreaService, resourceUtilsService) {
 	
 	$scope.form = $rootScope.form || {};
-	$scope.questions = [];
+	$scope.formQuestions = [];
 	$scope.sequences = [];
 	$scope.questionsUpdate = [];
+	$scope.applicables = ["true", "false"];
 	$scope.questionFilter = {};
 	$scope.isDisabled = false;
 	$scope.formBeanResource = {
@@ -48,7 +49,6 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 	};
 
 	$scope.nextPage =  function(){
-		// getQuestionsByForm();
         getFormQuestionsByForm();
 		$state.go("formUpdate.questionsDetails");
 	};
@@ -57,72 +57,37 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 		$state.go("formUpdate.updateDetails");
 	};
 
-	var getQuestionsByForm = function(){
-		console.log('form: ', $scope.form);
-		questionService.getQuestionsByForm($scope.form.code).then(function(response){
-			if(response.data){
-				if(!Array.isArray(response.data.question)){
-					$scope.questions = [];
-					$scope.questions.push(response.data.question);
-					return;
-				}
-					$scope.questions = response.data.question;
-			}
-
-			// Add sequence if not defined yet.
-			if(angular.isUndefined($scope.questions[0].sequence) || Number.isNaN($scope.questions[0].sequence)){
-                $scope.questions = FormUtilService.addQuestionsSequence($scope.questions);
-			}
-
-			// Add a field to temporarily hold the new sequence if changed.
-			$scope.questions = $scope.questions.map(function(question, $index) {
-				question.newSequence = $index + 1;
-				return question;
-			});
-			$scope.sequences = FormUtilService.createSequenceArray($scope.questions.length);
-		});
-	};
-
 	var getFormQuestionsByForm = function() {
 		questionService.getFormQuestionsByFormId($scope.form.id).then(function(response) {
             if(response.data) {
-				var formQuestions = response.data.formQuestion;
 
-				if(angular.isDefined(formQuestions) && Array.isArray(formQuestions)) {
-					$scope.questions = formQuestions.filter(function(formQuestion) {
-						return formQuestion.lifeCycleStatus != "INACTIVE";
-					})
-					.map(function(formQuestion) {
-						return Object.assign({}, formQuestion.question, {
-							sequence: Number.parseInt(formQuestion.sequence),
-						});
-					});
-				}
+				$scope.formQuestions = response.data.formQuestion;
+				
+				var index = 1;
+				$scope.sequences = [];
 
-                // Add sequence if not defined yet.
-                if(angular.isUndefined($scope.questions[0].sequence) || Number.isNaN($scope.questions[0].sequence)){
-                    $scope.questions = FormUtilService.addQuestionsSequence($scope.questions);
-                }
-
-                // Add a field to temporarily hold the new sequence if changed.
-                $scope.questions.forEach(function(question) {
-                	question.newSequence = question.sequence;
+				_.forEach($scope.formQuestions, function(formQuestion){
+					formQuestion.newSequence = formQuestion.sequence;
+					$scope.sequences.push(index+"");
+					index++;
 				});
 
-                // Sort questions by sequence
-                $scope.questions = FormUtilService.sortQuestionsBySequence($scope.questions);
-                $scope.sequences = FormUtilService.createSequenceArray($scope.questions.length);
+				$scope.formQuestions = _.sortBy($scope.formQuestions, function(fq){ return parseInt(fq.newSequence); });
 			}
 		});
 	};
 
-	$scope.onSequenceChange = function(question) {
-		FormUtilService.handleSequenceChanges(question, $scope.questions);
+	$scope.onSequenceChange = function(formQuestion) {
+		
+		$scope.formQuestions.forEach(function(fq){
+			if(formQuestion.newSequence === fq.sequence){
+				fq.newSequence = formQuestion.sequence;
+				fq.sequence = fq.newSequence;
+				formQuestion.sequence = formQuestion.newSequence;
+			}
+		});
 
-		// Dirty trick to make angular think that the array has changed.
-        $scope.questions.unshift(Object.assign({}, $scope.questions.shift()));
-
-		$scope.questions = FormUtilService.sortQuestionsBySequence($scope.questions);
+		$scope.formQuestions =_.sortBy($scope.formQuestions, function(fq){ return parseInt(fq.newSequence); });
 	};
 
 	$scope.getQuestions = function (){
@@ -153,32 +118,37 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 		$scope.questionsUpdate = [];
 	};
 
-
 	$scope.addQuestion = function (question){
 
 		$scope.addQuestionErrorMessage = "";
 
-		var foundQuestion = _.find($scope.questions, function (q) {
-			return q.code == question.code;
+		var foundQuestion = _.find($scope.formQuestions, function (fq) {
+			return fq.question.code == question.code;
 		});
 
 		if (foundQuestion){
-			$scope.addQuestionErrorMessage = "A questão com o código "+foundQuestion.code+" já foi adicionada na lista";
+			$scope.addQuestionErrorMessage = "A questão com o código "+foundQuestion.question.code+" já foi adicionada na lista";
 			return;
 		}
 
-		// Add sequencing
-		question.sequence = question.newSequence = $scope.questions.length + 1;
+		var sequence = $scope.formQuestions.length + 1;
 
-		$scope.questions.push(question);
-		$scope.sequences.push($scope.questions.length);
+		formQuestion = {
+			question : question,
+			sequence : sequence,
+			newSequence : sequence,
+			applicable : "false"
+		};
+
+		$scope.formQuestions.push(formQuestion);
+		$scope.sequences.push(sequence);
 	};
 
 	$scope.updateForm = function () {
 		$scope.formBeanResource.form = $scope.form;
-		$scope.formBeanResource.questionSequences = FormUtilService.createQuestionSequencePayload($scope.questions);
+		$scope.formBeanResource.formQuestions = $scope.formQuestions;
 		$scope.errorMessage = "";
-		console.log($scope.formBeanResource);
+		
 		formService.updateForm($scope.formBeanResource).then(function (response){
 			if(response.data && response.data.message){
 				$scope.errorMessage = response.data.message;
@@ -186,25 +156,26 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 			}
 
 			$scope.message = response.data;
-			$scope.form = {};
 			$scope.questions = [];
 			$scope.isDisabled = true;
 		});
 	};
 
+	$scope.removeQuestion = function(formQuestion) {
+		_.remove($scope.formQuestions, function(fq){
+			return fq.question.code === formQuestion.question.code;
+		});
 
-	$scope.removeQuestion = function(question) { 
-	  	var index = $scope.questions.indexOf(question);
-		$scope.questions.splice(index, 1);
+		var index = 1;
+		$scope.sequences = [];
 
-		// Updated sequencing information
-		for(var i = index; i < $scope.questions.length; i++) {
-			$scope.questions[i].sequence = $scope.questions[i].newSequence = $scope.questions[i].sequence - 1;
-		}
-
-        $scope.sequences = FormUtilService.createSequenceArray($scope.questions.length);
+		_.forEach($scope.formQuestions, function(fq){
+			fq.sequence = index;
+			fq.newSequence = index;
+			$scope.sequences.push(index);
+			index++;
+		});
 	};
-
 
 	$scope.getProgrammaticAreas();
 
@@ -213,6 +184,7 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 		$scope.formFilter = {};
 		$scope.errorMessage = "";
 		$scope.forms = [];
+		$scope.addedQuestions = [];
 	};
 
 	$scope.onSelectForm =  function(form){

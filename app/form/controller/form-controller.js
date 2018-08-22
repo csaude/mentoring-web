@@ -1,11 +1,12 @@
 mentoring.controller("formController", ["$scope", "$rootScope", "$state", "questionService", "programmaticAreaService",
-	"formService", 'FormUtilService', "resourceUtilsService", function ($scope, $rootScope, $state, questionService,
-	programmaticAreaService, formService, FormUtilService, resourceUtilsService) {
+	"formService", "resourceUtilsService", function ($scope, $rootScope, $state, questionService,
+	programmaticAreaService, formService, resourceUtilsService) {
 
 	$scope.questions = [];
 	$scope.sequences = [];
 	$scope.questionFilter = {};
-	$scope.addedQuestions = [];
+	$scope.addedFormQuestions = [];
+	$scope.applicables = [true, false];
 	$scope.isDisabled = false;
 	$scope.formBeanResource = {
 		userContext : $rootScope.userContext 
@@ -30,42 +31,55 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 
 		$scope.addQuestionErrorMessage = "";
 
-		var foundQuestion = _.find($scope.addedQuestions, function (q) {
-			return q.code == question.code;
+		var foundQuestion = _.find($scope.addedFormQuestions, function (fq) {
+			return fq.question.code == question.code;
 		});
 
 		if (foundQuestion){
-			$scope.addQuestionErrorMessage = "A questão com o código "+foundQuestion.code+" já foi adicionada na lista";
+			$scope.addQuestionErrorMessage = "A questão com o código "+foundQuestion.question.code+" já foi adicionada na lista";
 			return;
 		}
 
-		// Add sequencing.
-        question.sequence = question.newSequence = $scope.addedQuestions.length + 1;
+		var sequence = $scope.addedFormQuestions.length + 1;
 
-		$scope.addedQuestions.push(question);
-        $scope.sequences.push($scope.addedQuestions.length);
+		formQuestion = {
+			question : question,
+			sequence : sequence,
+			newSequence : sequence,
+			applicable : false
+		};
+
+		$scope.addedFormQuestions.push(formQuestion);
+		$scope.sequences.push(sequence);
 	};
 
-	$scope.removeQuestion = function (question){
-		_.remove($scope.addedQuestions, function(q){
-			return q.code === question.code;
+	$scope.removeQuestion = function (formQuestion){
+		_.remove($scope.addedFormQuestions, function(fq){
+			return fq.question.code === formQuestion.question.code;
 		});
 
-        // Updated sequencing information
-        for(var i = index; i < $scope.addedQuestions.length; i++) {
-            $scope.addedQuestions[i].sequence = $scope.addedQuestions[i].newSequence = $scope.addedQuestions[i].sequence - 1;
-        }
+		var index = 1;
+		$scope.sequences = [];
 
-        $scope.sequences = FormUtilService.createSequenceArray($scope.addedQuestions.length);
+		_.forEach($scope.addedFormQuestions, function(fq){
+			fq.sequence = index;
+			fq.newSequence = index;
+			$scope.sequences.push(index);
+			index++;
+		});
 	};
 
-	$scope.onSequenceChange = function(question) {
-		FormUtilService.handleSequenceChanges(question, $scope.addedQuestions);
+	$scope.onSequenceChange = function(formQuestion) {
 
-		// Dirty trick to make angular think that the array has changed.
-		$scope.addedQuestions.unshift(Object.assign({}, $scope.addedQuestions.shift()));
+		$scope.addedFormQuestions.forEach(function(fq){
+			if(formQuestion.newSequence === fq.sequence){
+				fq.newSequence = formQuestion.sequence;
+				fq.sequence = fq.newSequence;
+				formQuestion.sequence = formQuestion.newSequence;
+			}
+		});
 
-		$scope.addedQuestions = FormUtilService.sortQuestionsBySequence($scope.addedQuestions);
+		$scope.addedFormQuestions =_.sortBy($scope.addedFormQuestions, function(fq){ return parseInt(fq.newSequence) });
 	};
 
 	$scope.getQuestions = function (){
@@ -116,7 +130,7 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 	$scope.createForm = function () {
 
 		$scope.formBeanResource.form = $scope.form;
-        $scope.formBeanResource.questionSequences = FormUtilService.createQuestionSequencePayload($scope.addedQuestions);
+        $scope.formBeanResource.formQuestions = $scope.addedFormQuestions;
 		$scope.errorMessage = "";
 
 		formService.createForm($scope.formBeanResource).then(function (response){
