@@ -79,7 +79,7 @@ mentoring.controller("formController", ["$scope", "$rootScope", "$state", "quest
 			}
 		});
 
-		$scope.addedFormQuestions =_.sortBy($scope.addedFormQuestions, function(fq){ return parseInt(fq.newSequence) });
+		$scope.addedFormQuestions =_.sortBy($scope.addedFormQuestions, function(fq){ return parseInt(fq.newSequence); });
 	};
 
 	$scope.getQuestions = function (){
