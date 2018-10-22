@@ -61,8 +61,13 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 		questionService.getFormQuestionsByFormId($scope.form.id).then(function(response) {
             if(response.data) {
 
-				$scope.formQuestions = response.data.formQuestion;
-				
+				if(!Array.isArray(response.data.formQuestion)){
+					$scope.formQuestions = [];
+                    $scope.formQuestions.push(response.data.formQuestion);
+				}else{
+					$scope.formQuestions = response.data.formQuestion;
+				}
+
 				var index = 1;
 				$scope.sequences = [];
 
