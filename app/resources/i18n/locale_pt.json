@@ -196,5 +196,6 @@
 	"GENDER_BASED_VIOLENCE" : "Violência Baseada no Género",
 	"FOLLOW_UP_PLAN" : "Plano de Seguimento",
 	"MENTORING_CUSTOM" : "Tutoria Customizada",
-	"APLICABLE" : "Aplicável"
+	"APLICABLE" : "Aplicável", 
+	"OTHERS" : "Outros"
 }
