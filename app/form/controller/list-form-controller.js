@@ -90,6 +90,11 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 				fq.sequence = fq.newSequence;
 				formQuestion.sequence = formQuestion.newSequence;
 			}
+
+			if(!fq.sequence){
+				fq.sequence = fq.newSequence;	
+			}
+			
 		});
 
 		$scope.formQuestions =_.sortBy($scope.formQuestions, function(fq){ return parseInt(fq.newSequence); });
