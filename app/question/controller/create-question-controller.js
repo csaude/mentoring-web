@@ -5,7 +5,8 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 	};
 
 	$scope.questionTypes = [];
-	$scope.questionCategories = [];
+	$scope.questionsCategories = [];
+	$scope.isEnabled = true;
 
 	$scope.createQuestion = function(){
 
@@ -16,7 +17,6 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 
 		questionService.createQuestion(questionBeanResource)
 			.then(function (response){
-				var question = response.data;
 				$scope.message = response.data;
 				$scope.question = {};
 			})
@@ -34,6 +34,14 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 
 	$scope.cleanQuestion();
 
+	var getQuestionsCategories = function(){
+		questionService.getQuestionsCategories().then(function(response){
+			if(response.data){
+				$scope.questionsCategories = response.data.questionsCategory;
+			}
+		});
+	};
+
    	// just to return QuestionTypes an QuestionsCategories
 	(function(){
 
@@ -43,13 +51,45 @@ mentoring.controller("createQuestionController", ["$scope", "$rootScope", "quest
 			}
 		});
 
-		resourceUtilsService.getQuestionCategories().then(function(response){
-			if(response.data){
-				$scope.questionCategories = response.data.questionCategory;
-			}
-		});
+		getQuestionsCategories();
 
 	})();
 
-	
+	$scope.addQuestionCategory = function(){
+		if($scope.addQuestionCategoryForm.$invalid)
+			return;
+		
+		var questionCategoryBeanResource = {
+			userContext : questionBeanResource.userContext,
+			questionsCategory : $scope.questionsCategory
+		};
+
+		questionService.createQuestionsCategory(questionCategoryBeanResource)
+			.then(function (response){
+				$scope.message = response.data;
+				$scope.questionsCategory = {};
+			})
+			.catch(function(error){
+				$scope.message = error.data;
+			});
+	};
+
+	$scope.cleanQuestionsCategory = function(){
+		$scope.questionsCategory = {};
+		$scope.hasErrors = [];
+	};
+
+	$scope.onAddQuestionCategory = function(){
+		$scope.isEnabled = false;
+		$scope.hasErrors = [];
+	};
+
+	$scope.onCloseAddition = function(){
+		$scope.isEnabled = true;
+		$scope.hasErrors = [];
+		$scope.message = "";
+		$scope.errorMessages = "";
+		getQuestionsCategories();
+	};
+
 }]);
