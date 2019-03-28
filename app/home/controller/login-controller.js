@@ -17,6 +17,9 @@ mentoring.controller('loginController', ['$scope', '$rootScope', '$cookies', '$l
 		userContext.password = $scope.password;	
 
 		authService.login(userContext).then(function(data){
+			// Store the JWT token for later use
+			sessionStorage.setItem("jwtToken", data.data.jwtToken);
+			delete data.data.jwtToken;
 			$cookies.putObject("usercontext", data);
 			$location.path('/home');
 		})
