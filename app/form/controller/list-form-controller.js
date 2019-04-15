@@ -97,21 +97,28 @@ mentoring.controller("listFormController", ["$scope", "$state","questionService"
 							sequence: Number.parseInt(formQuestion.sequence),
 						});
 					});
+				} else if(angular.isDefined(formQuestions) && !Array.isArray(formQuestions)) {
+					// Blindly assume this is one object (terrible inconsistent API, should have returned an array of one item!)
+					$scope.questions = formQuestions.lifeCycleStatus != 'INACTIVE' ? [ Object.assign({}, formQuestions.question, {
+							sequence: Number.parseInt(formQuestions.sequence)
+						})] : [];
 				}
 
                 // Add sequence if not defined yet.
-                if(angular.isUndefined($scope.questions[0].sequence) || Number.isNaN($scope.questions[0].sequence)){
-                    $scope.questions = FormUtilService.addQuestionsSequence($scope.questions);
+				if($scope.questions.length > 0) {
+                    if (angular.isUndefined($scope.questions[0].sequence) || Number.isNaN($scope.questions[0].sequence)) {
+                        $scope.questions = FormUtilService.addQuestionsSequence($scope.questions);
+                    }
+
+                    // Add a field to temporarily hold the new sequence if changed.
+                    $scope.questions.forEach(function (question) {
+                        question.newSequence = question.sequence;
+                    });
+
+                    // Sort questions by sequence
+                    $scope.questions = FormUtilService.sortQuestionsBySequence($scope.questions);
+                    $scope.sequences = FormUtilService.createSequenceArray($scope.questions.length);
                 }
-
-                // Add a field to temporarily hold the new sequence if changed.
-                $scope.questions.forEach(function(question) {
-                	question.newSequence = question.sequence;
-				});
-
-                // Sort questions by sequence
-                $scope.questions = FormUtilService.sortQuestionsBySequence($scope.questions);
-                $scope.sequences = FormUtilService.createSequenceArray($scope.questions.length);
 			}
 		});
 	};
