@@ -58,4 +58,41 @@ mentoring.service("questionService", ["$http", "$q", '$filter', "spinnerService"
         });
 	};
 
+	this.createQuestionsCategory = function (questionCategoryBeanResource){
+
+		return $q(function(resolve, reject){
+
+			spinnerService.show('processSpinner');
+
+			$http.post('/mentoring-integ/services/question-categories', questionCategoryBeanResource)
+				.success(function(response){
+
+					var message = response.message;
+
+					if(message){
+						
+						reject({
+							message : message
+						});
+
+						return;
+					}
+
+					resolve({
+						data : $filter('translate')('QUESTION_CATEGORY_CREATED_WITH_SUCCESS')
+					});
+				})
+				.error(function(error){
+					console.log(error);
+				})
+				.finally(function(){
+					spinnerService.hide('processSpinner');
+				});
+		});
+	};
+
+	this.getQuestionsCategories = function(){
+		return $http.get('/mentoring-integ/services/question-categories');
+	};
+
 }]);

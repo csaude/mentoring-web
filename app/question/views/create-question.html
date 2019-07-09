@@ -6,13 +6,21 @@
     
     <div class="navbar navbar-default">
         <div class="col-md-6">
-            <input type="submit" class="btn btn-success navbar-btn" value="{{'CREATE' | translate}}" ng-click="createQuestion()"/>
-            <input type="button" class="btn btn-default navbar-btn" value="{{'CLEAN' | translate}}" ng-click = "cleanQuestion()"/>
+            <button type="submit" class="btn btn-success navbar-btn" ng-click="createQuestion()">
+                <i class="fa fa-save" aria-hidden="true"></i>
+                {{'CREATE' | translate}}
+             </button>
+
+            <button class="btn btn-default navbar-btn " type="button" ng-click="cleanQuestion()">
+                <i class="fa fa-refresh"></i>
+                {{'CLEAN' | translate}}
+            </button>
+
         </div>
     </div>
     
     <!-- Messages   -->
-    <messages message="{{message}}" error-message="{{errorMessage}}" has-errors="hasErrors" ></messages>
+    <messages message="{{message}}" error-message="{{errorMessage}}" has-errors="hasErrors" ng-show="isEnabled"></messages>
     
     <hr/>
     
@@ -22,3 +30,58 @@
 
     <hr/>
 </form>
+
+<div class="modal fade" id="addQuestionCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addQuestionCategoryModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+    
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="onCloseAddition()" ><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{'QUESTION_CATEGORY' | translate }}</h4>
+        </div>
+    
+        <form class="form-horizontal" name="addQuestionCategoryForm" novalidate>
+            
+            <div class="modal-body">
+    
+            <div class="navbar navbar-default">
+                <div class="col-md-12">
+                    
+                    <button type="submit" class="btn btn-success navbar-btn" ng-click="addQuestionCategory()">
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                        {{'SAVE' | translate}}
+                    </button>
+
+                    <button class="btn btn-default navbar-btn " type="button" ng-click="cleanQuestionsCategory()">
+                        <i class="fa fa-refresh"></i>
+                        {{'CLEAN' | translate}}
+                    </button>
+
+                </div>
+            </div>
+    
+            <messages message="{{message}}" error-message="{{errorMessage}}" has-errors="hasErrors"></messages>
+    
+            <div class="form-group">
+                <label for="questionsCategory" class="col-md-3 control-label">{{ 'QUESTION_CATEGORY' | translate }}:</label>
+                
+                <div class="col-md-8">
+                    <input id="questionsCategory" name="'{{'QUESTION_CATEGORY' | translate}}'" ng-model="questionsCategory.category" type="text" class="form-control" autocomplete="off" required/>
+                </div>
+
+            </div>
+    
+            </div>
+            
+            <div class="modal-footer">
+                
+            <button class="btn btn-primary" data-dismiss="modal" ng-click="onCloseAddition()">
+                <i class="fa fa-close"></i>
+                {{'CLOSE' | translate}} 
+            </button>
+            </div>
+        </form>
+    
+        </div>
+    </div>
+ </div>
