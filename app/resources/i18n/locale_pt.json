@@ -1,7 +1,7 @@
 {
-	"VERSION" : "v1.2.0",
+	"VERSION" : "v1.5.1",
 	"WELCOME" : "Seja bem vindo ao sistema de Tutoria da FGH",
-	"YEAR" : "2017",
+	"YEAR" : "2019",
 	"CREATE" : "Cadastrar",
 	"CLEAN" : "Limpar",
 	"SEARCH" : "Pesquisar",
@@ -199,5 +199,6 @@
 	"APLICABLE" : "Aplicável", 
 	"OTHERS" : "Outros", 
 	"ADD" : "Adicionar",
-	"QUESTION_CATEGORY_CREATED_WITH_SUCCESS" : "A categoria questão foi criada com sucesso!"
+	"QUESTION_CATEGORY_CREATED_WITH_SUCCESS" : "A categoria questão foi criada com sucesso!", 
+	"CABINET" : "Gabinete" 
 }

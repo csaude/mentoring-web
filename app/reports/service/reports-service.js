@@ -24,6 +24,8 @@ mentoring.service("reportsService", ["requestProcessService", function(requestPr
             healthFacilityUuid : filter.healthFacility.uuid,
             programmaticAreaUuid : filter.programmaticArea.uuid,
             formUuid : filter.form.uuid,
+            tutorUuid : filter.tutor.uuid,
+            cabinetUuid : filter.cabinet.uuid,
             startDate : filter.startDate,
             endDate : filter.endDate
         };
