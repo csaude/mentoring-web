@@ -1,8 +1,16 @@
 <div class="form-group">
-    <label for="question" class="col-md-2 control-label">{{ 'QUESTION' | translate }}:</label>
-    <div class="col-md-5">
-         <input id="question" name="'{{ 'QUESTION' | translate }}'" ng-model="question.question" type="text" class="form-control" autocomplete="off" required/>
+    
+    <label for="questionCategory" class="col-md-2 control-label">{{ 'QUESTION_CATEGORY' | translate }}:</label>
+    <div class="col-md-3">
+        <select id="questionCategory" name="{{ 'QUESTION_CATEGORY' | translate }}" ng-model="question.questionsCategory" type="text" class="form-control" ng-options="questionsCategory.category for questionsCategory in questionsCategories track by questionsCategory.id" required>
+        </select>
     </div>
+
+    <div class="btn btn-success" ng-click="onAddQuestionCategory()" data-toggle="modal" data-target="#addQuestionCategoryModal" ng-show="isEnabled">
+        <i class="fa fa-plus-circle"></i>
+        {{'ADD' | translate}}
+    </div>
+
 </div>
 
 <div class="form-group">
@@ -12,10 +20,10 @@
         </select>
     </div>
 </div>
+
 <div class="form-group">
-    <label for="questionCategory" class="col-md-2 control-label">{{ 'QUESTION_CATEGORY' | translate }}:</label>
-    <div class="col-md-3">
-        <select id="questionCategory" name="{{ 'QUESTION_CATEGORY' | translate }}" ng-model="question.questionCategory" type="text" class="form-control" ng-options="questionCategory | translate for questionCategory in questionCategories" required>
-        </select>
+    <label for="question" class="col-md-2 control-label">{{ 'QUESTION' | translate }}:</label>
+    <div class="col-md-5">
+         <input id="question" name="'{{ 'QUESTION' | translate }}'" ng-model="question.question" type="text" class="form-control" autocomplete="off" required/>
     </div>
 </div>

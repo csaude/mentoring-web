@@ -1,7 +1,8 @@
 mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questionService", "resourceUtilsService", function ($scope, $rootScope, questionService, resourceUtilsService){
 
 	$scope.questionTypes = [];
-	$scope.questionCategories = [];
+	$scope.questionsCategories = [];
+	$scope.isEnabled = false;
 
 	$scope.getQuestions = function (){
 
@@ -53,9 +54,9 @@ mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questi
 				}
 			});
 
-			resourceUtilsService.getQuestionCategories().then(function(response){
+			questionService.getQuestionsCategories().then(function(response){
 				if(response.data){
-					$scope.questionCategories = response.data.questionCategory;
+					$scope.questionsCategories = response.data.questionsCategory;
 				}
 			});
 
@@ -72,15 +73,15 @@ mentoring.controller("listQuestionsController", ["$scope", "$rootScope", "questi
 		questionBeanResource.userContext = $rootScope.userContext;
 		questionBeanResource.question = $scope.question;
 
-		questionService.updateQuestion(questionBeanResource).then(function (response){
+		questionService.updateQuestion(questionBeanResource)
+		.then(function (response){
 			var question = response.data;
-
 			$scope.message = "A Questão com o código "+question.code+" foi actulizada com sucesso!";
 			$scope.isDisabled = true;
-
+		})
+		.catch(function(error){
+			$scope.errorMessage = error.data;
 		});
-
-
 	};
 
 }]);
