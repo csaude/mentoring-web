@@ -5,17 +5,34 @@ services:
        ports: 
         - "80:80"
         - "443:443"
-       network_mode: bridge
+       networks:
+        - network
+        - mentoring_network
+        - accountmanager_network
        external_links:
          - tomcat-mentoring
          - tomcat-account
-         - tomcat-mentoring-test
-         - tomcat-account-test
+ #        - tomcat-mentoring-test
+ #        - tomcat-account-test
        container_name: apache2-mentoring
        environment:
           COMPOSE_HTTP_TIMEOUT: 200
        volumes:
          - /opt/data/webapp/mentoring/dist:/usr/local/apache2/htdocs
-         - /opt/data/webapp/test/mentoring/dist:/usr/local/apache2/htdocs/test
+         - /etc/letsencrypt:/etc/letsencrypt
+ #       - /opt/data/webapp/test/mentoring/dist:/usr/local/apache2/htdocs/test
        hostname: apache2-mentoring
        restart: unless-stopped
+       logging:
+        driver: "json-file"
+        options:
+         max-size: "100m"
+         max-file: "1"
+
+networks:
+  network:
+    driver: bridge
+  mentoring_network:
+    external: true
+  accountmanager_network:
+    external: true
